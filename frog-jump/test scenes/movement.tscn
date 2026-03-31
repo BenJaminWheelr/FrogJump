@@ -5,14 +5,15 @@
 [ext_resource type="PackedScene" uid="uid://cg7ak7nx6rf5r" path="res://scenes/enemy.tscn" id="3_qa7t3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kxkgf"]
-size = Vector2(1156, 398)
+size = Vector2(1156, 605)
 
 [node name="Node2D" type="Node2D" unique_id=1791238265]
+position = Vector2(0, 222)
 
 [node name="play-area" type="Area2D" parent="." unique_id=1399757649]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="play-area" unique_id=1538881758]
-position = Vector2(563, 194)
+position = Vector2(579, 64)
 shape = SubResource("RectangleShape2D_kxkgf")
 disabled = true
 
@@ -29,10 +30,44 @@ position = Vector2(770, 246)
 position = Vector2(-91, 304)
 scale = Vector2(4, 1)
 
+[node name="platform5" parent="." unique_id=1670278959 instance=ExtResource("2_qa7t3")]
+position = Vector2(754, -14)
+
+[node name="platform6" parent="." unique_id=1659770718 instance=ExtResource("2_qa7t3")]
+position = Vector2(401, -129)
+
+[node name="platform7" parent="." unique_id=514580545 instance=ExtResource("2_qa7t3")]
+position = Vector2(6, -225)
+
+[node name="enemy" parent="." unique_id=1877397287 instance=ExtResource("3_qa7t3")]
+position = Vector2(525, 223)
+scale = Vector2(0.5, 0.5)
+movement_type = 2
+vertical_range = 50.0
+
+[node name="enemy2" parent="." unique_id=489100744 instance=ExtResource("3_qa7t3")]
+position = Vector2(903, -33)
+scale = Vector2(0.5, 0.5)
+movement_type = 1
+horizontal_range = 30.0
+
+[node name="enemy3" parent="." unique_id=885428788 instance=ExtResource("3_qa7t3")]
+position = Vector2(133, 284)
+scale = Vector2(0.5, 0.5)
+
 [node name="frog" parent="." unique_id=381536348 instance=ExtResource("2_v36h0")]
 position = Vector2(12, 139)
 scale = Vector2(0.5, 0.5)
 
-[node name="enemy" parent="." unique_id=1877397287 instance=ExtResource("3_qa7t3")]
-position = Vector2(222, 289)
-scale = Vector2(0.5, 0.5)
+[node name="Camera2D" type="Camera2D" parent="frog" unique_id=2002268100]
+position = Vector2(-18, -712)
+anchor_mode = 0
+limit_left = 0
+limit_right = 0
+position_smoothing_enabled = true
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+drag_left_margin = 1.0
+drag_top_margin = 0.4
+drag_right_margin = 1.0
+drag_bottom_margin = 0.81
