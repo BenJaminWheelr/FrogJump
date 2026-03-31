@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://dj74whju1ix15"]
+
+[ext_resource type="PackedScene" uid="uid://ssb3u8iwtcqo" path="res://test scenes/platform.tscn" id="2_qa7t3"]
+[ext_resource type="PackedScene" uid="uid://cv20o2o3c2gkd" path="res://scenes/player.tscn" id="2_v36h0"]
+[ext_resource type="PackedScene" uid="uid://cg7ak7nx6rf5r" path="res://scenes/enemy.tscn" id="3_qa7t3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kxkgf"]
+size = Vector2(1156, 398)
+
+[node name="Node2D" type="Node2D" unique_id=1791238265]
+
+[node name="play-area" type="Area2D" parent="." unique_id=1399757649]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="play-area" unique_id=1538881758]
+position = Vector2(563, 194)
+shape = SubResource("RectangleShape2D_kxkgf")
+disabled = true
+
+[node name="platform" parent="." unique_id=1683785918 instance=ExtResource("2_qa7t3")]
+position = Vector2(-10, 195)
+
+[node name="platform2" parent="." unique_id=1840951764 instance=ExtResource("2_qa7t3")]
+position = Vector2(376, 87)
+
+[node name="platform3" parent="." unique_id=465527211 instance=ExtResource("2_qa7t3")]
+position = Vector2(770, 246)
+
+[node name="platform4" parent="." unique_id=1443846925 instance=ExtResource("2_qa7t3")]
+position = Vector2(-91, 304)
+scale = Vector2(4, 1)
+
+[node name="frog" parent="." unique_id=381536348 instance=ExtResource("2_v36h0")]
+position = Vector2(12, 139)
+scale = Vector2(0.5, 0.5)
+
+[node name="enemy" parent="." unique_id=1877397287 instance=ExtResource("3_qa7t3")]
+position = Vector2(222, 289)
+scale = Vector2(0.5, 0.5)
