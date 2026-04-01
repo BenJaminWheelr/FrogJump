@@ -9,6 +9,8 @@ extends Control
 @export_group("Audio")
 @export var select_sfx: AudioStream
 @export var accept_sfx: AudioStream
+@export var menu_music: AudioStream
+@export var ambience: AudioStream
 
 @export_group("Scenes")
 @export_file("*.tscn") var play_scene_path: String
@@ -16,6 +18,8 @@ extends Control
 @export_file("*.tscn") var settings_scene_path: String
 
 func _ready():
+	GlobalAudio.play_music(menu_music)
+	GlobalAudio.play_ambience(ambience)
 	if play_button:
 		play_button.pressed.connect(_on_play_pressed)
 	if settings_button:
@@ -42,7 +46,11 @@ func _on_settings_pressed():
 	if _handle_click(settings_scene_path, select_sfx):
 		var settings_inst = load(settings_scene_path).instantiate()
 		add_child(settings_inst)
-	_toggle_menu_buttons(false)
+		_toggle_menu_buttons(false)
+		settings_inst.tree_exited.connect(_on_settings_closed)
+
+func _on_settings_closed():
+	_toggle_menu_buttons(true)
 
 func _toggle_menu_buttons(is_visible: bool):
 	play_button.get_parent().visible = is_visible

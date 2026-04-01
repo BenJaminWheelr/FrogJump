@@ -36,6 +36,8 @@ credits_button = NodePath("MarginContainer/VBoxContainer/CreditsButton")
 exit_button = NodePath("MarginContainer/VBoxContainer/ExitButton")
 select_sfx = ExtResource("9_l4mxc")
 accept_sfx = ExtResource("8_bky6r")
+menu_music = ExtResource("8_mipys")
+ambience = ExtResource("7_ucygd")
 settings_scene_path = "uid://cgdhng50wnohq"
 
 [node name="Background" type="Node2D" parent="MainMenu"]
@@ -129,11 +131,3 @@ custom_minimum_size = Vector2(200, 60)
 layout_mode = 2
 size_flags_horizontal = 4
 text = "EXIT"
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("7_ucygd")
-autoplay = true
-
-[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("8_mipys")
-autoplay = true
