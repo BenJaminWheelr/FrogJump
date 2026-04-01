@@ -15,9 +15,18 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 [application]
 
 config/name="Frog Jump"
-run/main_scene="uid://dj74whju1ix15"
-config/features=PackedStringArray("4.6", "GL Compatibility")
-config/icon="res://assets/icon.svg"
+run/main_scene="uid://ea5bkiwtudye"
+config/features=PackedStringArray("4.5", "GL Compatibility")
+config/icon="res://assets/textures/icon.svg"
+
+[autoload]
+
+GlobalAudio="*res://scripts/GlobalAudio.gd"
+
+[display]
+
+window/stretch/mode="canvas_items"
+window/stretch/aspect="expand"
 
 [dotnet]
 
