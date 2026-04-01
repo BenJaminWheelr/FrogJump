@@ -29,7 +29,6 @@ theme_override_constants/separation = 20
 script = ExtResource("1_46duy")
 unchecked_texture = ExtResource("2_i47rn")
 checked_texture = ExtResource("3_1dggd")
-toggle_sfx = ExtResource("4_8e7v8")
 
 [node name="Button" type="Button" parent="VBoxContainer/checkbutton"]
 layout_mode = 2
