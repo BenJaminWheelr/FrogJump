@@ -1,0 +1,8 @@
+.godot/
+*.import
+export_presets.cfg
+.mono/
+bin/
+obj/
+.DS_Store
+*.tmp
