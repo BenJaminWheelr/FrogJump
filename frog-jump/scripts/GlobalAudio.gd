@@ -1,6 +1,6 @@
 extends Node
 
-var audio_enabled: bool = false:
+var audio_enabled: bool = true:
 	set(value):
 		audio_enabled = value
 		if audio_enabled:

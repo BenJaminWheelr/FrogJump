@@ -1,0 +1,121 @@
+[gd_scene load_steps=29 format=3 uid="uid://d4emc5jjdit30"]
+
+[ext_resource type="Script" uid="uid://bidi0hh64qhqq" path="res://scripts/LevelSelect.gd" id="1_yxdfm"]
+[ext_resource type="PackedScene" uid="uid://bx6eq07yihv0c" path="res://scenes/LevelWindow.tscn" id="2_yxdfm"]
+[ext_resource type="Script" uid="uid://40fnrked26hm" path="res://scripts/LevelData.gd" id="4_3p8qn"]
+[ext_resource type="AudioStream" uid="uid://dgsbp6yweqwo7" path="res://assets/audio/uiAccept.wav" id="4_33358"]
+[ext_resource type="Texture2D" uid="uid://8icbubvy0yx6" path="res://assets/textures/png/lock.png" id="4_chx4x"]
+[ext_resource type="Theme" uid="uid://cv0jb6rth2amu" path="res://assets/ui_theme.tres" id="5_chx4x"]
+[ext_resource type="Texture2D" uid="uid://b7lovektv72r1" path="res://assets/backgrounds/5.png" id="5_t7n47"]
+[ext_resource type="Texture2D" uid="uid://campbs1wnvpe" path="res://assets/backgrounds/Summer8.png" id="6_0t37j"]
+[ext_resource type="Script" uid="uid://c6it528qnfi8j" path="res://scripts/BackButton.gd" id="6_ptr58"]
+[ext_resource type="Texture2D" uid="uid://630oxcp1qelh" path="res://assets/backgrounds/Summer7.png" id="7_k5t3p"]
+[ext_resource type="AudioStream" uid="uid://ckghpnlodtgxp" path="res://assets/audio/uiSelect.wav" id="7_md0xe"]
+[ext_resource type="Texture2D" uid="uid://byrx16tem0fol" path="res://assets/backgrounds/Summer6.png" id="8_khoec"]
+[ext_resource type="Texture2D" uid="uid://cwm0t33xhcsb4" path="res://assets/backgrounds/Summer5.png" id="9_0tbk4"]
+[ext_resource type="Texture2D" uid="uid://dpnsf4aw38cgt" path="res://assets/backgrounds/Summer4.png" id="10_jlsph"]
+[ext_resource type="Texture2D" uid="uid://c3r3tf7k4h141" path="res://assets/backgrounds/Summer3.png" id="11_h60ok"]
+[ext_resource type="Texture2D" uid="uid://br6vojjaoe5gk" path="res://assets/backgrounds/Summer2.png" id="12_7t6fj"]
+[ext_resource type="Texture2D" uid="uid://cvu2jh3udwwuq" path="res://assets/backgrounds/Summer1.png" id="13_mnm75"]
+[ext_resource type="Texture2D" uid="uid://d1bfpxy8yu6cv" path="res://assets/backgrounds/other5.png" id="14_gv7ro"]
+
+[sub_resource type="Resource" id="Resource_e1qta"]
+script = ExtResource("4_3p8qn")
+thumbnail = ExtResource("6_0t37j")
+scene_path = "uid://dj74whju1ix15"
+metadata/_custom_type_script = "uid://40fnrked26hm"
+
+[sub_resource type="Resource" id="Resource_jsepd"]
+script = ExtResource("4_3p8qn")
+thumbnail = ExtResource("7_k5t3p")
+metadata/_custom_type_script = "uid://40fnrked26hm"
+
+[sub_resource type="Resource" id="Resource_m08qt"]
+script = ExtResource("4_3p8qn")
+thumbnail = ExtResource("8_khoec")
+metadata/_custom_type_script = "uid://40fnrked26hm"
+
+[sub_resource type="Resource" id="Resource_n2tif"]
+script = ExtResource("4_3p8qn")
+thumbnail = ExtResource("9_0tbk4")
+metadata/_custom_type_script = "uid://40fnrked26hm"
+
+[sub_resource type="Resource" id="Resource_iywrv"]
+script = ExtResource("4_3p8qn")
+thumbnail = ExtResource("10_jlsph")
+metadata/_custom_type_script = "uid://40fnrked26hm"
+
+[sub_resource type="Resource" id="Resource_pc2ii"]
+script = ExtResource("4_3p8qn")
+thumbnail = ExtResource("11_h60ok")
+metadata/_custom_type_script = "uid://40fnrked26hm"
+
+[sub_resource type="Resource" id="Resource_fcgpj"]
+script = ExtResource("4_3p8qn")
+thumbnail = ExtResource("12_7t6fj")
+metadata/_custom_type_script = "uid://40fnrked26hm"
+
+[sub_resource type="Resource" id="Resource_qeqns"]
+script = ExtResource("4_3p8qn")
+thumbnail = ExtResource("13_mnm75")
+metadata/_custom_type_script = "uid://40fnrked26hm"
+
+[sub_resource type="Resource" id="Resource_td1g4"]
+script = ExtResource("4_3p8qn")
+thumbnail = ExtResource("14_gv7ro")
+metadata/_custom_type_script = "uid://40fnrked26hm"
+
+[sub_resource type="Resource" id="Resource_da6tu"]
+script = ExtResource("4_3p8qn")
+thumbnail = ExtResource("5_t7n47")
+metadata/_custom_type_script = "uid://40fnrked26hm"
+
+[node name="LevelSelect" type="CanvasLayer"]
+script = ExtResource("1_yxdfm")
+level_window_scene = ExtResource("2_yxdfm")
+select_sfx = ExtResource("4_33358")
+slide_duration = 1.0
+highest_unlocked_level = 2
+locked_icon = ExtResource("4_chx4x")
+levels = Array[ExtResource("4_3p8qn")]([SubResource("Resource_e1qta"), SubResource("Resource_jsepd"), SubResource("Resource_m08qt"), SubResource("Resource_n2tif"), SubResource("Resource_iywrv"), SubResource("Resource_pc2ii"), SubResource("Resource_fcgpj"), SubResource("Resource_qeqns"), SubResource("Resource_td1g4"), SubResource("Resource_da6tu")])
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_scroll_mode = 2
+vertical_scroll_mode = 0
+scroll_deadzone = 5
+
+[node name="MarginContainer" type="MarginContainer" parent="ScrollContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_right = 75
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ScrollContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+theme_override_constants/separation = 50
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(300, 50)
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -150.0
+offset_top = -50.0
+offset_right = 150.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="BackButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("5_chx4x")
+text = "Main Menu"
+script = ExtResource("6_ptr58")
+back_sfx = ExtResource("7_md0xe")

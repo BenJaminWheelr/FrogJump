@@ -31,7 +31,10 @@ func _ready():
 
 func _on_play_pressed():
 	if _handle_click(play_scene_path, accept_sfx):
-		get_tree().change_scene_to_file(play_scene_path)
+		var play_inst = load(play_scene_path).instantiate()
+		add_child(play_inst)
+		_toggle_menu_buttons(false)
+		play_inst.tree_exited.connect(_on_submenu_closed)
 	
 func _on_credits_pressed():
 	if _handle_click(credits_scene_path, select_sfx):
@@ -47,9 +50,9 @@ func _on_settings_pressed():
 		var settings_inst = load(settings_scene_path).instantiate()
 		add_child(settings_inst)
 		_toggle_menu_buttons(false)
-		settings_inst.tree_exited.connect(_on_settings_closed)
+		settings_inst.tree_exited.connect(_on_submenu_closed)
 
-func _on_settings_closed():
+func _on_submenu_closed():
 	_toggle_menu_buttons(true)
 
 func _toggle_menu_buttons(is_visible: bool):

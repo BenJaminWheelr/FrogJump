@@ -1,11 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://cgdhng50wnohq"]
+[gd_scene load_steps=8 format=3 uid="uid://cgdhng50wnohq"]
 
-[ext_resource type="Script" uid="uid://db2m2m4c2qf2o" path="res://scenes/CheckButton.gd" id="1_46duy"]
+[ext_resource type="Script" uid="uid://db2m2m4c2qf2o" path="res://scripts/CheckButton.gd" id="1_46duy"]
 [ext_resource type="Theme" uid="uid://cv0jb6rth2amu" path="res://assets/ui_theme.tres" id="1_rbmmp"]
 [ext_resource type="Texture2D" uid="uid://dks84towca86k" path="res://assets/textures/unchecked.tres" id="2_i47rn"]
 [ext_resource type="Texture2D" uid="uid://c0feh75shcuaf" path="res://assets/textures/checked.tres" id="3_1dggd"]
 [ext_resource type="AudioStream" uid="uid://ckghpnlodtgxp" path="res://assets/audio/uiSelect.wav" id="4_8e7v8"]
-[ext_resource type="Script" uid="uid://c6it528qnfi8j" path="res://scenes/BackButton.gd" id="6_j1j16"]
+[ext_resource type="AudioStream" uid="uid://dgsbp6yweqwo7" path="res://assets/audio/uiAccept.wav" id="4_slqrs"]
+[ext_resource type="Script" uid="uid://c6it528qnfi8j" path="res://scripts/BackButton.gd" id="6_j1j16"]
 
 [node name="Settings" type="CanvasLayer"]
 
@@ -29,6 +30,7 @@ theme_override_constants/separation = 20
 script = ExtResource("1_46duy")
 unchecked_texture = ExtResource("2_i47rn")
 checked_texture = ExtResource("3_1dggd")
+toggle_sfx = ExtResource("4_slqrs")
 
 [node name="Button" type="Button" parent="VBoxContainer/checkbutton"]
 layout_mode = 2

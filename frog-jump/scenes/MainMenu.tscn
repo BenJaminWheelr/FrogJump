@@ -38,6 +38,7 @@ select_sfx = ExtResource("9_l4mxc")
 accept_sfx = ExtResource("8_bky6r")
 menu_music = ExtResource("8_mipys")
 ambience = ExtResource("7_ucygd")
+play_scene_path = "uid://d4emc5jjdit30"
 settings_scene_path = "uid://cgdhng50wnohq"
 
 [node name="Background" type="Node2D" parent="MainMenu"]
