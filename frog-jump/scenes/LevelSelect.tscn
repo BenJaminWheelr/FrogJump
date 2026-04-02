@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://d4emc5jjdit30"]
+[gd_scene load_steps=37 format=3 uid="uid://d4emc5jjdit30"]
 
 [ext_resource type="Script" uid="uid://bidi0hh64qhqq" path="res://scripts/LevelSelect.gd" id="1_yxdfm"]
 [ext_resource type="PackedScene" uid="uid://bx6eq07yihv0c" path="res://scenes/LevelWindow.tscn" id="2_yxdfm"]
@@ -18,6 +18,10 @@
 [ext_resource type="Texture2D" uid="uid://br6vojjaoe5gk" path="res://assets/backgrounds/Summer2.png" id="12_7t6fj"]
 [ext_resource type="Texture2D" uid="uid://cvu2jh3udwwuq" path="res://assets/backgrounds/Summer1.png" id="13_mnm75"]
 [ext_resource type="Texture2D" uid="uid://d1bfpxy8yu6cv" path="res://assets/backgrounds/other5.png" id="14_gv7ro"]
+[ext_resource type="Texture2D" uid="uid://crloyjtd1doja" path="res://assets/backgrounds/4.png" id="16_h60ok"]
+[ext_resource type="Texture2D" uid="uid://urngq1gu5qka" path="res://assets/backgrounds/ocean5.png" id="17_7t6fj"]
+[ext_resource type="Texture2D" uid="uid://l5v1e0fpt863" path="res://assets/backgrounds/ocean10.png" id="18_mnm75"]
+[ext_resource type="Texture2D" uid="uid://i3ppdacteyhc" path="res://assets/backgrounds/ocean6.png" id="19_gv7ro"]
 
 [sub_resource type="Resource" id="Resource_e1qta"]
 script = ExtResource("4_3p8qn")
@@ -70,14 +74,34 @@ script = ExtResource("4_3p8qn")
 thumbnail = ExtResource("5_t7n47")
 metadata/_custom_type_script = "uid://40fnrked26hm"
 
+[sub_resource type="Resource" id="Resource_k5t3p"]
+script = ExtResource("4_3p8qn")
+thumbnail = ExtResource("16_h60ok")
+metadata/_custom_type_script = "uid://40fnrked26hm"
+
+[sub_resource type="Resource" id="Resource_j0luu"]
+script = ExtResource("4_3p8qn")
+thumbnail = ExtResource("17_7t6fj")
+metadata/_custom_type_script = "uid://40fnrked26hm"
+
+[sub_resource type="Resource" id="Resource_yua8q"]
+script = ExtResource("4_3p8qn")
+thumbnail = ExtResource("18_mnm75")
+metadata/_custom_type_script = "uid://40fnrked26hm"
+
+[sub_resource type="Resource" id="Resource_3bthp"]
+script = ExtResource("4_3p8qn")
+thumbnail = ExtResource("19_gv7ro")
+metadata/_custom_type_script = "uid://40fnrked26hm"
+
 [node name="LevelSelect" type="CanvasLayer"]
 script = ExtResource("1_yxdfm")
 level_window_scene = ExtResource("2_yxdfm")
 select_sfx = ExtResource("4_33358")
 slide_duration = 1.0
-highest_unlocked_level = 2
+highest_unlocked_level = 8
 locked_icon = ExtResource("4_chx4x")
-levels = Array[ExtResource("4_3p8qn")]([SubResource("Resource_e1qta"), SubResource("Resource_jsepd"), SubResource("Resource_m08qt"), SubResource("Resource_n2tif"), SubResource("Resource_iywrv"), SubResource("Resource_pc2ii"), SubResource("Resource_fcgpj"), SubResource("Resource_qeqns"), SubResource("Resource_td1g4"), SubResource("Resource_da6tu")])
+levels = Array[ExtResource("4_3p8qn")]([SubResource("Resource_e1qta"), SubResource("Resource_jsepd"), SubResource("Resource_m08qt"), SubResource("Resource_n2tif"), SubResource("Resource_iywrv"), SubResource("Resource_pc2ii"), SubResource("Resource_fcgpj"), SubResource("Resource_qeqns"), SubResource("Resource_td1g4"), SubResource("Resource_da6tu"), SubResource("Resource_k5t3p"), SubResource("Resource_j0luu"), SubResource("Resource_yua8q"), SubResource("Resource_3bthp")])
 
 [node name="ScrollContainer" type="ScrollContainer" parent="."]
 anchors_preset = 15

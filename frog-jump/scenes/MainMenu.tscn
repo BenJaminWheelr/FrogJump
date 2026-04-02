@@ -45,6 +45,7 @@ settings_scene_path = "uid://cgdhng50wnohq"
 
 [node name="Parallax2D" type="Parallax2D" parent="MainMenu/Background"]
 repeat_size = Vector2(1152, 0)
+autoscroll = Vector2(-1, 0)
 repeat_times = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="MainMenu/Background/Parallax2D"]
