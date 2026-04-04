@@ -7,10 +7,10 @@ enum ControlMode {
 }
 
 
-const SPEED = 300.0
-const JUMP_VELOCITY = -550.0
-const GRAVITY_MULTIPLIER = 1.35
-const MIN_DRAG_DISTANCE = 12.0
+@export var SPEED = 300.0
+@export var JUMP_VELOCITY = -550.0
+@export var GRAVITY_MULTIPLIER = 1.35
+@export var MIN_DRAG_DISTANCE = 12.0
 
 @export var play_area_shape_path: NodePath = NodePath("../play-area/CollisionShape2D")
 @export var control_mode := ControlMode.AUTO_RUNNER
@@ -19,7 +19,7 @@ const MIN_DRAG_DISTANCE = 12.0
 @export var max_pull_distance := 180.0
 @export var floor_friction := 1600.0
 
-var move_direction := 1.0
+@export var move_direction := 1.0
 var has_play_area_bounds := false
 var play_area_left := 0.0
 var play_area_right := 0.0
@@ -84,6 +84,8 @@ func _physics_process(delta):
 	if control_mode == ControlMode.AUTO_RUNNER:
 		if Input.is_action_just_pressed("ui_accept") and is_on_floor():
 			velocity.y = JUMP_VELOCITY
+		if !Input.is_action_pressed("ui_accept") and velocity.y < 0:
+			velocity.y = 0
 		velocity.x = move_direction * SPEED
 	else:
 		if is_dragging:
@@ -96,6 +98,12 @@ func _physics_process(delta):
 	if has_play_area_bounds and (global_position.x < play_area_left or global_position.x > play_area_right):
 		move_direction *= -1.0
 		global_position.x = clamp(global_position.x, play_area_left, play_area_right)
+	
+	for i in get_slide_collision_count():
+		# flip direction on side collision
+		if get_slide_collision(i).get_normal().x != 0:
+			move_direction *= -1
+			break
 
 
 func _draw():
