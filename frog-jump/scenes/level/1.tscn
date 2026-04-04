@@ -1,0 +1,52 @@
+[gd_scene format=4 uid="uid://dkw3townjhklg"]
+
+[ext_resource type="Script" uid="uid://crqbnpurvae3k" path="res://scripts/level.gd" id="1_8xvh8"]
+[ext_resource type="TileSet" uid="uid://bigkbjaokifh8" path="res://assets/tilesets/template.tres" id="2_35xll"]
+[ext_resource type="PackedScene" uid="uid://cv20o2o3c2gkd" path="res://scenes/player.tscn" id="3_gcu4a"]
+[ext_resource type="PackedScene" uid="uid://dgmf0jnydxgex" path="res://scenes/goal.tscn" id="4_82f50"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_fji02"]
+normal = Vector2(1, 0)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_ham7r"]
+normal = Vector2(-1, 0)
+
+[node name="0" type="Node2D" unique_id=310898725]
+script = ExtResource("1_8xvh8")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=236276394]
+texture_filter = 1
+scale = Vector2(4, 4)
+tile_map_data = PackedByteArray("AAAAAAkAAAAAAAMAAAABAAkAAAABAAMAAAACAAkAAAABAAMAAAADAAkAAAABAAMAAAAEAAkAAAABAAMAAAAFAAkAAAABAAMAAAAGAAkAAAABAAMAAAAHAAkAAAABAAMAAAAIAAkAAAABAAMAAAAJAAkAAAABAAMAAAAKAAkAAAABAAMAAAALAAkAAAABAAMAAAAMAAkAAAABAAMAAAANAAkAAAABAAMAAAAOAAkAAAABAAMAAAAPAAkAAAABAAMAAAAQAAkAAAABAAMAAAARAAkAAAACAAMAAAALAAYAAAAAAAMAAAAMAAYAAAABAAMAAAANAAYAAAABAAMAAAAOAAYAAAAHAAMAAAAOAAUAAAADAAEAAAAOAAQAAAADAAEAAAAOAAIAAAADAAEAAAAOAAEAAAADAAEAAAAOAAAAAAADAAAAAAAOAAMAAAADAAEAAAAGAAMAAAAEAAAAAAAGAAQAAAADAAEAAAAGAAUAAAADAAEAAAAGAAYAAAADAAIAAAABAP3/AAADAAAAAAABAP7/AAADAAEAAAABAP//AAADAAEAAAABAAAAAAADAAEAAAAGAP7/AAAAAAMAAAAHAP7/AAABAAMAAAAIAP7/AAABAAMAAAAJAP7/AAABAAMAAAAKAP7/AAAHAAMAAAAKAPz/AAADAAEAAAAKAPv/AAADAAAAAAAKAP3/AAADAAEAAAADAPn/AAADAAEAAAADAPj/AAADAAAAAAANAPn/AAAAAAMAAAAOAPn/AAABAAMAAAAPAPn/AAACAAMAAAAJAPb/AAABAAMAAAAKAPb/AAABAAMAAAALAPb/AAACAAMAAAAKAAMAAAACAAMAAAAJAAMAAAABAAMAAAAIAAMAAAABAAMAAAAHAAMAAAABAAMAAAADAAEAAAACAAMAAAACAAEAAAABAAMAAAABAAEAAAAEAAMAAAAGAPv/AAACAAMAAAAFAPv/AAABAAMAAAAEAPv/AAABAAMAAAADAPr/AAADAAEAAAADAPv/AAAEAAMAAAAHAPb/AAAAAAMAAAAIAPb/AAABAAMAAAAFAPD/AAADAAAAAAAFAPH/AAADAAEAAAAFAPL/AAADAAIAAAAMAPL/AAADAAIAAAAMAPH/AAADAAEAAAAMAPD/AAADAAAAAAA=")
+tile_set = ExtResource("2_35xll")
+
+[node name="frog" parent="." unique_id=381536348 instance=ExtResource("3_gcu4a")]
+position = Vector2(384, 400)
+scale = Vector2(0.5, 0.5)
+SPEED = 600.0
+JUMP_VELOCITY = -1200.0
+GRAVITY_MULTIPLIER = 3.0
+play_area_shape_path = NodePath("")
+
+[node name="Camera2D" type="Camera2D" parent="frog" unique_id=1326310869]
+limit_left = 0
+limit_right = 1152
+limit_bottom = 648
+position_smoothing_enabled = true
+position_smoothing_speed = 3.0
+
+[node name="goal" parent="." unique_id=1943025278 instance=ExtResource("4_82f50")]
+position = Vector2(584, -840)
+
+[node name="WallLeft" type="StaticBody2D" parent="." unique_id=270825191]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallLeft" unique_id=412696801]
+shape = SubResource("WorldBoundaryShape2D_fji02")
+
+[node name="WallRight" type="StaticBody2D" parent="." unique_id=1303193632]
+position = Vector2(1152, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallRight" unique_id=1295791433]
+shape = SubResource("WorldBoundaryShape2D_ham7r")
+
+[connection signal="goal_reached" from="goal" to="." method="nextLevel"]

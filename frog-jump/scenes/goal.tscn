@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://dgmf0jnydxgex"]
+
+[ext_resource type="Script" uid="uid://b1fphu3423ceu" path="res://scripts/goal.gd" id="1_jbojv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fji02"]
+size = Vector2(50, 50)
+
+[node name="goal" type="Area2D" unique_id=1943025278]
+script = ExtResource("1_jbojv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1435000489]
+shape = SubResource("RectangleShape2D_fji02")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1198003693]
+offset_left = -25.0
+offset_top = -25.0
+offset_right = 25.0
+offset_bottom = 25.0
+color = Color(0.45, 0.48666662, 1, 1)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=110647405]
+offset_left = -24.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 24.0
+text = "goal"
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
