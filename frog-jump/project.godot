@@ -21,7 +21,7 @@ config/icon="res://assets/textures/icon.svg"
 
 [autoload]
 
-GlobalAudio="*res://scripts/GlobalAudio.gd"
+GlobalAudio="*res://scripts/Global/GlobalAudio.gd"
 
 [display]
 

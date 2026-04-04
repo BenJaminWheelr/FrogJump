@@ -1,9 +1,10 @@
-[gd_scene format=4 uid="uid://u45ufwypfh8r"]
+[gd_scene load_steps=8 format=4 uid="uid://u45ufwypfh8r"]
 
 [ext_resource type="Script" uid="uid://crqbnpurvae3k" path="res://scripts/level.gd" id="1_fji02"]
 [ext_resource type="TileSet" uid="uid://bigkbjaokifh8" path="res://assets/tilesets/template.tres" id="2_ham7r"]
 [ext_resource type="PackedScene" uid="uid://cv20o2o3c2gkd" path="res://scenes/player.tscn" id="3_8ptru"]
 [ext_resource type="PackedScene" uid="uid://dgmf0jnydxgex" path="res://scenes/goal.tscn" id="4_ham7r"]
+[ext_resource type="PackedScene" uid="uid://cqc6tpc58ywdq" path="res://scenes/UI/PauseButton.tscn" id="5_8ptru"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_fji02"]
 normal = Vector2(1, 0)
@@ -11,16 +12,16 @@ normal = Vector2(1, 0)
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_ham7r"]
 normal = Vector2(-1, 0)
 
-[node name="0" type="Node2D" unique_id=310898725]
+[node name="0" type="Node2D"]
 script = ExtResource("1_fji02")
 
-[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=236276394]
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
 texture_filter = 1
 scale = Vector2(4, 4)
 tile_map_data = PackedByteArray("AAAAAAkAAAAAAAMAAAABAAkAAAABAAMAAAACAAkAAAABAAMAAAADAAkAAAABAAMAAAAEAAkAAAABAAMAAAAFAAkAAAABAAMAAAAGAAkAAAABAAMAAAAHAAkAAAABAAMAAAAIAAkAAAABAAMAAAAJAAkAAAABAAMAAAAKAAkAAAABAAMAAAALAAkAAAABAAMAAAAMAAkAAAABAAMAAAANAAkAAAABAAMAAAAOAAkAAAABAAMAAAAPAAkAAAABAAMAAAAQAAkAAAABAAMAAAARAAkAAAACAAMAAAAKAAYAAAAAAAMAAAALAAYAAAABAAMAAAAMAAYAAAABAAMAAAANAAYAAAACAAMAAAACAAQAAAAAAAMAAAADAAQAAAABAAMAAAAEAAQAAAACAAMAAAAJAAEAAAAAAAMAAAAKAAEAAAABAAMAAAALAAEAAAABAAMAAAAMAAEAAAABAAMAAAANAAEAAAABAAMAAAAOAAEAAAABAAMAAAAPAAEAAAACAAMAAAACAP7/AAAAAAMAAAADAP7/AAABAAMAAAAEAP7/AAABAAMAAAAFAP7/AAACAAMAAAAJAPv/AAAAAAMAAAAKAPv/AAABAAMAAAALAPv/AAABAAMAAAAMAPv/AAACAAMAAAA=")
 tile_set = ExtResource("2_ham7r")
 
-[node name="frog" parent="." unique_id=381536348 instance=ExtResource("3_8ptru")]
+[node name="frog" parent="." instance=ExtResource("3_8ptru")]
 position = Vector2(384, 400)
 scale = Vector2(0.5, 0.5)
 SPEED = 600.0
@@ -28,25 +29,27 @@ JUMP_VELOCITY = -1200.0
 GRAVITY_MULTIPLIER = 3.0
 play_area_shape_path = NodePath("")
 
-[node name="Camera2D" type="Camera2D" parent="frog" unique_id=1326310869]
+[node name="Camera2D" type="Camera2D" parent="frog"]
 limit_left = 0
 limit_right = 1152
 limit_bottom = 648
 position_smoothing_enabled = true
 position_smoothing_speed = 3.0
 
-[node name="goal" parent="." unique_id=1943025278 instance=ExtResource("4_ham7r")]
+[node name="goal" parent="." instance=ExtResource("4_ham7r")]
 position = Vector2(728, -464)
 
-[node name="WallLeft" type="StaticBody2D" parent="." unique_id=270825191]
+[node name="WallLeft" type="StaticBody2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="WallLeft" unique_id=412696801]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallLeft"]
 shape = SubResource("WorldBoundaryShape2D_fji02")
 
-[node name="WallRight" type="StaticBody2D" parent="." unique_id=1303193632]
+[node name="WallRight" type="StaticBody2D" parent="."]
 position = Vector2(1152, 0)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="WallRight" unique_id=1295791433]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallRight"]
 shape = SubResource("WorldBoundaryShape2D_ham7r")
+
+[node name="PauseButton" parent="." instance=ExtResource("5_8ptru")]
 
 [connection signal="goal_reached" from="goal" to="." method="nextLevel"]

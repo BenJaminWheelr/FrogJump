@@ -1,19 +1,19 @@
 [gd_scene load_steps=13 format=3 uid="uid://ea5bkiwtudye"]
 
-[ext_resource type="Theme" uid="uid://cv0jb6rth2amu" path="res://assets/ui_theme.tres" id="1_0ykhv"]
-[ext_resource type="Script" uid="uid://cp8ghp0hh67g8" path="res://scripts/MainMenu.gd" id="2_2nypq"]
-[ext_resource type="Shader" uid="uid://dg6b41dlblsju" path="res://shaders/Title.gdshader" id="2_2wh52"]
-[ext_resource type="Texture2D" uid="uid://doocdeystm46b" path="res://assets/backgrounds/MainMenuBackground/1.png" id="2_ow34m"]
-[ext_resource type="Texture2D" uid="uid://c7frmqah05bkm" path="res://assets/backgrounds/MainMenuBackground/2.png" id="3_826wr"]
-[ext_resource type="Texture2D" uid="uid://dh62twvoghng2" path="res://assets/backgrounds/MainMenuBackground/3.png" id="4_ucygd"]
-[ext_resource type="Texture2D" uid="uid://dmmruqulo7t75" path="res://assets/backgrounds/MainMenuBackground/4.png" id="5_mipys"]
-[ext_resource type="AudioStream" uid="uid://cv3b8iqd5kky3" path="res://assets/audio/nature_ambiance.wav" id="7_ucygd"]
-[ext_resource type="AudioStream" uid="uid://dgsbp6yweqwo7" path="res://assets/audio/uiAccept.wav" id="8_bky6r"]
-[ext_resource type="AudioStream" uid="uid://dpadtc26tx2j4" path="res://assets/audio/background_music.mp3" id="8_mipys"]
-[ext_resource type="AudioStream" uid="uid://ckghpnlodtgxp" path="res://assets/audio/uiSelect.wav" id="9_l4mxc"]
+[ext_resource type="Theme" uid="uid://cv0jb6rth2amu" path="res://assets/ui_theme.tres" id="1_n327r"]
+[ext_resource type="Script" uid="uid://cp8ghp0hh67g8" path="res://scripts/UI/MainMenu.gd" id="2_sfdnv"]
+[ext_resource type="AudioStream" uid="uid://ckghpnlodtgxp" path="res://assets/audio/uiSelect.wav" id="3_frhrr"]
+[ext_resource type="AudioStream" uid="uid://dgsbp6yweqwo7" path="res://assets/audio/uiAccept.wav" id="4_elmld"]
+[ext_resource type="AudioStream" uid="uid://dpadtc26tx2j4" path="res://assets/audio/background_music.mp3" id="5_6kh0n"]
+[ext_resource type="AudioStream" uid="uid://cv3b8iqd5kky3" path="res://assets/audio/nature_ambiance.wav" id="6_av0jf"]
+[ext_resource type="Texture2D" uid="uid://doocdeystm46b" path="res://assets/backgrounds/MainMenuBackground/1.png" id="7_kuv8g"]
+[ext_resource type="Texture2D" uid="uid://c7frmqah05bkm" path="res://assets/backgrounds/MainMenuBackground/2.png" id="8_s1u1q"]
+[ext_resource type="Texture2D" uid="uid://dh62twvoghng2" path="res://assets/backgrounds/MainMenuBackground/3.png" id="9_h5h42"]
+[ext_resource type="Texture2D" uid="uid://dmmruqulo7t75" path="res://assets/backgrounds/MainMenuBackground/4.png" id="10_r7s35"]
+[ext_resource type="Shader" uid="uid://dg6b41dlblsju" path="res://shaders/Title.gdshader" id="11_ht4ob"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ow34m"]
-shader = ExtResource("2_2wh52")
+shader = ExtResource("11_ht4ob")
 shader_parameter/speed = 2.0
 shader_parameter/frequency = 5.0
 shader_parameter/amplitude = 5.0
@@ -28,16 +28,16 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("1_0ykhv")
-script = ExtResource("2_2nypq")
+theme = ExtResource("1_n327r")
+script = ExtResource("2_sfdnv")
 play_button = NodePath("MarginContainer/VBoxContainer/PlayButton")
 settings_button = NodePath("MarginContainer/VBoxContainer/SettingsButton")
 credits_button = NodePath("MarginContainer/VBoxContainer/CreditsButton")
 exit_button = NodePath("MarginContainer/VBoxContainer/ExitButton")
-select_sfx = ExtResource("9_l4mxc")
-accept_sfx = ExtResource("8_bky6r")
-menu_music = ExtResource("8_mipys")
-ambience = ExtResource("7_ucygd")
+select_sfx = ExtResource("3_frhrr")
+accept_sfx = ExtResource("4_elmld")
+menu_music = ExtResource("5_6kh0n")
+ambience = ExtResource("6_av0jf")
 play_scene_path = "uid://d4emc5jjdit30"
 settings_scene_path = "uid://cgdhng50wnohq"
 
@@ -50,7 +50,7 @@ repeat_times = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="MainMenu/Background/Parallax2D"]
 scale = Vector2(2, 2)
-texture = ExtResource("2_ow34m")
+texture = ExtResource("7_kuv8g")
 centered = false
 
 [node name="Parallax2D2" type="Parallax2D" parent="MainMenu/Background"]
@@ -60,7 +60,7 @@ repeat_times = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="MainMenu/Background/Parallax2D2"]
 scale = Vector2(2, 2)
-texture = ExtResource("3_826wr")
+texture = ExtResource("8_s1u1q")
 centered = false
 
 [node name="Parallax2D3" type="Parallax2D" parent="MainMenu/Background"]
@@ -70,7 +70,7 @@ repeat_times = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="MainMenu/Background/Parallax2D3"]
 scale = Vector2(2, 2)
-texture = ExtResource("4_ucygd")
+texture = ExtResource("9_h5h42")
 centered = false
 
 [node name="Parallax2D4" type="Parallax2D" parent="MainMenu/Background"]
@@ -79,7 +79,7 @@ repeat_times = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="MainMenu/Background/Parallax2D4"]
 scale = Vector2(2, 2)
-texture = ExtResource("5_mipys")
+texture = ExtResource("10_r7s35")
 centered = false
 
 [node name="MarginContainer" type="MarginContainer" parent="MainMenu"]

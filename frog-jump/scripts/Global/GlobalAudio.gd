@@ -17,6 +17,7 @@ var current_ambience_volume: float = 0.0
 @onready var ambience_player = AudioStreamPlayer.new()
 
 func _ready():
+	process_mode = Node.PROCESS_MODE_ALWAYS
 	add_child(music_player)
 	add_child(ambience_player)
 	

@@ -7,6 +7,7 @@ enum ControlMode {
 }
 
 
+
 @export var SPEED = 300.0
 @export var JUMP_VELOCITY = -550.0
 @export var GRAVITY_MULTIPLIER = 1.35
@@ -25,6 +26,9 @@ var play_area_left := 0.0
 var play_area_right := 0.0
 var is_dragging := false
 var drag_mouse_position := Vector2.ZERO
+
+@export_group("Audio")
+@export var jump_sfx: AudioStream
 
 
 func _ready():
@@ -84,6 +88,8 @@ func _physics_process(delta):
 	if control_mode == ControlMode.AUTO_RUNNER:
 		if Input.is_action_just_pressed("ui_accept") and is_on_floor():
 			velocity.y = JUMP_VELOCITY
+			if jump_sfx:
+				GlobalAudio.play_sfx(jump_sfx)
 		if !Input.is_action_pressed("ui_accept") and velocity.y < 0:
 			velocity.y = 0
 		velocity.x = move_direction * SPEED

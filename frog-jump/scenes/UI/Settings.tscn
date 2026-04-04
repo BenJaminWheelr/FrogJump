@@ -1,0 +1,52 @@
+[gd_scene load_steps=8 format=3 uid="uid://cgdhng50wnohq"]
+
+[ext_resource type="Script" uid="uid://db2m2m4c2qf2o" path="res://scripts/UI/Buttons/CheckButton.gd" id="1_ks2vq"]
+[ext_resource type="Texture2D" uid="uid://dks84towca86k" path="res://assets/textures/unchecked.tres" id="2_1hw8f"]
+[ext_resource type="Texture2D" uid="uid://c0feh75shcuaf" path="res://assets/textures/checked.tres" id="3_hat0o"]
+[ext_resource type="AudioStream" uid="uid://dgsbp6yweqwo7" path="res://assets/audio/uiAccept.wav" id="4_ok1u1"]
+[ext_resource type="Theme" uid="uid://cv0jb6rth2amu" path="res://assets/ui_theme.tres" id="5_vvtyw"]
+[ext_resource type="Script" uid="uid://c6it528qnfi8j" path="res://scripts/UI/Buttons/BackButton.gd" id="6_u04k5"]
+[ext_resource type="AudioStream" uid="uid://ckghpnlodtgxp" path="res://assets/audio/uiSelect.wav" id="7_myod3"]
+
+[node name="Settings" type="CanvasLayer"]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(300, 50)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -87.5
+offset_top = -25.0
+offset_right = 87.5
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="checkbutton" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+script = ExtResource("1_ks2vq")
+unchecked_texture = ExtResource("2_1hw8f")
+checked_texture = ExtResource("3_hat0o")
+toggle_sfx = ExtResource("4_ok1u1")
+
+[node name="Button" type="Button" parent="VBoxContainer/checkbutton"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("5_vvtyw")
+text = "AUDIO"
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/checkbutton"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture = ExtResource("2_1hw8f")
+expand_mode = 1
+
+[node name="BackButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("5_vvtyw")
+text = "Main Menu"
+script = ExtResource("6_u04k5")
+back_sfx = ExtResource("7_myod3")
