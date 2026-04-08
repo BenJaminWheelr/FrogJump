@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://ea5bkiwtudye"]
+[gd_scene format=3 uid="uid://ea5bkiwtudye"]
 
 [ext_resource type="Theme" uid="uid://cv0jb6rth2amu" path="res://assets/ui_theme.tres" id="1_n327r"]
 [ext_resource type="Script" uid="uid://cp8ghp0hh67g8" path="res://scripts/UI/MainMenu.gd" id="2_sfdnv"]
@@ -12,6 +12,66 @@
 [ext_resource type="Texture2D" uid="uid://dmmruqulo7t75" path="res://assets/backgrounds/MainMenuBackground/4.png" id="10_r7s35"]
 [ext_resource type="Shader" uid="uid://dg6b41dlblsju" path="res://shaders/Title.gdshader" id="11_ht4ob"]
 
+[sub_resource type="Shader" id="Shader_n327r"]
+code = "shader_type canvas_item;
+
+uniform sampler2D SCREEN_TEXTURE : hint_screen_texture, filter_linear_mipmap;
+
+uniform float distortion_strength = 0.003;
+uniform float chromatic_amount = 0.002;
+uniform float scanline_strength = 0.15;
+uniform float vignette_strength = 0.6;
+uniform float glow_strength = 0.15;
+uniform float glitch_amount = 0.0;
+
+void fragment()
+{
+    vec2 uv = SCREEN_UV;
+
+    // Distortion wave
+    float wave = sin(uv.y * 40.0 + TIME * 3.0) * distortion_strength;
+    uv.x += wave;
+
+    // Glitch effect
+    float glitch = step(0.98, sin(TIME * 6.0 + uv.y * 25.0));
+    uv.x += glitch * glitch_amount;
+
+    // Chromatic aberration (fixed sampling)
+    float r = texture(SCREEN_TEXTURE, uv + vec2(chromatic_amount,0)).r;
+    float g = texture(SCREEN_TEXTURE, uv).g;
+    float b = texture(SCREEN_TEXTURE, uv - vec2(chromatic_amount,0)).b;
+
+    vec3 color = vec3(r,g,b);
+
+    // Scanlines
+    float scan = sin(uv.y * 800.0) * scanline_strength;
+    color -= scan;
+
+    // Glow pulse
+    float pulse = sin(TIME * 2.0) * 0.5 + 0.5;
+    color += color * glow_strength * pulse;
+
+    // Vignette
+    float dist = distance(uv, vec2(0.5));
+    float vignette = smoothstep(0.8, vignette_strength * 0.799, dist);
+    color *= vignette;
+
+    // Slight color grading
+    color.r *= 1.05;
+    color.b *= 1.08;
+
+    COLOR = vec4(color,1.0);
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_frhrr"]
+shader = SubResource("Shader_n327r")
+shader_parameter/distortion_strength = 0.293
+shader_parameter/chromatic_amount = -0.423
+shader_parameter/scanline_strength = 0.15
+shader_parameter/vignette_strength = 0.6
+shader_parameter/glow_strength = 0.15
+shader_parameter/glitch_amount = 0.95
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ow34m"]
 shader = ExtResource("11_ht4ob")
 shader_parameter/speed = 2.0
@@ -19,9 +79,10 @@ shader_parameter/frequency = 5.0
 shader_parameter/amplitude = 5.0
 shader_parameter/rainbow = true
 
-[node name="UI" type="CanvasLayer"]
+[node name="UI" type="CanvasLayer" unique_id=1334647151]
 
-[node name="MainMenu" type="Control" parent="." node_paths=PackedStringArray("play_button", "settings_button", "credits_button", "exit_button")]
+[node name="MainMenu" type="Control" parent="." unique_id=1715054718 node_paths=PackedStringArray("play_button", "settings_button", "credits_button", "exit_button")]
+material = SubResource("ShaderMaterial_frhrr")
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -41,48 +102,48 @@ ambience = ExtResource("6_av0jf")
 play_scene_path = "uid://d4emc5jjdit30"
 settings_scene_path = "uid://cgdhng50wnohq"
 
-[node name="Background" type="Node2D" parent="MainMenu"]
+[node name="Background" type="Node2D" parent="MainMenu" unique_id=1117678402]
 
-[node name="Parallax2D" type="Parallax2D" parent="MainMenu/Background"]
+[node name="Parallax2D" type="Parallax2D" parent="MainMenu/Background" unique_id=34902493]
 repeat_size = Vector2(1152, 0)
 autoscroll = Vector2(-1, 0)
 repeat_times = 2
 
-[node name="Sprite2D" type="Sprite2D" parent="MainMenu/Background/Parallax2D"]
+[node name="Sprite2D" type="Sprite2D" parent="MainMenu/Background/Parallax2D" unique_id=1825196932]
 scale = Vector2(2, 2)
 texture = ExtResource("7_kuv8g")
 centered = false
 
-[node name="Parallax2D2" type="Parallax2D" parent="MainMenu/Background"]
+[node name="Parallax2D2" type="Parallax2D" parent="MainMenu/Background" unique_id=996551168]
 repeat_size = Vector2(1152, 0)
-autoscroll = Vector2(-5, 0)
+autoscroll = Vector2(-3, 0)
 repeat_times = 2
 
-[node name="Sprite2D" type="Sprite2D" parent="MainMenu/Background/Parallax2D2"]
+[node name="Sprite2D" type="Sprite2D" parent="MainMenu/Background/Parallax2D2" unique_id=266797676]
 scale = Vector2(2, 2)
 texture = ExtResource("8_s1u1q")
 centered = false
 
-[node name="Parallax2D3" type="Parallax2D" parent="MainMenu/Background"]
+[node name="Parallax2D3" type="Parallax2D" parent="MainMenu/Background" unique_id=1354083170]
 repeat_size = Vector2(1152, 0)
 autoscroll = Vector2(-10, 0)
 repeat_times = 2
 
-[node name="Sprite2D" type="Sprite2D" parent="MainMenu/Background/Parallax2D3"]
+[node name="Sprite2D" type="Sprite2D" parent="MainMenu/Background/Parallax2D3" unique_id=1857740160]
 scale = Vector2(2, 2)
 texture = ExtResource("9_h5h42")
 centered = false
 
-[node name="Parallax2D4" type="Parallax2D" parent="MainMenu/Background"]
+[node name="Parallax2D4" type="Parallax2D" parent="MainMenu/Background" unique_id=917716007]
 repeat_size = Vector2(1152, 0)
 repeat_times = 2
 
-[node name="Sprite2D" type="Sprite2D" parent="MainMenu/Background/Parallax2D4"]
+[node name="Sprite2D" type="Sprite2D" parent="MainMenu/Background/Parallax2D4" unique_id=1874058821]
 scale = Vector2(2, 2)
 texture = ExtResource("10_r7s35")
 centered = false
 
-[node name="MarginContainer" type="MarginContainer" parent="MainMenu"]
+[node name="MarginContainer" type="MarginContainer" parent="MainMenu" unique_id=764383215]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -96,11 +157,11 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MainMenu/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MainMenu/MarginContainer" unique_id=1420310634]
 layout_mode = 2
 theme_override_constants/separation = 20
 
-[node name="Title" type="Label" parent="MainMenu/MarginContainer/VBoxContainer"]
+[node name="Title" type="Label" parent="MainMenu/MarginContainer/VBoxContainer" unique_id=1255844464]
 material = SubResource("ShaderMaterial_ow34m")
 layout_mode = 2
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 0)
@@ -110,25 +171,25 @@ text = "Frog Jump"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="PlayButton" type="Button" parent="MainMenu/MarginContainer/VBoxContainer"]
+[node name="PlayButton" type="Button" parent="MainMenu/MarginContainer/VBoxContainer" unique_id=1133001736]
 custom_minimum_size = Vector2(200, 60)
 layout_mode = 2
 size_flags_horizontal = 4
 text = "PLAY"
 
-[node name="SettingsButton" type="Button" parent="MainMenu/MarginContainer/VBoxContainer"]
+[node name="SettingsButton" type="Button" parent="MainMenu/MarginContainer/VBoxContainer" unique_id=26195273]
 custom_minimum_size = Vector2(200, 60)
 layout_mode = 2
 size_flags_horizontal = 4
 text = "SETTINGS"
 
-[node name="CreditsButton" type="Button" parent="MainMenu/MarginContainer/VBoxContainer"]
+[node name="CreditsButton" type="Button" parent="MainMenu/MarginContainer/VBoxContainer" unique_id=669266487]
 custom_minimum_size = Vector2(200, 60)
 layout_mode = 2
 size_flags_horizontal = 4
 text = "CREDITS"
 
-[node name="ExitButton" type="Button" parent="MainMenu/MarginContainer/VBoxContainer"]
+[node name="ExitButton" type="Button" parent="MainMenu/MarginContainer/VBoxContainer" unique_id=1903117413]
 custom_minimum_size = Vector2(200, 60)
 layout_mode = 2
 size_flags_horizontal = 4
