@@ -1,7 +1,7 @@
 class_name Level extends Node2D
 
 const LEVEL_DIR = "res://scenes/level/"
-const NO_LEVEL_FALLBACK = "res://scenes/MainMenu.tscn"
+const NO_LEVEL_FALLBACK = "res://scenes/UI/MainMenu.tscn"
 static var currLevel : int = 0;
 
 static func getLevelPath(index : int) -> String:
