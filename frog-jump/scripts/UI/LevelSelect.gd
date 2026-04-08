@@ -1,5 +1,7 @@
 extends CanvasLayer
 
+const LEVEL_CONTAINER = preload("res://scenes/level/LevelContainer.tscn")
+
 @export_group("Settings")
 @export var level_window_scene: PackedScene
 @export var select_sfx: AudioStream 
@@ -51,7 +53,7 @@ func _ready():
 			if icon_rect:
 				icon_rect.hide()
 				
-			btn.pressed.connect(_on_level_selected.bind(data.scene_path))
+			btn.pressed.connect(_on_level_selected.bind(i))
 
 	await get_tree().process_frame
 	center_on_index(0, true)
@@ -77,8 +79,9 @@ func center_on_index(index: int, instant: bool = false):
 		tween.set_trans(Tween.TRANS_QUINT).set_ease(Tween.EASE_OUT)
 		tween.tween_property(scroll_container, "scroll_horizontal", final_x, slide_duration)
 
-func _on_level_selected(path: String):
-	if path == "": return
+func _on_level_selected(index : int):
 	if select_sfx:
 		GlobalAudio.play_sfx(select_sfx) 
-	get_tree().change_scene_to_file(path)
+	
+	LevelContainer.setLevelIndex(index);
+	get_tree().change_scene_to_packed(LEVEL_CONTAINER);

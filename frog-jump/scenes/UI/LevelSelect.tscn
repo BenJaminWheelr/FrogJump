@@ -1,4 +1,4 @@
-[gd_scene load_steps=0 format=3 uid="uid://d4emc5jjdit30"]
+[gd_scene format=3 uid="uid://d4emc5jjdit30"]
 
 [ext_resource type="Script" uid="uid://bidi0hh64qhqq" path="res://scripts/UI/LevelSelect.gd" id="1_yxdfm"]
 [ext_resource type="PackedScene" uid="uid://bx6eq07yihv0c" path="res://scenes/UI/SubScenes/LevelWindow.tscn" id="2_yxdfm"]
@@ -26,7 +26,6 @@
 [sub_resource type="Resource" id="Resource_e1qta"]
 script = ExtResource("4_3p8qn")
 thumbnail = ExtResource("6_0t37j")
-scene_path = "uid://u45ufwypfh8r"
 metadata/_custom_type_script = "uid://40fnrked26hm"
 
 [sub_resource type="Resource" id="Resource_jsepd"]
