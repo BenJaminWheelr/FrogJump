@@ -20,6 +20,7 @@ enum ControlMode {
 @export var max_pull_distance := 180.0
 @export var floor_friction := 1600.0
 @export var enemy_group_name := "enemies"
+@export var enemy_bounce_velocity := -260.0
 
 @export var move_direction := 1.0
 var has_play_area_bounds := false
@@ -33,6 +34,7 @@ var drag_mouse_position := Vector2.ZERO
 
 
 func _ready():
+	add_to_group("player")
 	_cache_play_area_bounds()
 	drag_mouse_position = global_position
 	_announce_control_mode()
@@ -185,6 +187,10 @@ func _is_enemy_damage_collision(collision: KinematicCollision2D) -> bool:
 
 
 func _remove_enemy(enemy: Object):
+	velocity.y = min(velocity.y, enemy_bounce_velocity)
+	is_dragging = false
+	queue_redraw()
+
 	if enemy is Node:
 		(enemy as Node).call_deferred("queue_free")
 

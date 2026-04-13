@@ -40,20 +40,30 @@ position = Vector2(401, -129)
 position = Vector2(6, -225)
 
 [node name="enemy" parent="." unique_id=1877397287 instance=ExtResource("3_qa7t3")]
-position = Vector2(525, 223)
+position = Vector2(521, 15)
 scale = Vector2(0.5, 0.5)
 movement_type = 2
 vertical_range = 50.0
+chase_speed = 75.0
 
 [node name="enemy2" parent="." unique_id=489100744 instance=ExtResource("3_qa7t3")]
-position = Vector2(903, -33)
+position = Vector2(905, -37)
 scale = Vector2(0.5, 0.5)
 movement_type = 1
 horizontal_range = 30.0
 
 [node name="enemy3" parent="." unique_id=885428788 instance=ExtResource("3_qa7t3")]
-position = Vector2(354, 288)
+position = Vector2(367, 290)
 scale = Vector2(0.5, 0.5)
+horizontal_range = 500.0
+
+[node name="enemy4" parent="." unique_id=71329466 instance=ExtResource("3_qa7t3")]
+position = Vector2(187, 289)
+scale = Vector2(0.5, 0.5)
+movement_type = 3
+chase_speed = 100.0
+chase_range = 1000.0
+same_platform_y_tolerance = 30.0
 
 [node name="frog" parent="." unique_id=381536348 instance=ExtResource("2_v36h0")]
 position = Vector2(12, 139)
