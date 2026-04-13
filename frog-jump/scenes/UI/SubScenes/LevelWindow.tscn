@@ -1,9 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://bx6eq07yihv0c"]
+[gd_scene format=3 uid="uid://bx6eq07yihv0c"]
 
 [ext_resource type="Texture2D" uid="uid://campbs1wnvpe" path="res://assets/backgrounds/Summer8.png" id="1_we2va"]
 [ext_resource type="Theme" uid="uid://cv0jb6rth2amu" path="res://assets/ui_theme.tres" id="2_kpn36"]
 
-[node name="LevelWindow" type="Control"]
+[node name="LevelWindow" type="Control" unique_id=1070652223]
 custom_minimum_size = Vector2(1000, 1000)
 layout_mode = 3
 anchors_preset = 15
@@ -12,7 +12,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Control" type="Control" parent="."]
+[node name="Control" type="Control" parent="." unique_id=748256507]
 custom_minimum_size = Vector2(600, 400)
 layout_mode = 1
 anchors_preset = 8
@@ -27,7 +27,7 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="TextureButton" type="TextureButton" parent="Control"]
+[node name="TextureButton" type="TextureButton" parent="Control" unique_id=337897293]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -38,7 +38,7 @@ texture_normal = ExtResource("1_we2va")
 ignore_texture_size = true
 stretch_mode = 0
 
-[node name="Label" type="Label" parent="Control"]
+[node name="Label" type="Label" parent="Control" unique_id=880113185]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -58,7 +58,7 @@ text = "1"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="LockedIcon" type="TextureRect" parent="Control"]
+[node name="LockedIcon" type="TextureRect" parent="Control" unique_id=2114919061]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5

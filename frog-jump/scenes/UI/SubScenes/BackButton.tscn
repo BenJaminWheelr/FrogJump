@@ -1,10 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://bq8001xrn5d8a"]
+[gd_scene format=3 uid="uid://bq8001xrn5d8a"]
 
 [ext_resource type="Theme" uid="uid://cv0jb6rth2amu" path="res://assets/ui_theme.tres" id="1_ynyrv"]
 [ext_resource type="Script" uid="uid://c6it528qnfi8j" path="res://scripts/UI/Buttons/BackButton.gd" id="2_dkpsq"]
 [ext_resource type="AudioStream" uid="uid://ckghpnlodtgxp" path="res://assets/audio/uiSelect.wav" id="3_h07cp"]
 
-[node name="BackButton" type="Button"]
+[node name="BackButton" type="Button" unique_id=1310428117]
 theme = ExtResource("1_ynyrv")
 text = "Main Menu"
 script = ExtResource("2_dkpsq")

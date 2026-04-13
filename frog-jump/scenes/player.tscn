@@ -1,20 +1,20 @@
-[gd_scene load_steps=5 format=3 uid="uid://cv20o2o3c2gkd"]
+[gd_scene format=3 uid="uid://cv20o2o3c2gkd"]
 
 [ext_resource type="Texture2D" uid="uid://q8s6kjx4k1t7" path="res://assets/textures/icon.svg" id="1_3vyb7"]
 [ext_resource type="Script" uid="uid://bsx6fgmbla4k5" path="res://scripts/player.gd" id="1_g2els"]
-[ext_resource type="AudioStream" uid="uid://bgcq5nor8xips" path="res://assets/audio/jump.wav" id="2_qhqgy"]
+[ext_resource type="AudioStream" uid="uid://bxr15v2l2kg1e" path="res://assets/audio/jump.wav" id="2_qhqgy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_onrkg"]
 size = Vector2(129, 127)
 
-[node name="frog" type="CharacterBody2D"]
+[node name="frog" type="CharacterBody2D" unique_id=225646593]
 script = ExtResource("1_g2els")
 jump_sfx = ExtResource("2_qhqgy")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1885452036]
 texture = ExtResource("1_3vyb7")
 centered = false
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1688879119]
 position = Vector2(64.5, 64.5)
 shape = SubResource("RectangleShape2D_onrkg")

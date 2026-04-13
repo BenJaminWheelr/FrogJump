@@ -13,6 +13,43 @@ normal = Vector2(-1, 0)
 [node name="LevelContainer" type="Node2D" unique_id=751952521]
 script = ExtResource("1_v3wun")
 
+[node name="LevelBackground" type="ParallaxBackground" parent="." unique_id=1248015212]
+
+[node name="3" type="ParallaxLayer" parent="LevelBackground" unique_id=1552398293]
+motion_scale = Vector2(0.25, 0.25)
+
+[node name="BackgroundImage" type="Sprite2D" parent="LevelBackground/3" unique_id=2022286218]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(0, -647304)
+scale = Vector2(4, 4)
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 288, 162000)
+
+[node name="2" type="ParallaxLayer" parent="LevelBackground" unique_id=2125371775]
+motion_scale = Vector2(0.5, 0.5)
+
+[node name="BackgroundImage" type="Sprite2D" parent="LevelBackground/2" unique_id=585578980]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(0, -647304)
+scale = Vector2(4, 4)
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 288, 162000)
+
+[node name="1" type="ParallaxLayer" parent="LevelBackground" unique_id=1102453969]
+
+[node name="BackgroundImage" type="Sprite2D" parent="LevelBackground/1" unique_id=1089691132]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(0, -647304)
+scale = Vector2(4, 4)
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 288, 162000)
+
 [node name="LevelParent" type="Node2D" parent="." unique_id=1821788051]
 
 [node name="Player" parent="." unique_id=1004024049 instance=ExtResource("3_u8f6w")]

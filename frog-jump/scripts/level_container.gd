@@ -23,6 +23,13 @@ func loadLevel(index : int):
 	currLevel = load(getLevelPath(index)).instantiate();
 	currLevel.connect("level_complete", Callable(self, "nextLevel"));
 	
+	if (currLevel.bg_img1 != null):
+		$"LevelBackground/1/BackgroundImage".texture = currLevel.bg_img1;
+	if (currLevel.bg_img2 != null):
+		$"LevelBackground/1/BackgroundImage".texture = currLevel.bg_img2;
+	if (currLevel.bg_img3 != null):
+		$"LevelBackground/1/BackgroundImage".texture = currLevel.bg_img3;
+	
 	$LevelParent.call_deferred("add_child", currLevel);
 	$Player.position = PLAYER_START_POS;
 
