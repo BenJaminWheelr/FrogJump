@@ -5,7 +5,7 @@ const PLAYER_IN_DOOR_OFFSET = Vector2(-32, 0);
 signal goal_reached
 signal goal_animation_finished
 
-var player : Player;
+var player : Player = null;
 
 func _on_body_entered(body: Node2D) -> void:
 	if body is Player:
