@@ -19,6 +19,7 @@ enum ControlMode {
 @export var launch_force := 5.5
 @export var max_pull_distance := 180.0
 @export var floor_friction := 1600.0
+@export var enemy_group_name := "enemies"
 
 @export var move_direction := 1.0
 var has_play_area_bounds := false
@@ -106,6 +107,11 @@ func _physics_process(delta):
 		global_position.x = clamp(global_position.x, play_area_left, play_area_right)
 	
 	for i in get_slide_collision_count():
+		var collider = get_slide_collision(i).get_collider()
+		if collider != null and collider.is_in_group(enemy_group_name):
+			_reset_level_after_enemy_hit()
+			return
+
 		# flip direction on side collision
 		if get_slide_collision(i).get_normal().x != 0:
 			move_direction *= -1
@@ -149,3 +155,14 @@ func _launch_from_drag():
 
 	move_direction = 1.0 if pull_vector.x >= 0.0 else -1.0
 	velocity = pull_vector.limit_length(max_pull_distance) * launch_force
+
+
+func _reset_level_after_enemy_hit():
+	var node = get_parent()
+	while node != null:
+		if node.has_method("resetLevel"):
+			node.call_deferred("resetLevel")
+			return
+		node = node.get_parent()
+
+	get_tree().call_deferred("reload_current_scene")

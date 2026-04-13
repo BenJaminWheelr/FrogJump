@@ -18,6 +18,7 @@ var _move_direction := 1.0
 
 func _ready():
 	_start_position = global_position
+	add_to_group("enemies")
 
 
 func _physics_process(_delta):
