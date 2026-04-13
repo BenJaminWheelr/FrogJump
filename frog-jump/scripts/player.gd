@@ -105,17 +105,27 @@ func _physics_process(delta):
 	if has_play_area_bounds and (global_position.x < play_area_left or global_position.x > play_area_right):
 		move_direction *= -1.0
 		global_position.x = clamp(global_position.x, play_area_left, play_area_right)
-	
+
+	var hit_enemy_body := false
 	for i in get_slide_collision_count():
-		var collider = get_slide_collision(i).get_collider()
+		var collision = get_slide_collision(i)
+		var collider = collision.get_collider()
 		if collider != null and collider.is_in_group(enemy_group_name):
-			_reset_level_after_enemy_hit()
-			return
+			if _is_enemy_damage_collision(collision):
+				_remove_enemy(collider)
+				return
+
+			hit_enemy_body = true
+			continue
 
 		# flip direction on side collision
-		if get_slide_collision(i).get_normal().x != 0:
+		if collision.get_normal().x != 0:
 			move_direction *= -1
 			break
+
+	if hit_enemy_body:
+		_reset_level_after_enemy_hit()
+ 
 
 
 func _draw():
@@ -155,6 +165,28 @@ func _launch_from_drag():
 
 	move_direction = 1.0 if pull_vector.x >= 0.0 else -1.0
 	velocity = pull_vector.limit_length(max_pull_distance) * launch_force
+
+
+func _is_enemy_damage_collision(collision: KinematicCollision2D) -> bool:
+	var collider = collision.get_collider() as CollisionObject2D
+	if collider == null:
+		return false
+
+	var collider_shape_index = collision.get_collider_shape_index()
+	if collider_shape_index < 0:
+		return false
+
+	var shape_owner = collider.shape_find_owner(collider_shape_index)
+	if shape_owner == -1:
+		return false
+
+	var shape_owner_node = collider.shape_owner_get_owner(shape_owner) as Node
+	return shape_owner_node != null and shape_owner_node.name == "damage"
+
+
+func _remove_enemy(enemy: Object):
+	if enemy is Node:
+		(enemy as Node).call_deferred("queue_free")
 
 
 func _reset_level_after_enemy_hit():

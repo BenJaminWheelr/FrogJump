@@ -52,7 +52,7 @@ movement_type = 1
 horizontal_range = 30.0
 
 [node name="enemy3" parent="." unique_id=885428788 instance=ExtResource("3_qa7t3")]
-position = Vector2(133, 284)
+position = Vector2(354, 288)
 scale = Vector2(0.5, 0.5)
 
 [node name="frog" parent="." unique_id=381536348 instance=ExtResource("2_v36h0")]
