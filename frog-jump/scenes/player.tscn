@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://dg836rh8wgmy1" path="res://assets/textures/frog.png" id="3_qhqgy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_onrkg"]
-size = Vector2(16, 16)
+size = Vector2(14, 14)
 
 [sub_resource type="Animation" id="Animation_smehm"]
 resource_name = "Fall"
@@ -359,7 +359,7 @@ hframes = 12
 vframes = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1688879119]
-position = Vector2(0, 8)
+position = Vector2(0, 9)
 shape = SubResource("RectangleShape2D_onrkg")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1390691889]
