@@ -54,7 +54,7 @@ region_rect = Rect2(0, 0, 288, 162000)
 
 [node name="Player" parent="." unique_id=1004024049 instance=ExtResource("3_u8f6w")]
 position = Vector2(512, 480)
-scale = Vector2(0.5, 0.5)
+scale = Vector2(4, 4)
 SPEED = 600.0
 JUMP_VELOCITY = -1200.0
 GRAVITY_MULTIPLIER = 3.0

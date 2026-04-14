@@ -112,10 +112,10 @@ func _physics_process(delta):
 		if collider != null and collider.is_in_group(enemy_group_name):
 			if _is_enemy_damage_collision(collision):
 				_remove_enemy(collider)
-				return
+				break
 
 			hit_enemy_body = true
-			continue
+			break
 
 		# flip direction on side collision
 		if collision.get_normal().x != 0:
