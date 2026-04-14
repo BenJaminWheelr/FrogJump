@@ -6,8 +6,6 @@ enum ControlMode {
 	DRAG_LAUNCH,
 }
 
-
-
 @export var SPEED = 300.0
 @export var JUMP_VELOCITY = -550.0
 @export var GRAVITY_MULTIPLIER = 1.35
@@ -31,7 +29,6 @@ var drag_mouse_position := Vector2.ZERO
 
 @export_group("Audio")
 @export var jump_sfx: AudioStream
-
 
 func _ready():
 	add_to_group("player")
@@ -128,7 +125,27 @@ func _physics_process(delta):
 	if hit_enemy_body:
 		_reset_level_after_enemy_hit()
  
+func _process(_delta: float) -> void:
+	animate();
 
+func animate():
+	$FrogSprite.flip_h = move_direction < 0;
+	
+	if is_on_floor():
+		set_animation("Run");
+	elif velocity.y < 0:
+		set_animation("Jump");
+
+func set_animation(val : String):
+	if ($AnimationPlayer.has_animation(val) &&
+		$AnimationPlayer.current_animation != val):
+			$AnimationPlayer.play(val);
+
+func _on_animation_player_animation_finished(anim_name: StringName) -> void:
+	if anim_name == "Jump":
+		set_animation("Fall");
+	if anim_name == "Fall":
+		set_animation("FreeFall");
 
 func _draw():
 	if control_mode != ControlMode.DRAG_LAUNCH or not is_dragging:

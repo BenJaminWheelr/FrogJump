@@ -1,6 +1,6 @@
 extends Area2D
 
-const PLAYER_IN_DOOR_OFFSET = Vector2(-32, 0);
+const PLAYER_IN_DOOR_OFFSET = Vector2(0, 16);
 
 signal goal_reached
 signal goal_animation_finished
@@ -15,6 +15,7 @@ func _on_body_entered(body: Node2D) -> void:
 	
 func animate():
 	if player != null:
+		player.set_animation("Float");
 		player.set_deferred("process_mode", Node.PROCESS_MODE_DISABLED);
 	$AnimationPlayer.play("DoorOpen");
 
