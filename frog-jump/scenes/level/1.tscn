@@ -3,6 +3,8 @@
 [ext_resource type="Script" uid="uid://crqbnpurvae3k" path="res://scripts/level.gd" id="1_8xvh8"]
 [ext_resource type="TileSet" uid="uid://c5604807rlvrf" path="res://assets/tilesets/tower1.tres" id="2_8xvh8"]
 [ext_resource type="Texture2D" uid="uid://gg2txptj4ta8" path="res://assets/textures/tile/tower1_bg.png" id="2_35xll"]
+[ext_resource type="Texture2D" uid="uid://b8ynu4j8ei0wf" path="res://assets/backgrounds/BigClouds.png" id="2_82f50"]
+[ext_resource type="Texture2D" uid="uid://dm4ixd8enmg5p" path="res://assets/backgrounds/SmallClouds.png" id="2_gcu4a"]
 [ext_resource type="PackedScene" uid="uid://dgmf0jnydxgex" path="res://scenes/goal.tscn" id="4_82f50"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_ham7r"]
@@ -33,6 +35,8 @@ pattern_0 = SubResource("TileMapPattern_ham7r")
 
 [node name="1" type="Node2D" unique_id=277534477]
 script = ExtResource("1_8xvh8")
+bg_img2 = ExtResource("2_gcu4a")
+bg_img3 = ExtResource("2_82f50")
 
 [node name="bg" type="TileMapLayer" parent="." unique_id=1140475832]
 scale = Vector2(4, 4)

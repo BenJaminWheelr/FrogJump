@@ -2,10 +2,14 @@
 
 [ext_resource type="Script" uid="uid://crqbnpurvae3k" path="res://scripts/level.gd" id="1_cjyud"]
 [ext_resource type="TileSet" uid="uid://bk18rpnk23m1s" path="res://assets/tilesets/grassy_outdoors.tres" id="2_0m7ig"]
+[ext_resource type="Texture2D" uid="uid://b8ynu4j8ei0wf" path="res://assets/backgrounds/BigClouds.png" id="2_nkpxx"]
+[ext_resource type="Texture2D" uid="uid://dm4ixd8enmg5p" path="res://assets/backgrounds/SmallClouds.png" id="2_okfh8"]
 [ext_resource type="PackedScene" uid="uid://dgmf0jnydxgex" path="res://scenes/goal.tscn" id="3_okfh8"]
 
 [node name="0" type="Node2D" unique_id=277534477]
 script = ExtResource("1_cjyud")
+bg_img2 = ExtResource("2_okfh8")
+bg_img3 = ExtResource("2_nkpxx")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1917011207]
 texture_filter = 1
