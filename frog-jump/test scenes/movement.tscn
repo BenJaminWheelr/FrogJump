@@ -66,11 +66,11 @@ chase_range = 1000.0
 same_platform_y_tolerance = 30.0
 
 [node name="frog" parent="." unique_id=381536348 instance=ExtResource("2_v36h0")]
-position = Vector2(12, 139)
-scale = Vector2(0.5, 0.5)
+position = Vector2(44, 139)
+scale = Vector2(4, 4)
 
 [node name="Camera2D" type="Camera2D" parent="frog" unique_id=2002268100]
-position = Vector2(-18, -712)
+position = Vector2(0, -88)
 anchor_mode = 0
 limit_left = 0
 limit_right = 0
