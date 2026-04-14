@@ -46,6 +46,6 @@ tile_map_data = PackedByteArray("AAAAAAkAAAAFAAIAAAABAAkAAAABAAAAAAACAAkAAAABAAA
 tile_set = ExtResource("3_ham7r")
 
 [node name="goal" parent="." unique_id=696136336 instance=ExtResource("4_ham7r")]
-position = Vector2(577, -2285)
+position = Vector2(577, -2288)
 
 [connection signal="goal_animation_finished" from="goal" to="." method="level_completed"]
