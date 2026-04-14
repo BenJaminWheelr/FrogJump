@@ -32,6 +32,7 @@ func loadLevel(index : int):
 	
 	$LevelParent.call_deferred("add_child", currLevel);
 	$Player.position = PLAYER_START_POS;
+	$Player/Camera2D.reset_smoothing();
 
 func resetLevel():
 	loadLevel(currLevelIndex);

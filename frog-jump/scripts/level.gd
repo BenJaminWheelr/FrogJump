@@ -7,5 +7,5 @@ signal level_complete
 @export var bg_img2 : Texture2D = null;
 @export var bg_img3 : Texture2D = null;
 
-func goal_reached() -> void:
+func level_completed() -> void:
 	level_complete.emit()

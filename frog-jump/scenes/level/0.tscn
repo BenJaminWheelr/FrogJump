@@ -8,7 +8,7 @@
 [sub_resource type="TileMapPattern" id="TileMapPattern_ham7r"]
 tile_data = PackedInt32Array(0, 196608, 0, 65536, 196608, 1, 1, 262144, 0, 65537, 262144, 1)
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8ptru"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ham7r"]
 resource_name = "Tower Wall"
 texture = ExtResource("2_ham7r")
 texture_region_size = Vector2i(32, 32)
@@ -28,7 +28,7 @@ texture_region_size = Vector2i(32, 32)
 
 [sub_resource type="TileSet" id="TileSet_lsitw"]
 tile_size = Vector2i(32, 32)
-sources/0 = SubResource("TileSetAtlasSource_8ptru")
+sources/0 = SubResource("TileSetAtlasSource_ham7r")
 pattern_0 = SubResource("TileMapPattern_ham7r")
 
 [node name="0" type="Node2D" unique_id=1059902852]
@@ -48,4 +48,4 @@ tile_set = ExtResource("3_ham7r")
 [node name="goal" parent="." unique_id=696136336 instance=ExtResource("4_ham7r")]
 position = Vector2(577, -2285)
 
-[connection signal="goal_animation_finished" from="goal" to="." method="goal_reached"]
+[connection signal="goal_animation_finished" from="goal" to="." method="level_completed"]

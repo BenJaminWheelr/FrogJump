@@ -61,11 +61,11 @@ GRAVITY_MULTIPLIER = 3.0
 play_area_shape_path = NodePath("")
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=1846947590]
+process_mode = 3
 limit_left = 0
 limit_right = 1152
 limit_bottom = 648
 position_smoothing_enabled = true
-position_smoothing_speed = 3.0
 
 [node name="WallLeft" type="StaticBody2D" parent="." unique_id=1241140021]
 
