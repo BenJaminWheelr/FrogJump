@@ -15,7 +15,10 @@ func _on_body_entered(body: Node2D) -> void:
 	
 func animate():
 	if player != null:
-		player.set_animation("Float");
+		if player.is_on_floor():
+			player.set_animation("Float");
+		else:
+			player.set_animation("FreeFall");
 		player.set_deferred("process_mode", Node.PROCESS_MODE_DISABLED);
 	$AnimationPlayer.play("DoorOpen");
 
