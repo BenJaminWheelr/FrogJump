@@ -26,6 +26,7 @@ func loadLevel(index : int):
 	if currLevel != null:
 		currLevel.queue_free();
 	currLevel = load(getLevelPath(index)).instantiate();
+	currLevel.connect("level_clear_anim_started", Callable(self, "levelClearAnimationStarted"))
 	currLevel.connect("level_complete", Callable(self, "nextLevel"));
 	
 	if (currLevel.bg_img1 != null):
@@ -43,6 +44,10 @@ func resetLevel():
 func nextLevel():
 	currLevelIndex += 1
 	loadLevel(currLevelIndex);
+
+func levelClearAnimationStarted():
+	print("Level cleared!")
+	# TODO: show message, show how many coins were collected out of the total
 
 static func setLevelIndex(index : int):
 	currLevelIndex = index;

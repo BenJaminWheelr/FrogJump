@@ -1,5 +1,6 @@
 class_name Level extends Node2D
 
+signal level_clear_anim_started
 signal level_complete
 
 # 2 is further in the background than 1, 3 further than 2
