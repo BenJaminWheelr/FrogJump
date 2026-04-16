@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://ssb3u8iwtcqo" path="res://test scenes/platform.tscn" id="2_qa7t3"]
 [ext_resource type="PackedScene" uid="uid://cv20o2o3c2gkd" path="res://scenes/player.tscn" id="2_v36h0"]
+[ext_resource type="Texture2D" uid="uid://bch146t6xme67" path="res://assets/textures/placeholder.png" id="3_6vnd3"]
 [ext_resource type="PackedScene" uid="uid://cg7ak7nx6rf5r" path="res://scenes/enemy.tscn" id="3_qa7t3"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_qa7t3"]
@@ -47,15 +48,18 @@ position = Vector2(401, -129)
 position = Vector2(6, -225)
 
 [node name="enemy" parent="." unique_id=1877397287 instance=ExtResource("3_qa7t3")]
-position = Vector2(521, 15)
+position = Vector2(521, -0.1667633)
 scale = Vector2(0.5, 0.5)
+velocity = Vector2(0, 110)
 movement_type = 2
 vertical_range = 50.0
 chase_speed = 75.0
+enemy_texture = ExtResource("3_6vnd3")
 
 [node name="enemy2" parent="." unique_id=489100744 instance=ExtResource("3_qa7t3")]
-position = Vector2(905, -37)
+position = Vector2(929.9994, -37)
 scale = Vector2(0.5, 0.5)
+velocity = Vector2(110, 0)
 movement_type = 1
 horizontal_range = 30.0
 
@@ -63,6 +67,7 @@ horizontal_range = 30.0
 position = Vector2(367, 290)
 scale = Vector2(0.5, 0.5)
 horizontal_range = 500.0
+enemy_texture = ExtResource("3_6vnd3")
 
 [node name="enemy4" parent="." unique_id=71329466 instance=ExtResource("3_qa7t3")]
 position = Vector2(187, 289)

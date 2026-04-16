@@ -4,22 +4,22 @@
 [ext_resource type="Script" uid="uid://x7x0hcspj2gk" path="res://scripts/enemy.gd" id="2_ohhoi"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_md0e3"]
-size = Vector2(93, 83)
+size = Vector2(93, 76)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4ra3w"]
 size = Vector2(72, 14)
 
 [node name="enemy" type="CharacterBody2D" unique_id=1877397287]
 script = ExtResource("2_ohhoi")
+enemy_texture = ExtResource("1_7p1mj")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1879394816]
-modulate = Color(2.1805933, 0, 0, 1)
-scale = Vector2(0.75, 0.75)
+scale = Vector2(0.7265625, 0.375)
 texture = ExtResource("1_7p1mj")
 centered = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1339645229]
-position = Vector2(46.5, 52.5)
+position = Vector2(46.5, 49)
 shape = SubResource("RectangleShape2D_md0e3")
 
 [node name="damage" type="CollisionShape2D" parent="." unique_id=706444402]
