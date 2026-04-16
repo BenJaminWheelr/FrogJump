@@ -2,14 +2,7 @@ extends Node
 
 const SAVE_PATH = "user://savegame.json"
 
-var data = {
-	"player": {
-		"highest_level_unlocked": 1
-	},
-	"settings": {
-		"audioEnabled": true
-	}
-}
+var data
 
 func _ready():
 	load_game()
@@ -39,3 +32,4 @@ func load_game():
 		var error = json.parse(json_string)
 		if error == OK:
 			data = json.data
+			print("SUccesfully loade player data")
