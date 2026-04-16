@@ -4,18 +4,25 @@
 [ext_resource type="PackedScene" uid="uid://cv20o2o3c2gkd" path="res://scenes/player.tscn" id="2_v36h0"]
 [ext_resource type="PackedScene" uid="uid://cg7ak7nx6rf5r" path="res://scenes/enemy.tscn" id="3_qa7t3"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_kxkgf"]
-size = Vector2(1156, 605)
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_qa7t3"]
+normal = Vector2(1, 0)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_kxkgf"]
+normal = Vector2(-1, 0)
 
 [node name="Node2D" type="Node2D" unique_id=1791238265]
 position = Vector2(0, 222)
 
-[node name="play-area" type="Area2D" parent="." unique_id=1399757649]
+[node name="WallLeft" type="StaticBody2D" parent="." unique_id=1766883353]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="play-area" unique_id=1538881758]
-position = Vector2(579, 64)
-shape = SubResource("RectangleShape2D_kxkgf")
-disabled = true
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallLeft" unique_id=1162162155]
+shape = SubResource("WorldBoundaryShape2D_qa7t3")
+
+[node name="WallRight" type="StaticBody2D" parent="." unique_id=1008928888]
+position = Vector2(1152, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallRight" unique_id=148817264]
+shape = SubResource("WorldBoundaryShape2D_kxkgf")
 
 [node name="platform" parent="." unique_id=1683785918 instance=ExtResource("2_qa7t3")]
 position = Vector2(-10, 195)
