@@ -6,7 +6,8 @@ const LEVEL_CONTAINER = preload("res://scenes/level/LevelContainer.tscn")
 @export var level_window_scene: PackedScene
 @export var select_sfx: AudioStream 
 @export var slide_duration: float = 0.3
-@export var highest_unlocked_level: int = 1 
+@onready var highest_unlocked_level = SaveManager.data.player.highest_level_unlocked
+
 
 @export_group("Locked State")
 @export var locked_icon: Texture2D 

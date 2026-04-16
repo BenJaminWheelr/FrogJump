@@ -1,9 +1,12 @@
 extends Node
 
-var audio_enabled: bool = true:
+var audio_enabled: bool:
 	set(value):
-		audio_enabled = value
-		if audio_enabled:
+		if audio_enabled == value: 
+			return
+		audio_enabled = value 
+		SaveManager.update_data("settings", "audioEnabled", value)
+		if value:
 			_resume_bg()
 		else:
 			stop_all_bg()
@@ -17,6 +20,7 @@ var current_ambience_volume: float = 0.0
 @onready var ambience_player = AudioStreamPlayer.new()
 
 func _ready():
+	audio_enabled = SaveManager.data.settings.audioEnabled
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	add_child(music_player)
 	add_child(ambience_player)
@@ -36,7 +40,6 @@ func play_sfx(effect: AudioStream):
 func play_music(stream: AudioStream, volume: float = 0.0):
 	current_music_stream = stream
 	current_music_volume = volume
-	
 	if not audio_enabled:
 		return
 		

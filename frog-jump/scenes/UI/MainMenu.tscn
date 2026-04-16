@@ -116,7 +116,7 @@ centered = false
 
 [node name="Parallax2D2" type="Parallax2D" parent="MainMenu/Background" unique_id=996551168]
 repeat_size = Vector2(1152, 0)
-autoscroll = Vector2(-3, 0)
+autoscroll = Vector2(-6, 0)
 repeat_times = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="MainMenu/Background/Parallax2D2" unique_id=266797676]

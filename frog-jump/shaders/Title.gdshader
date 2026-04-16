@@ -1,6 +1,6 @@
 shader_type canvas_item;
 
-uniform float speed : hint_range(0.0, 10.0) = 2.0;
+uniform float speed : hint_range(0.0, 10.0) = 3.0;
 uniform float frequency : hint_range(0.0, 10.0) = 5.0;
 uniform float amplitude : hint_range(0.0, 50.0) = 5.0;
 uniform bool rainbow = true;
