@@ -1,4 +1,4 @@
-extends Area2D
+class_name Goal extends Area2D
 
 const PLAYER_IN_DOOR_OFFSET = Vector2(0, 16);
 

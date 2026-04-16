@@ -17,6 +17,10 @@ static func getLevelPath(index : int) -> String:
 	return NO_LEVEL_FALLBACK;
 
 func loadLevel(index : int):
+	$Player.position = PLAYER_START_POS;
+	$Player/Camera2D.reset_smoothing();
+	$Player.has_key = false;
+	
 	currLevelIndex = index;
 	if currLevel != null:
 		currLevel.queue_free();
@@ -31,8 +35,6 @@ func loadLevel(index : int):
 		$"LevelBackground/3/BackgroundImage".texture = currLevel.bg_img3;
 	
 	$LevelParent.call_deferred("add_child", currLevel);
-	$Player.position = PLAYER_START_POS;
-	$Player/Camera2D.reset_smoothing();
 
 func resetLevel():
 	loadLevel(currLevelIndex);

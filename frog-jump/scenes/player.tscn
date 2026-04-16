@@ -347,6 +347,8 @@ _data = {
 &"Turn": SubResource("Animation_qhqgy")
 }
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_qhqgy"]
+
 [node name="frog" type="CharacterBody2D" unique_id=225646593]
 script = ExtResource("1_g2els")
 jump_sfx = ExtResource("2_qhqgy")
@@ -366,4 +368,13 @@ shape = SubResource("RectangleShape2D_onrkg")
 process_mode = 3
 libraries/ = SubResource("AnimationLibrary_tuyoq")
 
+[node name="KeyDetectionArea" type="Area2D" parent="." unique_id=605220547]
+collision_layer = 16
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="KeyDetectionArea" unique_id=1478760118]
+position = Vector2(0, 8)
+shape = SubResource("CircleShape2D_qhqgy")
+
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="area_entered" from="KeyDetectionArea" to="." method="_on_key_detection_area_area_entered"]

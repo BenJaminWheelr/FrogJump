@@ -27,6 +27,9 @@ var play_area_right := 0.0
 var is_dragging := false
 var drag_mouse_position := Vector2.ZERO
 
+signal lost_key
+var has_key : bool = false;
+
 @export_group("Audio")
 @export var jump_sfx: AudioStream
 
@@ -221,3 +224,11 @@ func _reset_level_after_enemy_hit():
 		node = node.get_parent()
 
 	get_tree().call_deferred("reload_current_scene")
+
+
+func _on_key_detection_area_area_entered(_area: Area2D) -> void:
+	has_key = true;
+
+func drop_key():
+	has_key = false;
+	lost_key.emit();
