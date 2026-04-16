@@ -18,6 +18,7 @@ config/icon="res://assets/textures/icon.svg"
 [autoload]
 
 GlobalAudio="*res://scripts/Global/GlobalAudio.gd"
+GlobalState="*res://scripts/Global/GlobalState.gd"
 
 [display]
 

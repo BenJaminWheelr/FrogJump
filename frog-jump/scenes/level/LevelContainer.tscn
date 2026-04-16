@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://p2dkyr2ml4t6" path="res://scripts/level_container.gd" id="1_v3wun"]
 [ext_resource type="PackedScene" uid="uid://cv20o2o3c2gkd" path="res://scenes/player.tscn" id="3_u8f6w"]
+[ext_resource type="PackedScene" uid="uid://ct3hhfyehfxr6" path="res://scenes/UI/coin-counter.tscn" id="4_4kvwq"]
 [ext_resource type="PackedScene" uid="uid://cqc6tpc58ywdq" path="res://scenes/UI/PauseButton.tscn" id="5_buvxw"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_fji02"]
@@ -79,3 +80,8 @@ position = Vector2(1152, 0)
 shape = SubResource("WorldBoundaryShape2D_ham7r")
 
 [node name="PauseButton" parent="." unique_id=894292449 instance=ExtResource("5_buvxw")]
+
+[node name="coin-counter" parent="." unique_id=2109908710 instance=ExtResource("4_4kvwq")]
+offset = Vector2(555, 15)
+scale = Vector2(0.5, 0.5)
+transform = Transform2D(0.5, 0, 0, 0.5, 555, 15)

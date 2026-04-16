@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://ct3hhfyehfxr6"]
+
+[ext_resource type="Theme" uid="uid://cv0jb6rth2amu" path="res://assets/ui_theme.tres" id="1_gwr8l"]
+[ext_resource type="Texture2D" uid="uid://h0f5eoceea7v" path="res://assets/textures/png/buttons.png" id="2_1woln"]
+[ext_resource type="Script" path="res://scripts/UI/CoinCounter.gd" id="3_7hpnd"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6frbe"]
+atlas = ExtResource("2_1woln")
+region = Rect2(47.69435, 35.967003, 276.6667, 126.666664)
+
+[node name="coin-counter" type="CanvasLayer" unique_id=2109908710]
+script = ExtResource("3_7hpnd")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=2088719836]
+modulate = Color(1.7770933, 0.9417978, 0.42255992, 1)
+texture_filter = 1
+offset_left = 801.0
+offset_top = 2.0
+offset_right = 1143.0
+offset_bottom = 128.0
+texture = SubResource("AtlasTexture_6frbe")
+
+[node name="Label2" type="Label" parent="." unique_id=14455133]
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 273.0
+offset_top = -314.0
+offset_right = 865.0
+offset_bottom = -207.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_gwr8l")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 65
+text = "Coin: 0"
+vertical_alignment = 1
