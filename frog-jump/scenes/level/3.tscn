@@ -58,3 +58,4 @@ position = Vector2(152, -1040)
 scale = Vector2(4, 4)
 
 [connection signal="goal_animation_finished" from="locked goal" to="." method="level_completed"]
+[connection signal="goal_reached" from="locked goal" to="." method="level_complete_anim_start"]

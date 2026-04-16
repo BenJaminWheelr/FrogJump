@@ -53,3 +53,4 @@ tile_set = ExtResource("5_tixup")
 position = Vector2(348, -2288)
 
 [connection signal="goal_animation_finished" from="goal" to="." method="level_completed"]
+[connection signal="goal_reached" from="goal" to="." method="level_complete_anim_start"]
