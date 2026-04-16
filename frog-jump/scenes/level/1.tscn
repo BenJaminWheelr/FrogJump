@@ -53,3 +53,4 @@ tile_set = ExtResource("2_8xvh8")
 position = Vector2(920, -1200)
 
 [connection signal="goal_animation_finished" from="goal" to="." method="level_completed"]
+[connection signal="goal_reached" from="goal" to="." method="level_complete_anim_start"]

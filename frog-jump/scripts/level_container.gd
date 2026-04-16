@@ -5,6 +5,7 @@ const NO_LEVEL_FALLBACK = "res://scenes/level/0.tscn"
 
 static var currLevelIndex : int = 0;
 const PLAYER_START_POS : Vector2 = Vector2i(512, 480);
+const PLAYER_OFFSCREEN_POS : Vector2 = Vector2i(512, 4800);
 var currLevel : Level = null;
 
 func _ready():
@@ -17,17 +18,17 @@ static func getLevelPath(index : int) -> String:
 	return NO_LEVEL_FALLBACK;
 
 func loadLevel(index : int):
-	$Player.position = PLAYER_START_POS;
-	$Player/Camera2D.reset_smoothing();
-	$Player.has_key = false;
-	$Player.control_mode = $Player.ControlMode.WAIT_FOR_INPUT_BEFORE_AUTO_RUNNER;
-	
 	currLevelIndex = index;
 	if currLevel != null:
 		currLevel.queue_free();
 	currLevel = load(getLevelPath(index)).instantiate();
 	currLevel.connect("level_clear_anim_started", Callable(self, "levelClearAnimationStarted"))
 	currLevel.connect("level_complete", Callable(self, "nextLevel"));
+	
+	$Player.position = PLAYER_OFFSCREEN_POS if currLevel is Cutscene else PLAYER_START_POS;
+	$Player.has_key = false;
+	$Player.control_mode = $Player.ControlMode.WAIT_FOR_INPUT_BEFORE_AUTO_RUNNER;
+	$Player/Camera2D.reset_smoothing();
 	
 	if (currLevel.bg_img1 != null):
 		$"LevelBackground/1/BackgroundImage".texture = currLevel.bg_img1;
