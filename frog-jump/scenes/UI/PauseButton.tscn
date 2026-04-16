@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://cqc6tpc58ywdq"]
+[gd_scene format=3 uid="uid://yx4jdmyo3u15"]
 
 [ext_resource type="Script" uid="uid://shmu3ynhd0w8" path="res://scripts/UI/Buttons/PauseButton.gd" id="1_8jmjf"]
 [ext_resource type="Theme" uid="uid://cv0jb6rth2amu" path="res://assets/ui_theme.tres" id="1_8tqmy"]
