@@ -6,10 +6,6 @@ extends CanvasLayer
 @export var finish_line: Goal
 @export var finish_icon: TextureRect
 
-@export_group("Coin Progress")
-@export var coin_label: Label
-@export var total_coins: int = 0
-
 var start_y: float
 var total_dist: float
 
@@ -20,10 +16,15 @@ func _ready():
 		progress_bar.min_value = 0
 		progress_bar.max_value = 100
 	
-	update_coin_progress(0)
-
 func _process(_delta):
 	update_progress_bar()
+
+func setup():
+	if player and finish_line and progress_bar:
+		await get_tree().process_frame
+		start_y = player.global_position.y
+		total_dist = start_y - finish_line.global_position.y
+		progress_bar.value = 0
 
 func update_progress_bar():
 	if not player or not finish_line or not progress_bar: 
@@ -48,13 +49,9 @@ func reset_level_data():
 		progress_bar.min_value = 0
 		progress_bar.max_value = 100
 		progress_bar.value = 0
-		update_coin_progress(0)
 		
 		if finish_icon:
 			
 			finish_icon.position.y = 0
 			finish_icon.position.x = 0
-		
-func update_coin_progress(earned_coins: int):
-	if coin_label:
-		coin_label.text = str(earned_coins) + " / " + str(total_coins)
+	

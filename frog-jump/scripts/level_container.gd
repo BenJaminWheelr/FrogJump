@@ -8,6 +8,8 @@ const PLAYER_START_POS : Vector2 = Vector2i(512, 480);
 const PLAYER_OFFSCREEN_POS : Vector2 = Vector2i(512, 4800);
 var currLevel : Level = null;
 
+@export var levelHUD : CanvasLayer
+
 func _ready():
 	resetLevel();
 
@@ -16,12 +18,23 @@ static func getLevelPath(index : int) -> String:
 	if FileAccess.file_exists(newLevelPath):
 		return newLevelPath
 	return NO_LEVEL_FALLBACK;
+	
+func initiateHUD(currentLevel : Level):
+	var goal_node = currentLevel.get_node_or_null("goal")
+	
+	if goal_node and levelHUD:
+		levelHUD.finish_line = goal_node
+		levelHUD.setup()
+	else:
+		print("Warning: Either missing goal-node/levelHUD reference")
+	
 
 func loadLevel(index : int):
 	currLevelIndex = index;
 	if currLevel != null:
 		currLevel.queue_free();
 	currLevel = load(getLevelPath(index)).instantiate();
+	initiateHUD(currLevel)
 	currLevel.connect("level_clear_anim_started", Callable(self, "levelClearAnimationStarted"))
 	currLevel.connect("level_complete", Callable(self, "nextLevel"));
 	

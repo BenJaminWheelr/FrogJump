@@ -13,4 +13,4 @@ func _ready() -> void:
 
 func _update_coin_count(new_count: int) -> void:
 	if label != null:
-		label.text = "Coin: %d" % new_count
+		label.text = "Coins: %d" % new_count

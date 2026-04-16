@@ -9,16 +9,21 @@ atlas = ExtResource("2_1woln")
 region = Rect2(47.69435, 35.967003, 276.6667, 126.666664)
 
 [node name="coin-counter" type="CanvasLayer" unique_id=2109908710]
+offset = Vector2(550, 25)
+scale = Vector2(0.5, 0.5)
+transform = Transform2D(0.5, 0, 0, 0.5, 550, 25)
 script = ExtResource("3_7hpnd")
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=2088719836]
 modulate = Color(1.7770933, 0.9417978, 0.42255992, 1)
 texture_filter = 1
+custom_minimum_size = Vector2(50, 50)
 offset_left = 801.0
 offset_top = 2.0
 offset_right = 1143.0
 offset_bottom = 128.0
 texture = SubResource("AtlasTexture_6frbe")
+expand_mode = 3
 
 [node name="Label2" type="Label" parent="." unique_id=14455133]
 anchors_preset = -1
@@ -35,5 +40,5 @@ grow_vertical = 2
 theme = ExtResource("1_gwr8l")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 65
-text = "Coin: 0"
+text = "Coins: 0"
 vertical_alignment = 1

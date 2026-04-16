@@ -94,11 +94,11 @@ thumbnail = ExtResource("19_gv7ro")
 metadata/_custom_type_script = "uid://40fnrked26hm"
 
 [node name="LevelSelect" type="CanvasLayer" unique_id=62762221]
+layer = 2
 script = ExtResource("1_yxdfm")
 level_window_scene = ExtResource("2_yxdfm")
 select_sfx = ExtResource("4_33358")
 slide_duration = 1.0
-highest_unlocked_level = 8
 locked_icon = ExtResource("4_chx4x")
 levels = Array[ExtResource("4_3p8qn")]([SubResource("Resource_e1qta"), SubResource("Resource_jsepd"), SubResource("Resource_m08qt"), SubResource("Resource_n2tif"), SubResource("Resource_iywrv"), SubResource("Resource_pc2ii"), SubResource("Resource_fcgpj"), SubResource("Resource_qeqns"), SubResource("Resource_td1g4"), SubResource("Resource_da6tu"), SubResource("Resource_k5t3p"), SubResource("Resource_j0luu"), SubResource("Resource_yua8q"), SubResource("Resource_3bthp")])
 

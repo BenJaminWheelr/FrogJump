@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://jvq6xf17vj78" path="res://scripts/UI/LevelHud.gd" id="1_icfke"]
 [ext_resource type="PackedScene" uid="uid://cqc6tpc58ywdq" path="res://scenes/UI/SubScenes/PauseButton.tscn" id="1_qqpq1"]
 [ext_resource type="Texture2D" uid="uid://dw1pnlwf0bbkd" path="res://assets/textures/png/finishLine.png" id="3_dpxdk"]
-[ext_resource type="Theme" uid="uid://cv0jb6rth2amu" path="res://assets/ui_theme.tres" id="3_qd0ii"]
+[ext_resource type="PackedScene" uid="uid://ct3hhfyehfxr6" path="res://scenes/UI/coin-counter.tscn" id="4_dpxdk"]
 
 [sub_resource type="Gradient" id="Gradient_dpxdk"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
@@ -17,12 +17,10 @@ colors = PackedColorArray(0.31764707, 0.5921569, 0.12941177, 1, 0.5176471, 0.823
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_icfke"]
 gradient = SubResource("Gradient_qqpq1")
 
-[node name="LevelHud" type="CanvasLayer" unique_id=424571858 node_paths=PackedStringArray("progress_bar", "finish_icon", "coin_label")]
+[node name="LevelHud" type="CanvasLayer" unique_id=424571858 node_paths=PackedStringArray("progress_bar", "finish_icon")]
 script = ExtResource("1_icfke")
 progress_bar = NodePath("ProgressBar")
 finish_icon = NodePath("ProgressBar/FinishLineIcon")
-coin_label = NodePath("Label")
-total_coins = 99
 
 [node name="PauseButton" parent="." unique_id=451819396 instance=ExtResource("1_qqpq1")]
 
@@ -50,14 +48,4 @@ offset_bottom = 40.0
 texture = ExtResource("3_dpxdk")
 expand_mode = 3
 
-[node name="Label" type="Label" parent="." unique_id=258071142]
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -65.0
-offset_top = 25.0
-offset_right = -25.0
-offset_bottom = 48.0
-grow_horizontal = 0
-theme = ExtResource("3_qd0ii")
-text = "0/99 COINS"
+[node name="coin-counter" parent="." unique_id=2109908710 instance=ExtResource("4_dpxdk")]
