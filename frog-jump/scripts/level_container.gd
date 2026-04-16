@@ -20,6 +20,7 @@ func loadLevel(index : int):
 	$Player.position = PLAYER_START_POS;
 	$Player/Camera2D.reset_smoothing();
 	$Player.has_key = false;
+	$Player.control_mode = $Player.ControlMode.WAIT_FOR_INPUT_BEFORE_AUTO_RUNNER;
 	
 	currLevelIndex = index;
 	if currLevel != null:
