@@ -8,6 +8,8 @@ const PLAYER_START_POS : Vector2 = Vector2i(512, 480);
 const PLAYER_OFFSCREEN_POS : Vector2 = Vector2i(512, 4800);
 var currLevel : Level = null;
 
+@export var levelHud : CanvasLayer
+
 func _ready():
 	resetLevel();
 
@@ -22,6 +24,8 @@ func loadLevel(index : int):
 	if currLevel != null:
 		currLevel.queue_free();
 	currLevel = load(getLevelPath(index)).instantiate();
+	levelHud.finish_line = currLevel.get_node("goal")
+	levelHud.reset_level_data()
 	currLevel.connect("level_clear_anim_started", Callable(self, "levelClearAnimationStarted"))
 	currLevel.connect("level_complete", Callable(self, "nextLevel"));
 	
@@ -29,7 +33,6 @@ func loadLevel(index : int):
 	$Player.has_key = false;
 	$Player.control_mode = $Player.ControlMode.WAIT_FOR_INPUT_BEFORE_AUTO_RUNNER;
 	$Player/Camera2D.reset_smoothing();
-	
 	if (currLevel.bg_img1 != null):
 		$"LevelBackground/1/BackgroundImage".texture = currLevel.bg_img1;
 	if (currLevel.bg_img2 != null):
@@ -43,6 +46,7 @@ func resetLevel():
 	loadLevel(currLevelIndex);
 
 func nextLevel():
+	SaveManager.update_data("player", "highest_level_unlocked", SaveManager.data.player.highest_level_unlocked + 1)
 	currLevelIndex += 1
 	loadLevel(currLevelIndex);
 

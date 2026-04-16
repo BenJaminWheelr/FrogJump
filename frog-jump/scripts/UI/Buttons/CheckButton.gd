@@ -10,10 +10,10 @@ extends HBoxContainer
 @onready var texture_rect = $TextureRect
 @onready var button = $Button
 
-var isActive
+var isActive: bool
 
 func _ready():	
-	isActive = GlobalAudio.audio_enabled if "audio_enabled" in GlobalAudio else false
+	isActive = SaveManager.data.settings.audioEnabled
 	button.button_pressed = isActive
 	
 	_update_ui(isActive)
@@ -21,14 +21,13 @@ func _ready():
 	button.pressed.connect(_on_button_toggled)
 
 func _on_button_toggled():
-	GlobalAudio.audio_enabled = not isActive
-	isActive = not isActive
+	isActive = !isActive
+	SaveManager.update_data("settings", "audioEnabled", isActive)
+	if "audio_enabled" in GlobalAudio:
+		GlobalAudio.audio_enabled = isActive
 	if toggle_sfx:
 		GlobalAudio.play_sfx(toggle_sfx)
 	_update_ui(isActive)
 
 func _update_ui(is_on: bool):
-	if is_on:
-		texture_rect.texture = checked_texture
-	else:
-		texture_rect.texture = unchecked_texture
+	texture_rect.texture = checked_texture if is_on else unchecked_texture

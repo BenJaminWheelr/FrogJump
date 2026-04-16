@@ -1,9 +1,10 @@
 extends Node
 
-var audio_enabled: bool = true:
+var audio_enabled: bool = SaveManager.data.settings.audioEnabled:
 	set(value):
-		audio_enabled = value
-		if audio_enabled:
+		audio_enabled = value 
+		SaveManager.update_data("settings", "audioEnabled", value)
+		if value:
 			_resume_bg()
 		else:
 			stop_all_bg()

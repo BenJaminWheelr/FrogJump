@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://p2dkyr2ml4t6" path="res://scripts/level_container.gd" id="1_v3wun"]
 [ext_resource type="PackedScene" uid="uid://cv20o2o3c2gkd" path="res://scenes/player.tscn" id="3_u8f6w"]
-[ext_resource type="PackedScene" uid="uid://cqc6tpc58ywdq" path="res://scenes/UI/PauseButton.tscn" id="5_buvxw"]
+[ext_resource type="PackedScene" uid="uid://dilo0rnamy4ir" path="res://scenes/UI/LevelHud.tscn" id="3_v3wun"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_fji02"]
 normal = Vector2(1, 0)
@@ -10,8 +10,9 @@ normal = Vector2(1, 0)
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_ham7r"]
 normal = Vector2(-1, 0)
 
-[node name="LevelContainer" type="Node2D" unique_id=751952521]
+[node name="LevelContainer" type="Node2D" unique_id=751952521 node_paths=PackedStringArray("levelHud")]
 script = ExtResource("1_v3wun")
+levelHud = NodePath("LevelHud")
 
 [node name="LevelBackground" type="ParallaxBackground" parent="." unique_id=1248015212]
 
@@ -78,4 +79,5 @@ position = Vector2(1152, 0)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WallRight" unique_id=198380620]
 shape = SubResource("WorldBoundaryShape2D_ham7r")
 
-[node name="PauseButton" parent="." unique_id=894292449 instance=ExtResource("5_buvxw")]
+[node name="LevelHud" parent="." unique_id=424571858 node_paths=PackedStringArray("player") instance=ExtResource("3_v3wun")]
+player = NodePath("../Player")

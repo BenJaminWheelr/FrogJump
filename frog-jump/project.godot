@@ -17,6 +17,7 @@ config/icon="res://assets/textures/icon.svg"
 
 [autoload]
 
+SaveManager="*uid://bqe2ylfsy3fdf"
 GlobalAudio="*res://scripts/Global/GlobalAudio.gd"
 
 [display]

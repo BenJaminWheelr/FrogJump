@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://cqc6tpc58ywdq"]
+
+[ext_resource type="Theme" uid="uid://cv0jb6rth2amu" path="res://assets/ui_theme.tres" id="1_8jmjf"]
+[ext_resource type="Texture2D" uid="uid://bligqbhn6hlwm" path="res://assets/textures/png/pause.png" id="2_fqowb"]
+[ext_resource type="Script" uid="uid://shmu3ynhd0w8" path="res://scripts/UI/Buttons/PauseButton.gd" id="3_y7xm1"]
+[ext_resource type="AudioStream" uid="uid://ckghpnlodtgxp" path="res://assets/audio/uiSelect.wav" id="4_l00dn"]
+
+[node name="PauseButton" type="CanvasLayer" unique_id=451819396]
+process_mode = 3
+offset = Vector2(25, 25)
+transform = Transform2D(1, 0, 0, 1, 25, 25)
+
+[node name="Button" type="Button" parent="." unique_id=827302915]
+custom_minimum_size = Vector2(75, 50)
+offset_right = 75.0
+offset_bottom = 50.0
+theme = ExtResource("1_8jmjf")
+icon = ExtResource("2_fqowb")
+icon_alignment = 1
+script = ExtResource("3_y7xm1")
+select_sfx = ExtResource("4_l00dn")
+pause_scene_path = "uid://c2iey8kh8stnf"
