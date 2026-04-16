@@ -17,9 +17,9 @@ config/icon="res://assets/textures/icon.svg"
 
 [autoload]
 
+SaveManager="*res://scripts/Global/SaveManager.gd"
 GlobalAudio="*res://scripts/Global/GlobalAudio.gd"
 GlobalState="*res://scripts/Global/GlobalState.gd"
-SaveManager="*res://scripts/Global/SaveManager.gd"
 
 [display]
 
