@@ -138,6 +138,10 @@ func animate():
 		set_animation("Run");
 	elif velocity.y < 0:
 		set_animation("Jump");
+	elif ( $AnimationPlayer.current_animation != "Jump" &&
+		   $AnimationPlayer.current_animation != "FreeFall"):
+		set_animation("Fall");
+		
 
 func set_animation(val : String):
 	if ($AnimationPlayer.has_animation(val) &&
