@@ -137,3 +137,7 @@ func _on_key_detection_area_area_entered(_area: Area2D) -> void:
 func drop_key():
 	has_key = false;
 	lost_key.emit();
+
+
+func _on_instakill_detection_area_body_entered(_body: Node2D) -> void:
+	_reset_level_after_enemy_hit()

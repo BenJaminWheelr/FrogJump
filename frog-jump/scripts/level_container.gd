@@ -4,7 +4,7 @@ const LEVEL_DIR = "res://scenes/level/"
 const NO_LEVEL_FALLBACK = "res://scenes/level/0.tscn"
 
 static var currLevelIndex : int = 0;
-const PLAYER_START_POS : Vector2 = Vector2i(512, 480);
+const PLAYER_START_POS : Vector2 = Vector2i(512, 516);
 const PLAYER_OFFSCREEN_POS : Vector2 = Vector2i(512, 4800);
 var currLevel : Level = null;
 
@@ -43,12 +43,9 @@ func loadLevel(index : int):
 	$Player.control_mode = $Player.ControlMode.WAIT_FOR_INPUT_BEFORE_AUTO_RUNNER;
 	$Player/Camera2D.reset_smoothing();
 	
-	if (currLevel.bg_img1 != null):
-		$"LevelBackground/1/BackgroundImage".texture = currLevel.bg_img1;
-	if (currLevel.bg_img2 != null):
-		$"LevelBackground/2/BackgroundImage".texture = currLevel.bg_img2;
-	if (currLevel.bg_img3 != null):
-		$"LevelBackground/3/BackgroundImage".texture = currLevel.bg_img3;
+	$"LevelBackground/1/BackgroundImage".texture = currLevel.bg_img1;
+	$"LevelBackground/2/BackgroundImage".texture = currLevel.bg_img2;
+	$"LevelBackground/3/BackgroundImage".texture = currLevel.bg_img3;
 	
 	$LevelParent.call_deferred("add_child", currLevel);
 

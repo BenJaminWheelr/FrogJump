@@ -349,7 +349,7 @@ _data = {
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qhqgy"]
 
-[node name="frog" type="CharacterBody2D" unique_id=225646593]
+[node name="frog" type="CharacterBody2D" unique_id=225646593 groups=["player"]]
 script = ExtResource("1_g2els")
 jump_sfx = ExtResource("2_qhqgy")
 
@@ -376,5 +376,14 @@ collision_mask = 16
 position = Vector2(0, 8)
 shape = SubResource("CircleShape2D_qhqgy")
 
+[node name="InstakillDetectionArea" type="Area2D" parent="." unique_id=1219519683]
+collision_layer = 32
+collision_mask = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InstakillDetectionArea" unique_id=1758576244]
+position = Vector2(0, 8)
+shape = SubResource("CircleShape2D_qhqgy")
+
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="area_entered" from="KeyDetectionArea" to="." method="_on_key_detection_area_area_entered"]
+[connection signal="body_entered" from="InstakillDetectionArea" to="." method="_on_instakill_detection_area_body_entered"]
