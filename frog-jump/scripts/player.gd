@@ -33,16 +33,16 @@ func _physics_process(delta):
 		velocity += get_gravity() * delta * GRAVITY_MULTIPLIER
 
 	if control_mode == ControlMode.AUTO_RUNNER:
-		if Input.is_action_just_pressed("ui_accept") and is_on_floor():
+		if Input.is_action_just_pressed("jump") and is_on_floor():
 			velocity.y = JUMP_VELOCITY
 			if jump_sfx:
 				GlobalAudio.play_sfx(jump_sfx)
-		if !Input.is_action_pressed("ui_accept") and velocity.y < 0:
+		if !Input.is_action_pressed("jump") and velocity.y < 0:
 			velocity.y = 0
 		velocity.x = move_direction * SPEED
 	elif control_mode == ControlMode.WAIT_FOR_INPUT_BEFORE_AUTO_RUNNER:
 		velocity.x = 0;
-		if Input.is_action_just_pressed("ui_accept"):
+		if Input.is_action_just_pressed("jump"):
 			control_mode = ControlMode.AUTO_RUNNER;
 
 	move_and_slide()
