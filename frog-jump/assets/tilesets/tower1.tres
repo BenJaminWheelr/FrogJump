@@ -1,9 +1,9 @@
 [gd_resource type="TileSet" format=3 uid="uid://c5604807rlvrf"]
 
-[ext_resource type="Texture2D" uid="uid://dlgswrqc4tus8" path="res://assets/textures/tile/tower1.png" id="1_f1bfd"]
-[ext_resource type="Texture2D" uid="uid://6pfjuxw44ppl" path="res://assets/textures/tile/tower1_platform.png" id="2_rkt7m"]
+[ext_resource type="Texture2D" uid="uid://b5yq1ug4fdy2b" path="res://assets/textures/tile/tower1.png" id="1_f1bfd"]
+[ext_resource type="Texture2D" uid="uid://b0na2cpt26x5j" path="res://assets/textures/tile/tower1_platform.png" id="2_rkt7m"]
 [ext_resource type="Texture2D" uid="uid://cx3vn2co83ocd" path="res://assets/textures/tile/tower1_decor.png" id="3_1lgkw"]
-[ext_resource type="Texture2D" uid="uid://34d0rdwuskma" path="res://assets/textures/tile/props.png" id="4_rkt7m"]
+[ext_resource type="Texture2D" uid="uid://ctjffp4bmd48g" path="res://assets/textures/tile/props.png" id="4_rkt7m"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lsitw"]
 resource_name = "Autotile Wall"
@@ -468,12 +468,16 @@ texture = ExtResource("4_rkt7m")
 3:1/0 = 0
 3:1/0/z_index = 1
 4:1/0 = 0
+4:1/0/physics_layer_1/polygon_0/points = PackedVector2Array(-4, 4, 4, 4, 6, 8, -6, 8)
 5:1/0 = 0
+5:1/0/physics_layer_1/polygon_0/points = PackedVector2Array(-4, 4, 4, 4, 6, 8, -6, 8)
 6:1/0 = 0
 7:1/0 = 0
 
 [resource]
 physics_layer_0/collision_layer = 1
+physics_layer_1/collision_layer = 32
+physics_layer_1/collision_mask = 32
 terrain_set_0/mode = 0
 terrain_set_0/terrain_0/name = "Autotile Wall"
 terrain_set_0/terrain_0/color = Color(1, 0, 0, 1)
