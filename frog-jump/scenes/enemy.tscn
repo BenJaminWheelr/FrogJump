@@ -14,7 +14,8 @@ script = ExtResource("2_ohhoi")
 enemy_texture = ExtResource("1_7p1mj")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1879394816]
-scale = Vector2(0.7265625, 0.375)
+position = Vector2(0, -3)
+scale = Vector2(0.7265625, 0.703125)
 texture = ExtResource("1_7p1mj")
 centered = false
 
