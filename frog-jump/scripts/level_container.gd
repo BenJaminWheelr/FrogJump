@@ -38,7 +38,17 @@ func loadLevel(index : int):
 	currLevel.connect("level_clear_anim_started", Callable(self, "levelClearAnimationStarted"))
 	currLevel.connect("level_complete", Callable(self, "nextLevel"));
 	
-	$Player.position = PLAYER_OFFSCREEN_POS if currLevel is Cutscene else PLAYER_START_POS;
+	if currLevel.player_start_dir == currLevel.PlayerStartDir.LEFT:
+		$Player.move_direction = -1
+	elif currLevel.player_start_dir == currLevel.PlayerStartDir.RIGHT:
+		$Player.move_direction = 1
+	
+	
+	if currLevel.get_node_or_null("Entrance") != null:
+		$Player.global_position = currLevel.get_node("Entrance").global_position;
+	else:
+		$Player.position = PLAYER_OFFSCREEN_POS if currLevel is Cutscene else PLAYER_START_POS;
+	
 	$Player.has_key = false;
 	$Player.control_mode = $Player.ControlMode.WAIT_FOR_INPUT_BEFORE_AUTO_RUNNER;
 	$Player/Camera2D.reset_smoothing();

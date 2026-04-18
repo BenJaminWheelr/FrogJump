@@ -47,7 +47,7 @@ func _ready():
 	_player = _find_player()
 
 
-func _physics_process(_delta):
+func _physics_process(delta):
 	if Engine.is_editor_hint():
 		return
 

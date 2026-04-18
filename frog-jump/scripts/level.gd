@@ -11,6 +11,16 @@ signal level_complete
 @export var music : AudioStream = null;
 @export var ambience : AudioStream = null;
 
+
+enum PlayerStartDir
+{
+	DONT_CARE,
+	LEFT,
+	RIGHT
+}
+
+@export var player_start_dir : PlayerStartDir = PlayerStartDir.DONT_CARE;
+
 func _ready():
 	GlobalAudio.play_music(music);
 	GlobalAudio.play_ambience(ambience);
