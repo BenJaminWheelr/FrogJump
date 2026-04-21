@@ -81,7 +81,7 @@ shader_parameter/rainbow = true
 
 [node name="UI" type="CanvasLayer" unique_id=1334647151]
 
-[node name="MainMenu" type="Control" parent="." unique_id=1715054718 node_paths=PackedStringArray("play_button", "settings_button", "credits_button", "exit_button")]
+[node name="MainMenu" type="Control" parent="." unique_id=1715054718 node_paths=PackedStringArray("play_button", "settings_button", "credits_button", "shop_button", "exit_button")]
 material = SubResource("ShaderMaterial_frhrr")
 layout_mode = 3
 anchors_preset = 15
@@ -94,6 +94,7 @@ script = ExtResource("2_sfdnv")
 play_button = NodePath("MarginContainer/VBoxContainer/PlayButton")
 settings_button = NodePath("MarginContainer/VBoxContainer/SettingsButton")
 credits_button = NodePath("MarginContainer/VBoxContainer/CreditsButton")
+shop_button = NodePath("MarginContainer/VBoxContainer/ShopButton")
 exit_button = NodePath("MarginContainer/VBoxContainer/ExitButton")
 select_sfx = ExtResource("3_frhrr")
 accept_sfx = ExtResource("4_elmld")
@@ -102,6 +103,7 @@ ambience = ExtResource("6_av0jf")
 play_scene_path = "uid://d4emc5jjdit30"
 credits_scene_path = "uid://bxu8r0pl7gkry"
 settings_scene_path = "uid://cgdhng50wnohq"
+shop_scene_path = "uid://mpc0re6o75i4"
 
 [node name="Background" type="Node2D" parent="MainMenu" unique_id=1117678402]
 
@@ -183,6 +185,12 @@ custom_minimum_size = Vector2(200, 60)
 layout_mode = 2
 size_flags_horizontal = 4
 text = "SETTINGS"
+
+[node name="ShopButton" type="Button" parent="MainMenu/MarginContainer/VBoxContainer" unique_id=1773982080]
+custom_minimum_size = Vector2(200, 60)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "SHOP"
 
 [node name="CreditsButton" type="Button" parent="MainMenu/MarginContainer/VBoxContainer" unique_id=669266487]
 custom_minimum_size = Vector2(200, 60)

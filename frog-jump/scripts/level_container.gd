@@ -52,6 +52,8 @@ func loadLevel(index : int):
 	
 	$Player.has_key = false;
 	$Player.control_mode = $Player.ControlMode.WAIT_FOR_INPUT_BEFORE_AUTO_RUNNER;
+	if $Player.has_method("refresh_hat_from_save"):
+		$Player.refresh_hat_from_save()
 	$Player/Camera2D.reset_smoothing();
 	
 	$"LevelBackground/1/BackgroundImage".texture = currLevel.bg_img1;

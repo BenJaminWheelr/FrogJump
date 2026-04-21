@@ -15,6 +15,8 @@ func _on_body_entered(body: Node2D) -> void:
 	
 func animate():
 	if player != null:
+		if player.has_method("set_hat_visible"):
+			player.set_hat_visible(false)
 		player.set_animation("FreeFall");
 		player.set_deferred("process_mode", Node.PROCESS_MODE_DISABLED);
 	$AnimationPlayer.play("DoorOpen");

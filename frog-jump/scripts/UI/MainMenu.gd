@@ -4,6 +4,7 @@ extends Control
 @export var play_button: Button
 @export var settings_button: Button
 @export var credits_button: Button
+@export var shop_button: Button
 @export var exit_button: Button
 
 @export_group("Audio")
@@ -16,6 +17,7 @@ extends Control
 @export_file("*.tscn") var play_scene_path: String
 @export_file("*.tscn") var credits_scene_path: String
 @export_file("*.tscn") var settings_scene_path: String
+@export_file("*.tscn") var shop_scene_path: String
 
 func _ready():
 	GlobalAudio.play_music(menu_music)
@@ -26,6 +28,8 @@ func _ready():
 		settings_button.pressed.connect(_on_settings_pressed)
 	if credits_button:
 		credits_button.pressed.connect(_on_credits_pressed)
+	if shop_button:
+		shop_button.pressed.connect(_on_shop_pressed)
 	if exit_button:
 		exit_button.pressed.connect(_on_exit_pressed)
 
@@ -44,6 +48,14 @@ func _on_credits_pressed():
 		credits_inst.tree_exited.connect(_on_submenu_closed)
 
 
+func _on_shop_pressed():
+	if _handle_click(shop_scene_path, select_sfx):
+		var shop_inst = load(shop_scene_path).instantiate()
+		add_child(shop_inst)
+		_toggle_menu_buttons(false)
+		shop_inst.tree_exited.connect(_on_submenu_closed)
+
+
 func _on_exit_pressed():
 	_handle_click("", select_sfx)
 	get_tree().quit()
@@ -58,8 +70,8 @@ func _on_settings_pressed():
 func _on_submenu_closed():
 	_toggle_menu_buttons(true)
 
-func _toggle_menu_buttons(is_visible: bool):
-	play_button.get_parent().visible = is_visible
+func _toggle_menu_buttons(show_buttons: bool):
+	play_button.get_parent().visible = show_buttons
 
 func _handle_click(scene_path: String, sfx: AudioStream) -> bool:
 	if sfx == null:

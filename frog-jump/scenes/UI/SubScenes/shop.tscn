@@ -1,0 +1,88 @@
+[gd_scene format=3 uid="uid://mpc0re6o75i4"]
+
+[ext_resource type="Script" uid="uid://dcpk2o3134o64" path="res://scripts/UI/Shop.gd" id="1_yxdfm"]
+[ext_resource type="PackedScene" uid="uid://cuww5g8kxhjb8" path="res://scenes/UI/SubScenes/ShopWindow.tscn" id="2_yxdfm"]
+[ext_resource type="AudioStream" uid="uid://dgsbp6yweqwo7" path="res://assets/audio/uiAccept.wav" id="4_33358"]
+[ext_resource type="Theme" uid="uid://cv0jb6rth2amu" path="res://assets/ui_theme.tres" id="5_chx4x"]
+[ext_resource type="Script" uid="uid://c47qe44g21r4x" path="res://scripts/UI/ShopItem.gd" id="6_item"]
+[ext_resource type="Script" uid="uid://c6it528qnfi8j" path="res://scripts/UI/Buttons/BackButton.gd" id="7_back"]
+[ext_resource type="AudioStream" uid="uid://ckghpnlodtgxp" path="res://assets/audio/uiSelect.wav" id="8_sfx"]
+[ext_resource type="Texture2D" uid="uid://cf1ghul2v8ktl" path="res://assets/textures/crown.png" id="9_crown"]
+[ext_resource type="Texture2D" uid="uid://8icbubvy0yx6" path="res://assets/textures/png/lock.png" id="10_lock"]
+[ext_resource type="Texture2D" path="res://assets/textures/butterfly.png" id="11_butterfly"]
+
+[sub_resource type="Resource" id="Resource_crown"]
+script = ExtResource("6_item")
+item_id = "crown"
+name = "Crown"
+price = 10
+thumbnail = ExtResource("9_crown")
+is_coming_soon = false
+
+[sub_resource type="Resource" id="Resource_butterfly"]
+script = ExtResource("6_item")
+item_id = "butterfly"
+name = "Butterfly"
+price = 15
+thumbnail = ExtResource("11_butterfly")
+is_coming_soon = false
+
+[sub_resource type="Resource" id="Resource_locked"]
+script = ExtResource("6_item")
+item_id = "locked_1"
+name = "Coming Soon"
+price = 0
+thumbnail = ExtResource("10_lock")
+is_coming_soon = true
+
+[node name="Shop" type="CanvasLayer" unique_id=62762221]
+layer = 2
+script = ExtResource("1_yxdfm")
+shop_window_scene = ExtResource("2_yxdfm")
+select_sfx = ExtResource("4_33358")
+shop_items = [SubResource("Resource_crown"), SubResource("Resource_butterfly"), SubResource("Resource_locked")]
+
+[node name="ScrollContainer" type="ScrollContainer" parent="." unique_id=1977932441]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_scroll_mode = 2
+vertical_scroll_mode = 0
+scroll_deadzone = 5
+
+[node name="MarginContainer" type="MarginContainer" parent="ScrollContainer" unique_id=1757277769]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 75
+theme_override_constants/margin_right = 75
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ScrollContainer/MarginContainer" unique_id=1236375810]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+theme_override_constants/separation = 50
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=221711390]
+custom_minimum_size = Vector2(300, 50)
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -150.0
+offset_top = -50.0
+offset_right = 150.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="BackButton" type="Button" parent="VBoxContainer" unique_id=1552599021]
+layout_mode = 2
+theme = ExtResource("5_chx4x")
+text = "Back"
+script = ExtResource("7_back")
+back_sfx = ExtResource("8_sfx")
+

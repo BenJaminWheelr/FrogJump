@@ -18,17 +18,23 @@ enum ControlMode {
 @export var move_direction := 1.0
 
 signal lost_key
-var has_key : bool = false;
+var has_key: bool = false
 
 @export_group("Audio")
 @export var jump_sfx: AudioStream
 
-func _ready():
+@export_group("Hat")
+@export var hat_scene: PackedScene = preload("res://scenes/hat.tscn")
+
+var hat_instance: Node = null
+
+
+func _ready() -> void:
 	add_to_group("player")
+	_spawn_and_update_hat()
 
 
-func _physics_process(delta):
-	# Add the gravity.
+func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		velocity += get_gravity() * delta * GRAVITY_MULTIPLIER
 
@@ -37,13 +43,13 @@ func _physics_process(delta):
 			velocity.y = JUMP_VELOCITY
 			if jump_sfx:
 				GlobalAudio.play_sfx(jump_sfx)
-		if !Input.is_action_pressed("jump") and velocity.y < 0:
+		if not Input.is_action_pressed("jump") and velocity.y < 0:
 			velocity.y = 0
 		velocity.x = move_direction * SPEED
 	elif control_mode == ControlMode.WAIT_FOR_INPUT_BEFORE_AUTO_RUNNER:
-		velocity.x = 0;
+		velocity.x = 0
 		if Input.is_action_just_pressed("jump"):
-			control_mode = ControlMode.AUTO_RUNNER;
+			control_mode = ControlMode.AUTO_RUNNER
 
 	move_and_slide()
 
@@ -59,41 +65,42 @@ func _physics_process(delta):
 			hit_enemy_body = true
 			break
 
-		# flip direction on side collision
 		if collision.get_normal().x != 0:
 			move_direction *= -1
 			break
 
 	if hit_enemy_body:
 		_reset_level_after_enemy_hit()
- 
+
+
 func _process(_delta: float) -> void:
-	animate();
+	animate()
 
-func animate():
-	$FrogSprite.flip_h = move_direction < 0;
-	
+
+func animate() -> void:
+	$FrogSprite.flip_h = move_direction < 0
+
 	if control_mode == ControlMode.WAIT_FOR_INPUT_BEFORE_AUTO_RUNNER:
-		set_animation("Idle");
+		set_animation("Idle")
 	elif is_on_floor():
-		set_animation("Run");
+		set_animation("Run")
 	elif velocity.y < 0:
-		set_animation("Jump");
-	elif ( $AnimationPlayer.current_animation != "Jump" &&
-		   $AnimationPlayer.current_animation != "FreeFall"):
-		set_animation("Fall");
-		
+		set_animation("Jump")
+	elif $AnimationPlayer.current_animation != "Jump" and $AnimationPlayer.current_animation != "FreeFall":
+		set_animation("Fall")
 
-func set_animation(val : String):
-	if ($AnimationPlayer.has_animation(val) &&
-		$AnimationPlayer.current_animation != val):
-			$AnimationPlayer.play(val);
+
+func set_animation(val: String) -> void:
+	if $AnimationPlayer.has_animation(val) and $AnimationPlayer.current_animation != val:
+		$AnimationPlayer.play(val)
+
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "Jump":
-		set_animation("Fall");
+		set_animation("Fall")
 	if anim_name == "Fall":
-		set_animation("FreeFall");
+		set_animation("FreeFall")
+
 
 func _is_enemy_damage_collision(collision: KinematicCollision2D) -> bool:
 	var collider = collision.get_collider() as CollisionObject2D
@@ -112,7 +119,7 @@ func _is_enemy_damage_collision(collision: KinematicCollision2D) -> bool:
 	return shape_owner_node != null and shape_owner_node.name == "damage"
 
 
-func _remove_enemy(enemy: Object):
+func _remove_enemy(enemy: Object) -> void:
 	velocity.y = min(velocity.y, enemy_bounce_velocity)
 	queue_redraw()
 
@@ -120,7 +127,7 @@ func _remove_enemy(enemy: Object):
 		(enemy as Node).call_deferred("queue_free")
 
 
-func _reset_level_after_enemy_hit():
+func _reset_level_after_enemy_hit() -> void:
 	var node = get_parent()
 	while node != null:
 		if node.has_method("resetLevel"):
@@ -132,12 +139,62 @@ func _reset_level_after_enemy_hit():
 
 
 func _on_key_detection_area_area_entered(_area: Area2D) -> void:
-	has_key = true;
+	has_key = true
 
-func drop_key():
-	has_key = false;
-	lost_key.emit();
+
+func drop_key() -> void:
+	has_key = false
+	lost_key.emit()
 
 
 func _on_instakill_detection_area_body_entered(_body: Node2D) -> void:
 	_reset_level_after_enemy_hit()
+
+
+func refresh_hat_from_save() -> void:
+	_ensure_hat_instance()
+	_apply_hat_from_save()
+
+
+func set_hat_visible(is_visible: bool) -> void:
+	if hat_instance and is_instance_valid(hat_instance):
+		hat_instance.visible = is_visible
+
+
+func _ensure_hat_instance() -> void:
+	if not hat_scene:
+		return
+
+	if hat_instance and is_instance_valid(hat_instance):
+		return
+
+	hat_instance = hat_scene.instantiate()
+	add_child(hat_instance)
+	hat_instance.target = self
+
+
+func _apply_hat_from_save() -> void:
+	if not hat_instance or not is_instance_valid(hat_instance):
+		return
+
+	hat_instance.visible = true
+
+	if not SaveManager.data.has("shop"):
+		return
+	if not SaveManager.data["shop"].has("owned_items"):
+		return
+
+	var owned_items: Array = SaveManager.data["shop"]["owned_items"]
+	var equipped_item: String = str(SaveManager.data["shop"].get("equipped_item", ""))
+
+	if equipped_item == "" or not (equipped_item in owned_items):
+		return
+
+	if equipped_item == "crown":
+		hat_instance.set_hat_sprite(load("res://assets/textures/crown.png"))
+	elif equipped_item == "butterfly":
+		hat_instance.set_hat_sprite(load("res://assets/textures/butterfly.png"))
+
+
+func _spawn_and_update_hat() -> void:
+	refresh_hat_from_save()
