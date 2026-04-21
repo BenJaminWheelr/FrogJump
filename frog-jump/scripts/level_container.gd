@@ -1,7 +1,7 @@
 class_name LevelContainer extends Node2D
 
 const LEVEL_DIR = "res://scenes/level/"
-const NO_LEVEL_FALLBACK = "res://scenes/level/0.tscn"
+const NO_LEVEL_FALLBACK = "res://scenes/level/GameEnd.tscn"
 
 static var currLevelIndex : int = 0;
 const PLAYER_START_POS : Vector2 = Vector2i(512, 516);
@@ -43,6 +43,7 @@ func loadLevel(index : int):
 	elif currLevel.player_start_dir == currLevel.PlayerStartDir.RIGHT:
 		$Player.move_direction = 1
 	
+	$LevelHud/StageCompleteMessage.modulate = Color.TRANSPARENT;
 	
 	if currLevel.get_node_or_null("Entrance") != null:
 		$Player.global_position = currLevel.get_node("Entrance").global_position;
@@ -68,8 +69,16 @@ func nextLevel():
 	loadLevel(currLevelIndex);
 
 func levelClearAnimationStarted():
-	print("Level cleared!")
-	# TODO: show message, show how many coins were collected out of the total
+	var message_tween = get_tree().create_tween();
+	
+	var tower_index : int = floor(currLevelIndex / 5.0) + 1;
+	var stage_index : int = currLevelIndex % 5 + 1;
+	
+	if stage_index == 5:
+		$LevelHud/StageCompleteMessage.text = "Tower {0} Complete".format([tower_index]);
+	else:
+		$LevelHud/StageCompleteMessage.text = "STAGE CLEARED!";
+	message_tween.tween_property($LevelHud/StageCompleteMessage, "modulate", Color.WHITE, 0.5);
 
 static func setLevelIndex(index : int):
 	currLevelIndex = index;

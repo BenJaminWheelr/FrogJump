@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://p2dkyr2ml4t6" path="res://scripts/level_container.gd" id="1_v3wun"]
 [ext_resource type="PackedScene" uid="uid://cv20o2o3c2gkd" path="res://scenes/player.tscn" id="3_u8f6w"]
 [ext_resource type="PackedScene" uid="uid://dilo0rnamy4ir" path="res://scenes/UI/LevelHud.tscn" id="3_v3wun"]
+[ext_resource type="Theme" uid="uid://cv0jb6rth2amu" path="res://assets/ui_theme.tres" id="4_4kvwq"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_fji02"]
 normal = Vector2(1, 0)
@@ -82,3 +83,19 @@ shape = SubResource("WorldBoundaryShape2D_ham7r")
 
 [node name="LevelHud" parent="." unique_id=424571858 node_paths=PackedStringArray("player") instance=ExtResource("3_v3wun")]
 player = NodePath("../Player")
+
+[node name="StageCompleteMessage" type="RichTextLabel" parent="LevelHud" unique_id=550289046]
+modulate = Color(1, 1, 1, 0)
+texture_filter = 1
+clip_contents = false
+offset_left = 1.0
+offset_top = 119.0
+offset_right = 575.0
+offset_bottom = 316.5
+scale = Vector2(2, 2)
+mouse_filter = 2
+theme = ExtResource("4_4kvwq")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+text = "Stage 1-1  Complete!"
+horizontal_alignment = 1
