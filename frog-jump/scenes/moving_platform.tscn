@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://dkvuqaput764l"]
+
+[ext_resource type="Script" uid="uid://td5ei6362v7g" path="res://scripts/moving_platform.gd" id="1_1tdcd"]
+[ext_resource type="Texture2D" uid="uid://bd7nfnv2ni0ht" path="res://assets/textures/movingPlatform.png" id="2_mb26n"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_afg43"]
+size = Vector2(5, 3)
+
+[node name="Moving Platform" type="CharacterBody2D" unique_id=44132351]
+motion_mode = 1
+script = ExtResource("1_1tdcd")
+
+[node name="Left" type="Sprite2D" parent="." unique_id=881165068]
+position = Vector2(-50, -2)
+texture = ExtResource("2_mb26n")
+centered = false
+offset = Vector2(-1, 0)
+region_enabled = true
+region_rect = Rect2(0, 4, 1, 4)
+
+[node name="Mid" type="Sprite2D" parent="." unique_id=1038536628]
+texture = ExtResource("2_mb26n")
+region_enabled = true
+region_rect = Rect2(0, 0, 100, 4)
+
+[node name="Right" type="Sprite2D" parent="." unique_id=1163464348]
+position = Vector2(50, -2)
+texture = ExtResource("2_mb26n")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 4, 1, 4)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1164646542]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_afg43")
+one_way_collision = true

@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://2gli251q0e4o"]
+
+[ext_resource type="Script" uid="uid://sysuqs5pcxmc" path="res://scripts/ranged_platform.gd" id="1_smtpd"]
+
+[node name="platform range" type="Node2D" unique_id=241094330]
+script = ExtResource("1_smtpd")
