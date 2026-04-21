@@ -64,7 +64,8 @@ func resetLevel():
 	loadLevel(currLevelIndex);
 
 func nextLevel():
-	SaveManager.update_data("player", "highest_level_unlocked", currLevelIndex+2)
+	if currLevelIndex + 2 > SaveManager.data.player.highest_level_unlocked:
+		SaveManager.update_data("player", "highest_level_unlocked", currLevelIndex+2)
 	currLevelIndex += 1
 	loadLevel(currLevelIndex);
 
