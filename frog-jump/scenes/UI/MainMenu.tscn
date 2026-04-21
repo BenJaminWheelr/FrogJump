@@ -100,6 +100,7 @@ accept_sfx = ExtResource("4_elmld")
 menu_music = ExtResource("5_6kh0n")
 ambience = ExtResource("6_av0jf")
 play_scene_path = "uid://d4emc5jjdit30"
+credits_scene_path = "uid://bxu8r0pl7gkry"
 settings_scene_path = "uid://cgdhng50wnohq"
 
 [node name="Background" type="Node2D" parent="MainMenu" unique_id=1117678402]

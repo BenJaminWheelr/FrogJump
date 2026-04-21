@@ -38,7 +38,10 @@ func _on_play_pressed():
 	
 func _on_credits_pressed():
 	if _handle_click(credits_scene_path, select_sfx):
-		get_tree().change_scene_to_file(credits_scene_path)
+		var credits_inst = load(credits_scene_path).instantiate()
+		add_child(credits_inst)
+		_toggle_menu_buttons(false)
+		credits_inst.tree_exited.connect(_on_submenu_closed)
 
 
 func _on_exit_pressed():
