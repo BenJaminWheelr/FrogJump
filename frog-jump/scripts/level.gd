@@ -10,7 +10,7 @@ signal level_complete
 
 @export var music : AudioStream = null;
 @export var ambience : AudioStream = null;
-
+@export var gameWonSfx : AudioStream = preload("res://assets/audio/gameWon.mp3")
 
 enum PlayerStartDir
 {
@@ -26,6 +26,7 @@ func _ready():
 	GlobalAudio.play_ambience(ambience);
 
 func level_complete_anim_start() -> void:
+	GlobalAudio.play_sfx(gameWonSfx)
 	level_clear_anim_started.emit();
 
 func level_completed() -> void:
