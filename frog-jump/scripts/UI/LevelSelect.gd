@@ -18,6 +18,19 @@ const LEVEL_CONTAINER = preload("res://scenes/level/LevelContainer.tscn")
 @onready var scroll_container = $ScrollContainer
 @onready var hbox = $ScrollContainer/MarginContainer/HBoxContainer
 
+const DRAG_TAP_CANCEL_DISTANCE := 8.0
+const INERTIA_STOP_THRESHOLD := 8.0
+
+var _is_touch_dragging := false
+var _touch_drag_index := -1
+var _drag_distance_accum := 0.0
+var _suppress_next_level_tap := false
+var _inertia_velocity := 0.0
+
+@export_group("Touch Inertia")
+@export var inertia_strength: float = 1.0
+@export var inertia_damping: float = 2400.0
+
 func _ready():
 	for child in hbox.get_children():
 		child.queue_free()
@@ -81,7 +94,52 @@ func center_on_index(index: int, instant: bool = false):
 		tween.set_trans(Tween.TRANS_QUINT).set_ease(Tween.EASE_OUT)
 		tween.tween_property(scroll_container, "scroll_horizontal", final_x, slide_duration)
 
+
+func _input(event: InputEvent) -> void:
+	if event is InputEventScreenTouch:
+		var touch_event := event as InputEventScreenTouch
+		if touch_event.pressed:
+			if scroll_container.get_global_rect().has_point(touch_event.position):
+				_is_touch_dragging = true
+				_touch_drag_index = touch_event.index
+				_drag_distance_accum = 0.0
+				_inertia_velocity = 0.0
+		else:
+			if _is_touch_dragging and touch_event.index == _touch_drag_index:
+				if _drag_distance_accum >= DRAG_TAP_CANCEL_DISTANCE:
+					_suppress_next_level_tap = true
+				_is_touch_dragging = false
+				_touch_drag_index = -1
+
+	if event is InputEventScreenDrag:
+		var drag_event := event as InputEventScreenDrag
+		if _is_touch_dragging and drag_event.index == _touch_drag_index:
+			_drag_distance_accum += abs(drag_event.relative.x)
+			scroll_container.scroll_horizontal -= drag_event.relative.x
+			_inertia_velocity = -drag_event.velocity.x * inertia_strength
+
+
+func _process(delta: float) -> void:
+	if _is_touch_dragging:
+		return
+
+	if abs(_inertia_velocity) < INERTIA_STOP_THRESHOLD:
+		_inertia_velocity = 0.0
+		return
+
+	var h_scroll_bar = scroll_container.get_h_scroll_bar()
+	var next_scroll = scroll_container.scroll_horizontal + (_inertia_velocity * delta)
+	if h_scroll_bar:
+		next_scroll = clampf(next_scroll, 0.0, h_scroll_bar.max_value)
+
+	scroll_container.scroll_horizontal = next_scroll
+	_inertia_velocity = move_toward(_inertia_velocity, 0.0, inertia_damping * delta)
+
 func _on_level_selected(index : int):
+	if _suppress_next_level_tap:
+		_suppress_next_level_tap = false
+		return
+
 	if not ResourceLoader.exists("res://scenes/level/%d.tscn" % index, "PackedScene"):
 		return
 
