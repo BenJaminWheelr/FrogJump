@@ -106,8 +106,5 @@ platform_range = Vector2(0, 132)
 width = 64
 set_vel = Vector2(0, 32)
 
-[node name="Camera2D" type="Camera2D" parent="." unique_id=1158433493]
-position = Vector2(568, -1064)
-
 [connection signal="goal_animation_finished" from="goal" to="." method="level_completed"]
 [connection signal="goal_reached" from="goal" to="." method="level_complete_anim_start"]
