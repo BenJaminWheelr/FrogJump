@@ -1,10 +1,8 @@
 [gd_scene format=3 uid="uid://cv20o2o3c2gkd"]
 
 [ext_resource type="Script" uid="uid://bsx6fgmbla4k5" path="res://scripts/player.gd" id="1_g2els"]
-[ext_resource type="AudioStream" uid="uid://bxr15v2l2kg1e" path="res://assets/audio/jump.wav" id="2_qhqgy"]
+[ext_resource type="AudioStream" uid="uid://bgcq5nor8xips" path="res://assets/audio/jump.wav" id="2_qhqgy"]
 [ext_resource type="Texture2D" uid="uid://bgkcgqe823321" path="res://assets/textures/frog.png" id="3_qhqgy"]
-[ext_resource type="Texture2D" uid="uid://cf1ghul2v8ktl" path="res://assets/textures/crown.png" id="4_dqkch"]
-[ext_resource type="PackedScene" uid="uid://c8vfvjw4kj4h3" path="res://scenes/hat.tscn" id="5_hat"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_onrkg"]
 size = Vector2(14, 14)
@@ -354,7 +352,6 @@ _data = {
 [node name="frog" type="CharacterBody2D" unique_id=225646593 groups=["player"]]
 script = ExtResource("1_g2els")
 jump_sfx = ExtResource("2_qhqgy")
-hat_scene = ExtResource("5_hat")
 
 [node name="FrogSprite" type="Sprite2D" parent="." unique_id=1616311599]
 position = Vector2(0, 12)
@@ -368,7 +365,7 @@ position = Vector2(0, 9)
 shape = SubResource("RectangleShape2D_onrkg")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1390691889]
-process_mode = 3
+process_mode = 1
 libraries/ = SubResource("AnimationLibrary_tuyoq")
 
 [node name="KeyDetectionArea" type="Area2D" parent="." unique_id=605220547]
@@ -390,4 +387,3 @@ shape = SubResource("CircleShape2D_qhqgy")
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="area_entered" from="KeyDetectionArea" to="." method="_on_key_detection_area_area_entered"]
 [connection signal="body_entered" from="InstakillDetectionArea" to="." method="_on_instakill_detection_area_body_entered"]
-
