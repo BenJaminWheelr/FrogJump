@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://daclxuptxocp3" path="res://assets/textures/door.png" id="5_b1gwl"]
 [ext_resource type="TileSet" uid="uid://c5604807rlvrf" path="res://assets/tilesets/tower1.tres" id="6_c62ik"]
 [ext_resource type="PackedScene" uid="uid://dgmf0jnydxgex" path="res://scenes/goal.tscn" id="7_0crfi"]
+[ext_resource type="PackedScene" uid="uid://cgio6dd0xyed3" path="res://scenes/coin.tscn" id="8_nqm65"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_ham7r"]
 tile_data = PackedInt32Array(0, 196608, 0, 65536, 196608, 1, 1, 262144, 0, 65537, 262144, 1)
@@ -133,6 +134,9 @@ libraries/ = SubResource("AnimationLibrary_gxtfg")
 
 [node name="goal" parent="." unique_id=696136336 instance=ExtResource("7_0crfi")]
 position = Vector2(921, -2352)
+
+[node name="Coin" parent="." unique_id=2130832083 instance=ExtResource("8_nqm65")]
+position = Vector2(168, -1712)
 
 [connection signal="ready" from="AnimationPlayer" to="AnimationPlayer" method="play" binds= ["SpikeFloorRise"]]
 [connection signal="goal_animation_finished" from="goal" to="." method="level_completed"]

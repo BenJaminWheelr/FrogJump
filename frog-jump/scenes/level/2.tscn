@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://gg2txptj4ta8" path="res://assets/textures/tile/tower1_bg.png" id="4_v2mfq"]
 [ext_resource type="TileSet" uid="uid://c5604807rlvrf" path="res://assets/tilesets/tower1.tres" id="5_tixup"]
 [ext_resource type="Texture2D" uid="uid://daclxuptxocp3" path="res://assets/textures/door.png" id="5_v2mfq"]
+[ext_resource type="PackedScene" uid="uid://cgio6dd0xyed3" path="res://scenes/coin.tscn" id="8_tixup"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_ham7r"]
 tile_data = PackedInt32Array(0, 196608, 0, 65536, 196608, 1, 1, 262144, 0, 65537, 262144, 1)
@@ -61,6 +62,9 @@ tile_set = ExtResource("5_tixup")
 
 [node name="goal" parent="." unique_id=1943025278 instance=ExtResource("3_okfh8")]
 position = Vector2(348, -2288)
+
+[node name="Coin" parent="." unique_id=2130832083 instance=ExtResource("8_tixup")]
+position = Vector2(166, -2413)
 
 [connection signal="goal_animation_finished" from="goal" to="." method="level_completed"]
 [connection signal="goal_reached" from="goal" to="." method="level_complete_anim_start"]

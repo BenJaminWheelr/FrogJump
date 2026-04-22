@@ -64,7 +64,7 @@ animations = [{
 radius = 8.0
 
 [node name="Coin" type="Area2D" unique_id=2130832083]
-scale = Vector2(2, 2)
+scale = Vector2(4, 4)
 script = ExtResource("2_dvxsn")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=719100288]

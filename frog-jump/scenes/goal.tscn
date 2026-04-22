@@ -3,8 +3,9 @@
 [ext_resource type="Script" uid="uid://b1fphu3423ceu" path="res://scripts/goal.gd" id="1_jbojv"]
 [ext_resource type="Texture2D" uid="uid://daclxuptxocp3" path="res://assets/textures/door.png" id="2_sx1j4"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_fji02"]
-size = Vector2(50, 50)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sx1j4"]
+radius = 22.75
+height = 55.0
 
 [sub_resource type="Animation" id="Animation_jvyg3"]
 resource_name = "DoorClose"
@@ -136,9 +137,6 @@ _data = {
 scale = Vector2(4, 4)
 script = ExtResource("1_jbojv")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1435000489]
-shape = SubResource("RectangleShape2D_fji02")
-
 [node name="DoorBehindSprite" type="Sprite2D" parent="." unique_id=1899813510]
 texture_filter = 1
 texture = ExtResource("2_sx1j4")
@@ -149,6 +147,9 @@ frame = 5
 texture_filter = 1
 texture = ExtResource("2_sx1j4")
 hframes = 6
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1435000489]
+shape = SubResource("CapsuleShape2D_sx1j4")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=863965575]
 libraries/ = SubResource("AnimationLibrary_jvyg3")

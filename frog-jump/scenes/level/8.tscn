@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://ctt13h575e0sx" path="res://scenes/key.tscn" id="8_nqk1e"]
 [ext_resource type="PackedScene" uid="uid://cg7ak7nx6rf5r" path="res://scenes/enemy.tscn" id="9_u0yae"]
 [ext_resource type="Texture2D" uid="uid://dccdfth60iyjs" path="res://assets/textures/spikeguy.png" id="10_lb65y"]
+[ext_resource type="PackedScene" uid="uid://cgio6dd0xyed3" path="res://scenes/coin.tscn" id="11_lb65y"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_ham7r"]
 tile_data = PackedInt32Array(0, 196608, 0, 65536, 196608, 1, 1, 262144, 0, 65537, 262144, 1)
@@ -96,6 +97,9 @@ follow_speed = 4
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=724263540]
 position = Vector2(552, -928)
+
+[node name="Coin" parent="." unique_id=2130832083 instance=ExtResource("11_lb65y")]
+position = Vector2(424, -864)
 
 [connection signal="goal_animation_finished" from="locked goal" to="." method="level_completed"]
 [connection signal="goal_reached" from="locked goal" to="." method="level_complete_anim_start"]
