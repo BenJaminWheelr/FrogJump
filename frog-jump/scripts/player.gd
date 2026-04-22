@@ -171,13 +171,14 @@ func _ensure_hat_instance() -> void:
 	hat_instance = hat_scene.instantiate()
 	add_child(hat_instance)
 	hat_instance.target = self
+	hat_instance.visible = false
 
 
 func _apply_hat_from_save() -> void:
 	if not hat_instance or not is_instance_valid(hat_instance):
 		return
 
-	hat_instance.visible = true
+	hat_instance.visible = false
 
 	if not SaveManager.data.has("shop"):
 		return
@@ -192,8 +193,10 @@ func _apply_hat_from_save() -> void:
 
 	if equipped_item == "crown":
 		hat_instance.set_hat_sprite(load("res://assets/textures/crown.png"))
+		hat_instance.visible = true
 	elif equipped_item == "butterfly":
 		hat_instance.set_hat_sprite(load("res://assets/textures/butterfly.png"))
+		hat_instance.visible = true
 
 
 func _spawn_and_update_hat() -> void:

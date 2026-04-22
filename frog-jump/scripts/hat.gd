@@ -43,3 +43,4 @@ func set_hat_sprite(texture: Texture2D) -> void:
 	"""Change the hat sprite based on what's unlocked."""
 	if has_node("Sprite2D"):
 		$Sprite2D.texture = texture
+		$Sprite2D.visible = true
