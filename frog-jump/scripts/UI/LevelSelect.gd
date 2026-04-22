@@ -25,6 +25,7 @@ func _ready():
 	for i in range(levels.size()):
 		var data = levels[i]
 		if not data: continue
+		var has_level_scene = ResourceLoader.exists("res://scenes/level/%d.tscn" % i, "PackedScene")
 		
 		var inst = level_window_scene.instantiate()
 		hbox.add_child(inst)
@@ -36,7 +37,7 @@ func _ready():
 		
 		btn.texture_normal = data.thumbnail
 		
-		if level_number > highest_unlocked_level:
+		if level_number > highest_unlocked_level or not has_level_scene:
 			btn.disabled = true
 			btn.mouse_default_cursor_shape = Control.CURSOR_ARROW
 			btn.modulate = Color(0.3, 0.3, 0.3, 1.0) # Grayed out
@@ -81,6 +82,9 @@ func center_on_index(index: int, instant: bool = false):
 		tween.tween_property(scroll_container, "scroll_horizontal", final_x, slide_duration)
 
 func _on_level_selected(index : int):
+	if not ResourceLoader.exists("res://scenes/level/%d.tscn" % index, "PackedScene"):
+		return
+
 	if select_sfx:
 		GlobalAudio.play_sfx(select_sfx) 
 	

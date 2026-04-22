@@ -13,7 +13,9 @@ config_version=5
 config/name="Frog Jump"
 run/main_scene="uid://ea5bkiwtudye"
 config/features=PackedStringArray("4.6", "GL Compatibility")
-config/icon="res://assets/textures/icon.svg"
+boot_splash/bg_color=Color(0.6571801, 0.8634084, 0.98573893, 1)
+boot_splash/image="uid://drx56y8td3sh3"
+config/icon="uid://drx56y8td3sh3"
 
 [autoload]
 
@@ -43,4 +45,5 @@ jump={
 textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+textures/vram_compression/import_etc2_astc=true
 environment/defaults/default_clear_color=Color(0, 0, 0, 1)

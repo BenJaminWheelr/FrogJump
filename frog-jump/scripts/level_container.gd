@@ -15,7 +15,7 @@ func _ready():
 
 static func getLevelPath(index : int) -> String:
 	var newLevelPath = LEVEL_DIR + str(index) + ".tscn"
-	if FileAccess.file_exists(newLevelPath):
+	if ResourceLoader.exists(newLevelPath, "PackedScene"):
 		return newLevelPath
 	return NO_LEVEL_FALLBACK;
 	
