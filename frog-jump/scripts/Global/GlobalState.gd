@@ -7,6 +7,10 @@ var coin_count: int = 0
 
 func _ready() -> void:
 	_load_coins_from_save()
+	SaveManager.data_modified.connect(_on_data_reset)
+	
+func _on_data_reset() -> void:
+	coin_count = int(SaveManager.data.player.coins)
 
 
 func _load_coins_from_save() -> void:
