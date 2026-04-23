@@ -1,7 +1,7 @@
 class_name LevelContainer extends Node2D
 
 const LEVEL_DIR = "res://scenes/level/"
-const NO_LEVEL_FALLBACK = "res://scenes/level/GameEnd.tscn"
+const GAME_END_PATH = "res://scenes/level/GameEnd.tscn"
 
 static var currLevelIndex : int = 0;
 const PLAYER_START_POS : Vector2 = Vector2i(512, 516);
@@ -17,7 +17,7 @@ static func getLevelPath(index : int) -> String:
 	var newLevelPath = LEVEL_DIR + str(index) + ".tscn"
 	if ResourceLoader.exists(newLevelPath, "PackedScene"):
 		return newLevelPath
-	return NO_LEVEL_FALLBACK;
+	return "";
 	
 func initiateHUD(currentLevel : Level):
 	var goal_node = currentLevel.get_node_or_null("goal")
@@ -33,7 +33,14 @@ func loadLevel(index : int):
 	currLevelIndex = index;
 	if currLevel != null:
 		currLevel.queue_free();
-	currLevel = load(getLevelPath(index)).instantiate();
+		
+	var newLevelPath = getLevelPath(index);
+	if (newLevelPath == ""):
+		# switch to game end cutscene
+		get_tree().change_scene_to_file(GAME_END_PATH);
+		return;
+	
+	currLevel = load(newLevelPath).instantiate();
 	initiateHUD(currLevel)
 	currLevel.connect("level_clear_anim_started", Callable(self, "levelClearAnimationStarted"))
 	currLevel.connect("level_complete", Callable(self, "nextLevel"));

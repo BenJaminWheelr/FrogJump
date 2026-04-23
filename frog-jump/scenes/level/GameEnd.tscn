@@ -1,16 +1,18 @@
 [gd_scene format=4 uid="uid://wj1o7fn7fhxd"]
 
-[ext_resource type="Script" uid="uid://dv8u5mahcgfyt" path="res://scripts/cutscene.gd" id="1_ndovc"]
-[ext_resource type="Texture2D" uid="uid://dngo1mpa3247n" path="res://assets/backgrounds/blue.png" id="2_5mljk"]
+[ext_resource type="Script" uid="uid://cvihe4vi687i6" path="res://scenes/level/game_end.gd" id="1_eacwx"]
+[ext_resource type="Texture2D" uid="uid://c5aruobcjutro" path="res://assets/backgrounds/night.png" id="2_ndovc"]
+[ext_resource type="Texture2D" uid="uid://in6td10drqdx" path="res://assets/textures/moon.png" id="3_5mljk"]
 [ext_resource type="Texture2D" uid="uid://gg2txptj4ta8" path="res://assets/textures/tile/tower1_bg.png" id="3_lce32"]
 [ext_resource type="TileSet" uid="uid://c5604807rlvrf" path="res://assets/tilesets/tower1.tres" id="4_xg6ky"]
 [ext_resource type="Texture2D" uid="uid://daclxuptxocp3" path="res://assets/textures/door.png" id="5_8cjy1"]
 [ext_resource type="Texture2D" uid="uid://bhfh7eq22wyv0" path="res://assets/textures/princess.png" id="6_gnmg5"]
-[ext_resource type="Texture2D" uid="uid://r2wufh26j52j" path="res://assets/textures/princessHat.png" id="7_flu7s"]
+[ext_resource type="Texture2D" uid="uid://c8d1hx3pft4v3" path="res://assets/textures/prince.png" id="7_0uff6"]
 [ext_resource type="Texture2D" uid="uid://dg836rh8wgmy1" path="res://assets/textures/frog.png" id="8_ug2e0"]
 [ext_resource type="Texture2D" uid="uid://c71leniui4vpf" path="res://assets/textures/speechBubble.png" id="9_vvh8x"]
 [ext_resource type="Texture2D" uid="uid://ckyrwgeyneght" path="res://assets/textures/smokeBomb.png" id="10_4mako"]
 [ext_resource type="AudioStream" uid="uid://bxr15v2l2kg1e" path="res://assets/audio/jump.wav" id="11_or37q"]
+[ext_resource type="Theme" uid="uid://cv0jb6rth2amu" path="res://assets/ui_theme.tres" id="13_lce32"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_ham7r"]
 tile_data = PackedInt32Array(0, 196608, 0, 65536, 196608, 1, 1, 262144, 0, 65537, 262144, 1)
@@ -37,35 +39,6 @@ texture_region_size = Vector2i(32, 32)
 tile_size = Vector2i(32, 32)
 sources/0 = SubResource("TileSetAtlasSource_gcu4a")
 pattern_0 = SubResource("TileMapPattern_ham7r")
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_403c5"]
-atlas = ExtResource("7_flu7s")
-region = Rect2(0, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_jbp02"]
-atlas = ExtResource("7_flu7s")
-region = Rect2(16, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_7iyp6"]
-atlas = ExtResource("7_flu7s")
-region = Rect2(32, 0, 16, 16)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_wrexx"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_403c5")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_jbp02")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_7iyp6")
-}],
-"loop": true,
-"name": &"blue",
-"speed": 3.0
-}]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0a8vo"]
 atlas = ExtResource("10_4mako")
@@ -171,8 +144,8 @@ animations = [{
 
 [sub_resource type="Animation" id="Animation_c8sja"]
 resource_name = "Cutscene"
-length = 13.0
-step = 0.05
+length = 25.0
+step = 0.2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -180,10 +153,10 @@ tracks/0/path = NodePath("FrogSprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4, 1.6, 1.8000001, 2, 2.2, 2.4, 2.6, 2.65, 2.7, 2.75, 2.8, 2.85, 2.9, 2.95, 3, 3.05, 3.15, 6.9915066, 7.041507, 7.091507, 7.1415067, 7.1915064, 7.2415066, 7.291507, 7.4, 10.05, 10.123921, 10.173923, 10.223922, 10.273923, 10.323922, 10.373921, 10.423923, 10.473922, 10.523923, 10.573922, 10.623921, 10.673923, 10.723922, 10.773923, 10.823922, 10.873921),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4, 1.6, 1.8000001, 2, 2.2, 2.4, 2.6, 2.65, 2.7, 2.75, 2.8, 2.85, 2.9, 2.95, 3, 3.05, 3.15, 6.9915066, 7.041507, 7.091507, 7.1415067, 7.1915064, 7.2415066, 7.291507, 7.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [0, 1, 2, 3, 0, 1, 2, 3, 0, 1, 2, 3, 0, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 0, 9, 10, 11, 12, 13, 14, 15, 0, 8, 7, 6, 5, 4, 9, 10, 11, 36, 37, 38, 39, 40, 41, 42, 43, 47]
+"values": [0, 1, 2, 3, 0, 1, 2, 3, 0, 1, 2, 3, 0, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 0, 9, 10, 11, 12, 13, 14, 15, 0]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -192,10 +165,10 @@ tracks/1/path = NodePath("FrogSprite:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 2.6, 3.15, 6.9915066, 7.291507, 7.4, 10.423923, 10.745179, 11.073922),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 2.6, 3.15, 6.9915066, 7.291507, 7.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(232, 512), Vector2(232, 512), Vector2(520, 512), Vector2(520, 512), Vector2(688, 496), Vector2(688, 512), Vector2(688, 512), Vector2(584, 368), Vector2(437, 441)]
+"values": [Vector2(232, 512), Vector2(232, 512), Vector2(520, 512), Vector2(520, 512), Vector2(688, 496), Vector2(688, 512)]
 }
 tracks/2/type = "audio"
 tracks/2/imported = false
@@ -219,10 +192,10 @@ tracks/3/path = NodePath("SpeechBubble:visible")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 3.2608857, 4, 5.6930623, 6.8915067, 8.4, 9.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 3.2608857, 4, 5.6930623, 6.8915067, 8.660887, 9.849999, 13.6, 14.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [false, true, false, true, false, true, false]
+"values": [false, true, false, true, false, true, false, true, false]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -231,10 +204,10 @@ tracks/4/path = NodePath("SpeechBubble:frame")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(3.2608857, 3.4, 3.5, 3.6000001, 5.6915064, 5.830621, 5.9306207, 6.0915065, 6.291507, 6.4915066, 6.6915064, 8.4, 8.539114, 8.639112, 8.739113, 9.35),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(3.2608857, 3.4, 3.5, 3.6000001, 5.6915064, 5.830621, 5.9306207, 6.0915065, 6.291507, 6.4915066, 6.6915064, 8.660887, 8.800001, 8.9, 9, 9.7, 13.604666, 13.74378, 13.84378, 13.94378, 14.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [18, 19, 20, 19, 15, 16, 17, 16, 17, 16, 15, 27, 28, 29, 28, 27]
+"values": [18, 19, 20, 19, 15, 16, 17, 16, 17, 16, 15, 18, 19, 20, 19, 18, 27, 28, 29, 28, 27]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
@@ -243,10 +216,10 @@ tracks/5/path = NodePath("SpeechBubble:position")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(3.2562206, 3.4, 3.6, 3.7, 5.6915064, 5.835286, 6.035286, 6.135286, 8.395334, 8.549999, 8.739113, 8.839113),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(3.2562206, 3.4, 3.6, 3.7, 5.6915064, 5.835286, 6.035286, 6.135286, 8.656221, 8.810886, 9, 9.1, 13.6, 13.74378, 13.94378, 14.043779),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [Vector2(831, 476), Vector2(831, 472), Vector2(831, 468), Vector2(831, 472), Vector2(719, 476), Vector2(718, 472), Vector2(717, 468), Vector2(714, 472), Vector2(718, 476), Vector2(718, 472), Vector2(718, 468), Vector2(718, 472)]
+"values": [Vector2(831, 476), Vector2(831, 472), Vector2(831, 468), Vector2(831, 472), Vector2(719, 476), Vector2(718, 472), Vector2(717, 468), Vector2(714, 472), Vector2(718, 476), Vector2(718, 472), Vector2(718, 468), Vector2(718, 472), Vector2(791, 460), Vector2(791, 456), Vector2(791, 452), Vector2(791, 456)]
 }
 tracks/6/type = "value"
 tracks/6/imported = false
@@ -255,10 +228,10 @@ tracks/6/path = NodePath("Princess:frame_coords:x")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(0, 3.5, 4.1, 4.8915067, 5.0915065, 5.291507, 5.4915066, 5.6915064),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 3.5, 4.1, 4.8915067, 5.0915065, 5.291507, 5.4915066, 5.6915064, 10.35, 11.2, 11.4, 11.6, 11.799999, 12, 12.2, 12.400001, 12.599999, 22),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [0, 1, 2, 3, 2, 3, 2, 4]
+"values": [0, 1, 2, 3, 2, 3, 2, 4, 2, 3, 2, 3, 2, 3, 2, 3, 2, 0]
 }
 tracks/7/type = "value"
 tracks/7/imported = false
@@ -267,10 +240,10 @@ tracks/7/path = NodePath("Princess:position")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
-"times": PackedFloat32Array(0, 4.9, 5.1005983, 5.277871, 5.4924645),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 4.9, 5.1005983, 5.277871, 5.4924645, 10.226826, 10.653467),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(824, 512), Vector2(824, 512), Vector2(792, 512), Vector2(792, 512), Vector2(736, 512)]
+"values": [Vector2(824, 512), Vector2(824, 512), Vector2(792, 512), Vector2(792, 512), Vector2(736, 512), Vector2(736, 512), Vector2(780, 512)]
 }
 tracks/8/type = "method"
 tracks/8/imported = false
@@ -289,152 +262,110 @@ tracks/8/keys = {
 tracks/9/type = "value"
 tracks/9/imported = false
 tracks/9/enabled = true
-tracks/9/path = NodePath("Princess:visible")
+tracks/9/path = NodePath("PrinceSprite:visible")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
 "times": PackedFloat32Array(0, 7.45),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [true, false]
+"values": [false, true]
 }
 tracks/10/type = "value"
 tracks/10/imported = false
 tracks/10/enabled = true
-tracks/10/path = NodePath("PrincessFrogSprite:visible")
+tracks/10/path = NodePath("Door:frame")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/keys = {
-"times": PackedFloat32Array(0, 7.45),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 0.15, 0.35, 0.6, 0.9, 19, 19.15, 19.35, 19.6, 19.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [false, true]
+"values": [0, 1, 2, 3, 4, 4, 3, 2, 1, 0]
 }
 tracks/11/type = "value"
 tracks/11/imported = false
 tracks/11/enabled = true
-tracks/11/path = NodePath("Door:frame")
+tracks/11/path = NodePath("Door:visible")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/keys = {
-"times": PackedFloat32Array(0, 0.15, 0.35, 0.6, 0.9),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 1.3, 19),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
-"values": [0, 1, 2, 3, 4]
+"values": [true, false, true]
 }
 tracks/12/type = "value"
 tracks/12/imported = false
 tracks/12/enabled = true
-tracks/12/path = NodePath("Door:visible")
+tracks/12/path = NodePath("FrogSprite:flip_h")
 tracks/12/interp = 1
 tracks/12/loop_wrap = true
 tracks/12/keys = {
-"times": PackedFloat32Array(0, 1.3),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [true, false]
+"values": [false]
 }
 tracks/13/type = "value"
 tracks/13/imported = false
 tracks/13/enabled = true
-tracks/13/path = NodePath("Princess/PrincessHat:position")
+tracks/13/path = NodePath("FrogSprite:visible")
 tracks/13/interp = 1
 tracks/13/loop_wrap = true
 tracks/13/keys = {
-"times": PackedFloat32Array(0, 3.5, 4.099415, 4.8950644, 5.0889287, 5.2868314, 5.4928117, 5.694753),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.2786794, 7.45),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
-"values": [Vector2(0, -2), Vector2(0, -4), Vector2(0, -8), Vector2(0, -13), Vector2(0, -8), Vector2(0, -13), Vector2(0, -8), Vector2(0, -5)]
+"values": [false, true, false]
 }
 tracks/14/type = "value"
 tracks/14/imported = false
 tracks/14/enabled = true
-tracks/14/path = NodePath("Princess/PrincessHat:flip_h")
+tracks/14/path = NodePath("PrinceSprite:frame")
 tracks/14/interp = 1
 tracks/14/loop_wrap = true
 tracks/14/keys = {
-"times": PackedFloat32Array(0, 4.099415),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 10.30839, 12.4, 12.6, 12.8, 13, 15.4, 15.6, 15.8, 16, 16.2, 16.4, 16.6, 16.8, 17, 17.2, 17.400002, 17.6, 17.800001, 18),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [true, false]
+"values": [0, 1, 2, 3, 2, 1, 4, 1, 4, 1, 4, 1, 4, 1, 4, 1, 4, 1, 4, 1]
 }
-tracks/15/type = "method"
+tracks/15/type = "value"
 tracks/15/imported = false
 tracks/15/enabled = true
-tracks/15/path = NodePath("Princess/PrincessHat")
+tracks/15/path = NodePath("PrinceSprite:position")
 tracks/15/interp = 1
 tracks/15/loop_wrap = true
 tracks/15/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [&"blue", 1.0, false],
-"method": &"play"
-}]
+"times": PackedFloat32Array(0, 15.409714, 18.022514),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(696, 512), Vector2(696, 512), Vector2(232, 512)]
 }
-tracks/16/type = "method"
+tracks/16/type = "value"
 tracks/16/imported = false
 tracks/16/enabled = true
-tracks/16/path = NodePath("PrincessFrogSprite/PrincessHat")
+tracks/16/path = NodePath("PrinceSprite:flip_h")
 tracks/16/interp = 1
 tracks/16/loop_wrap = true
 tracks/16/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [&"blue", 1.0, false],
-"method": &"play"
-}]
+"times": PackedFloat32Array(0, 15.409715),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
 }
 tracks/17/type = "value"
 tracks/17/imported = false
 tracks/17/enabled = true
-tracks/17/path = NodePath("FrogSprite:flip_h")
+tracks/17/path = NodePath("UI/Congratulations:modulate")
 tracks/17/interp = 1
 tracks/17/loop_wrap = true
 tracks/17/keys = {
-"times": PackedFloat32Array(0, 10.323922),
+"times": PackedFloat32Array(7.5676804, 10.749546),
 "transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [false, true]
-}
-tracks/18/type = "value"
-tracks/18/imported = false
-tracks/18/enabled = true
-tracks/18/path = NodePath("windowMask2:visible")
-tracks/18/interp = 1
-tracks/18/loop_wrap = true
-tracks/18/keys = {
-"times": PackedFloat32Array(0, 10.723922),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [false, true]
-}
-tracks/19/type = "method"
-tracks/19/imported = false
-tracks/19/enabled = true
-tracks/19/path = NodePath(".")
-tracks/19/interp = 1
-tracks/19/loop_wrap = true
-tracks/19/keys = {
-"times": PackedFloat32Array(12),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"level_complete_anim_start"
-}]
-}
-tracks/20/type = "value"
-tracks/20/imported = false
-tracks/20/enabled = true
-tracks/20/path = NodePath("FrogSprite:visible")
-tracks/20/interp = 1
-tracks/20/loop_wrap = true
-tracks/20/keys = {
-"times": PackedFloat32Array(0, 0.2786794),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [false, true]
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_c8rr1"]
@@ -526,7 +457,7 @@ tracks/6/keys = {
 tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("Princess:visible")
+tracks/7/path = NodePath("PrinceSprite:visible")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
@@ -538,31 +469,31 @@ tracks/7/keys = {
 tracks/8/type = "value"
 tracks/8/imported = false
 tracks/8/enabled = true
-tracks/8/path = NodePath("PrincessFrogSprite:visible")
+tracks/8/path = NodePath("Door:frame")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [false]
+"values": [0]
 }
 tracks/9/type = "value"
 tracks/9/imported = false
 tracks/9/enabled = true
-tracks/9/path = NodePath("Door:frame")
+tracks/9/path = NodePath("Door:visible")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [0]
+"values": [false]
 }
 tracks/10/type = "value"
 tracks/10/imported = false
 tracks/10/enabled = true
-tracks/10/path = NodePath("Door:visible")
+tracks/10/path = NodePath("FrogSprite:flip_h")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/keys = {
@@ -574,74 +505,62 @@ tracks/10/keys = {
 tracks/11/type = "value"
 tracks/11/imported = false
 tracks/11/enabled = true
-tracks/11/path = NodePath("Princess/PrincessHat:position")
+tracks/11/path = NodePath("FrogSprite:visible")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, -4)]
+"update": 1,
+"values": [true]
 }
 tracks/12/type = "value"
 tracks/12/imported = false
 tracks/12/enabled = true
-tracks/12/path = NodePath("Princess/PrincessHat:flip_h")
+tracks/12/path = NodePath("PrinceSprite:frame")
 tracks/12/interp = 1
 tracks/12/loop_wrap = true
 tracks/12/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [false]
+"values": [0]
 }
 tracks/13/type = "value"
 tracks/13/imported = false
 tracks/13/enabled = true
-tracks/13/path = NodePath("FrogSprite:flip_h")
+tracks/13/path = NodePath("PrinceSprite:position")
 tracks/13/interp = 1
 tracks/13/loop_wrap = true
 tracks/13/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
+"update": 0,
+"values": [Vector2(696, 512)]
 }
 tracks/14/type = "value"
 tracks/14/imported = false
 tracks/14/enabled = true
-tracks/14/path = NodePath("windowMask:visible")
+tracks/14/path = NodePath("PrinceSprite:flip_h")
 tracks/14/interp = 1
 tracks/14/loop_wrap = true
 tracks/14/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
+"update": 1,
 "values": [true]
 }
 tracks/15/type = "value"
 tracks/15/imported = false
 tracks/15/enabled = true
-tracks/15/path = NodePath("windowMask2:visible")
+tracks/15/path = NodePath("UI/Congratulations:modulate")
 tracks/15/interp = 1
 tracks/15/loop_wrap = true
 tracks/15/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/16/type = "value"
-tracks/16/imported = false
-tracks/16/enabled = true
-tracks/16/path = NodePath("FrogSprite:visible")
-tracks/16/interp = 1
-tracks/16/loop_wrap = true
-tracks/16/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_oeuae"]
@@ -650,9 +569,18 @@ _data = {
 &"RESET": SubResource("Animation_c8rr1")
 }
 
-[node name="4" type="Node2D" unique_id=277534477]
-script = ExtResource("1_ndovc")
-bg_img1 = ExtResource("2_5mljk")
+[node name="Game End" type="Node2D" unique_id=277534477]
+script = ExtResource("1_eacwx")
+
+[node name="Night" type="Sprite2D" parent="." unique_id=506499429]
+z_index = -1
+position = Vector2(648, 488)
+scale = Vector2(4, 4)
+texture = ExtResource("2_ndovc")
+
+[node name="Moon" type="Sprite2D" parent="Night" unique_id=482881082]
+position = Vector2(-8.25, -32)
+texture = ExtResource("3_5mljk")
 
 [node name="bg" type="TileMapLayer" parent="." unique_id=1140475832]
 z_index = -1
@@ -674,18 +602,12 @@ hframes = 6
 frame = 5
 
 [node name="Princess" type="Sprite2D" parent="." unique_id=482434929]
-visible = false
 position = Vector2(824, 512)
 scale = Vector2(4, 4)
 texture = ExtResource("6_gnmg5")
 hframes = 5
 vframes = 3
-
-[node name="PrincessHat" type="AnimatedSprite2D" parent="Princess" unique_id=1196111220]
-position = Vector2(0, -4)
-sprite_frames = SubResource("SpriteFrames_wrexx")
-animation = &"blue"
-frame_progress = 0.27202654
+frame = 10
 
 [node name="FrogSprite" type="Sprite2D" parent="." unique_id=1856027398]
 position = Vector2(232, 512)
@@ -694,27 +616,20 @@ texture = ExtResource("8_ug2e0")
 hframes = 12
 vframes = 4
 
+[node name="PrinceSprite" type="Sprite2D" parent="." unique_id=1433141265]
+visible = false
+position = Vector2(696, 512)
+scale = Vector2(4, 4)
+texture = ExtResource("7_0uff6")
+flip_h = true
+hframes = 5
+
 [node name="Door" type="Sprite2D" parent="." unique_id=553714894]
 visible = false
 position = Vector2(232, 464)
 scale = Vector2(4, 4)
 texture = ExtResource("5_8cjy1")
 hframes = 6
-
-[node name="PrincessFrogSprite" type="Sprite2D" parent="." unique_id=1433141265]
-visible = false
-position = Vector2(760, 512)
-scale = Vector2(4, 4)
-texture = ExtResource("8_ug2e0")
-hframes = 12
-vframes = 4
-frame = 4
-
-[node name="PrincessHat" type="AnimatedSprite2D" parent="PrincessFrogSprite" unique_id=1262911164]
-position = Vector2(0, 4)
-sprite_frames = SubResource("SpriteFrames_wrexx")
-animation = &"blue"
-frame_progress = 0.4596129
 
 [node name="SpeechBubble" type="Sprite2D" parent="." unique_id=652235866]
 visible = false
@@ -731,22 +646,29 @@ scale = Vector2(8, 8)
 sprite_frames = SubResource("SpriteFrames_403c5")
 animation = &"bomb"
 
-[node name="windowMask" type="TileMapLayer" parent="." unique_id=247194025]
-z_index = 1
-scale = Vector2(4, 4)
-tile_map_data = PackedByteArray("AAADAAEAAAABAAAAAAADAAIAAAABAAEAAAAEAAEAAAABAAAAAAAEAAIAAAADAAAAAAADAAMAAAABAAEAAAA=")
-tile_set = SubResource("TileSet_82f50")
-
-[node name="windowMask2" type="TileMapLayer" parent="." unique_id=1571642966]
-visible = false
-z_index = 1
-scale = Vector2(4, 4)
-tile_map_data = PackedByteArray("AAAEAAMAAAADAAEAAAA=")
-tile_set = SubResource("TileSet_82f50")
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1796253005]
 libraries/ = SubResource("AnimationLibrary_oeuae")
 
 [node name="SFX" type="AudioStreamPlayer2D" parent="." unique_id=1984982892]
+
+[node name="UI" type="CanvasLayer" parent="." unique_id=2144679471]
+
+[node name="Congratulations" type="RichTextLabel" parent="UI" unique_id=1152009768]
+modulate = Color(1, 1, 1, 0)
+texture_filter = 1
+clip_contents = false
+offset_left = 1.0
+offset_top = 119.0
+offset_right = 575.0
+offset_bottom = 316.5
+scale = Vector2(2, 2)
+mouse_filter = 2
+theme = ExtResource("13_lce32")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+text = "Congratulations!
+You won!
+"
+horizontal_alignment = 1
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
