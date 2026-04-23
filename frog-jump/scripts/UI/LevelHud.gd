@@ -4,7 +4,6 @@ extends CanvasLayer
 @export var progress_bar: TextureProgressBar
 @export var player: Node2D
 @export var finish_line: Goal
-@export var finish_icon: TextureRect
 
 var start_y: float
 var total_dist: float
@@ -49,9 +48,4 @@ func reset_level_data():
 		progress_bar.min_value = 0
 		progress_bar.max_value = 100
 		progress_bar.value = 0
-		
-		if finish_icon:
-			
-			finish_icon.position.y = 0
-			finish_icon.position.x = 0
 	

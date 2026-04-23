@@ -2,50 +2,27 @@
 
 [ext_resource type="Script" uid="uid://jvq6xf17vj78" path="res://scripts/UI/LevelHud.gd" id="1_icfke"]
 [ext_resource type="PackedScene" uid="uid://cqc6tpc58ywdq" path="res://scenes/UI/SubScenes/PauseButton.tscn" id="1_qqpq1"]
-[ext_resource type="Texture2D" uid="uid://dw1pnlwf0bbkd" path="res://assets/textures/png/finishLine.png" id="3_dpxdk"]
+[ext_resource type="Texture2D" uid="uid://biyh4m3gim3xp" path="res://assets/textures/png/bar_round_gloss_small.svg" id="4_1ddhp"]
 [ext_resource type="PackedScene" uid="uid://ct3hhfyehfxr6" path="res://scenes/UI/coin-counter.tscn" id="4_dpxdk"]
+[ext_resource type="Texture2D" uid="uid://halpo4bxtj7s" path="res://assets/textures/png/bar_shadow_round_outline_small.svg" id="4_uot5j"]
 
-[sub_resource type="Gradient" id="Gradient_dpxdk"]
-colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_1ddhp"]
-gradient = SubResource("Gradient_dpxdk")
-
-[sub_resource type="Gradient" id="Gradient_qqpq1"]
-colors = PackedColorArray(0.31764707, 0.5921569, 0.12941177, 1, 0.5176471, 0.8235294, 0.30588236, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_icfke"]
-gradient = SubResource("Gradient_qqpq1")
-
-[node name="LevelHud" type="CanvasLayer" unique_id=424571858 node_paths=PackedStringArray("progress_bar", "finish_icon")]
+[node name="LevelHud" type="CanvasLayer" unique_id=424571858 node_paths=PackedStringArray("progress_bar")]
 script = ExtResource("1_icfke")
-progress_bar = NodePath("ProgressBar")
-finish_icon = NodePath("ProgressBar/FinishLineIcon")
+progress_bar = NodePath("TextureProgressBar")
 
 [node name="PauseButton" parent="." unique_id=451819396 instance=ExtResource("1_qqpq1")]
 
-[node name="ProgressBar" type="TextureProgressBar" parent="." unique_id=466582078]
-custom_minimum_size = Vector2(25, 350)
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_left = 40.0
-offset_top = -175.0
-offset_right = 80.0
-offset_bottom = 175.0
-grow_vertical = 2
-value = 36.0
-allow_greater = true
-fill_mode = 3
-nine_patch_stretch = true
-texture_under = SubResource("GradientTexture2D_1ddhp")
-texture_progress = SubResource("GradientTexture2D_icfke")
-
-[node name="FinishLineIcon" type="TextureRect" parent="ProgressBar" unique_id=191281124]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-texture = ExtResource("3_dpxdk")
-expand_mode = 3
-
 [node name="coin-counter" parent="." unique_id=2109908710 instance=ExtResource("4_dpxdk")]
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="." unique_id=1845808073]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 4.0
+offset_top = -72.0
+offset_right = 436.0
+grow_vertical = 0
+rotation = -1.5707964
+value = 74.0
+texture_under = ExtResource("4_uot5j")
+texture_progress = ExtResource("4_1ddhp")
