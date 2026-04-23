@@ -1,6 +1,7 @@
 extends Area2D
 
 @export var player_group_name := "player"
+var coinCollectSfx: AudioStream = preload("res://assets/audio/coinCollect.mp3")
 var _collected := false
 
 
@@ -16,7 +17,7 @@ func _on_body_entered(body: Node) -> void:
 		return
 	if body == null or not body.is_in_group(player_group_name):
 		return
-
+	GlobalAudio.play_sfx(coinCollectSfx)
 	_collected = true
 	_add_coin_to_global_state(1)
 	queue_free()
