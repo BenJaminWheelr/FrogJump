@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://c6it528qnfi8j" path="res://scripts/UI/Buttons/BackButton.gd" id="2_3f38p"]
 [ext_resource type="FontFile" uid="uid://cb843gtqul67v" path="res://assets/fonts/alagard.ttf" id="2_skml4"]
 [ext_resource type="AudioStream" uid="uid://ckghpnlodtgxp" path="res://assets/audio/uiSelect.wav" id="3_skml4"]
+[ext_resource type="Script" uid="uid://cqv1l2s4slxmm" path="res://scripts/UI/Credits.gd" id="4_n2nwu"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8ft31"]
 bg_color = Color(0.0941176, 0.0941176, 0.141176, 0.941176)
@@ -18,6 +19,7 @@ default_font_size = 25
 
 [node name="Credits" type="CanvasLayer" unique_id=1341459121]
 layer = 2
+script = ExtResource("4_n2nwu")
 
 [node name="CenterContainer" type="CenterContainer" parent="." unique_id=1043452288]
 anchors_preset = 15
@@ -65,15 +67,18 @@ bbcode_enabled = true
 text = "[center][b]Frog Jump Team[/b]
 
 [u]Programming[/u]
-Names
+Ben Wheeler
+Brody Steidley
+Roxanne Seeley
 
 [u]Art and Assets[/u]
-Names
+Brody Steidley
+Gabriel Ceppas (itch.io)
 
 [u]Audio[/u]
 Names
 
-Special Thanks
+[u]Special Thanks[/u]
 Everyone who played and gave feedback[/center]"
 horizontal_alignment = 1
 
