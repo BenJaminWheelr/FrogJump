@@ -52,19 +52,16 @@ theme_override_font_sizes/font_size = 54
 text = "Credits"
 horizontal_alignment = 1
 
-[node name="ScrollContainer" type="ScrollContainer" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1026084455]
-custom_minimum_size = Vector2(0, 230)
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="CreditsText" type="RichTextLabel" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer" unique_id=315772653]
+[node name="CreditsText" type="RichTextLabel" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=315772653]
 custom_minimum_size = Vector2(0, 360)
 layout_mode = 2
 size_flags_horizontal = 3
 theme = SubResource("Theme_t6175")
 bbcode_enabled = true
-text = "[center][b]Frog Jump Team[/b]
+text = "[center][b][u]Frog Jump Team:[/u][/b]
+Ben Wheeler
+Brody Steidley
+Roxanne Seeley
 
 [u]Programming[/u]
 Ben Wheeler
@@ -80,6 +77,9 @@ Craftpix.net
 Ben Wheeler
 Inspectorj (freesound.org)
 Scicodedev (freesound.org)
+
+[u]Level Design[/u]
+Brody Steidley
 
 [u]Special Thanks[/u]
 Everyone who played and gave feedback[/center]"
