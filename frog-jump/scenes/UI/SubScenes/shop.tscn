@@ -1,15 +1,16 @@
-[gd_scene format=3 uid="uid://mpc0re6o75i4"]
+[gd_scene format=3 uid="uid://bac2l1f6hlkyx"]
 
-[ext_resource type="Script" uid="uid://dcpk2o3134o64" path="res://scripts/UI/Shop.gd" id="1_yxdfm"]
-[ext_resource type="PackedScene" uid="uid://cuww5g8kxhjb8" path="res://scenes/UI/SubScenes/ShopWindow.tscn" id="2_yxdfm"]
+[ext_resource type="Script" path="res://scripts/UI/Shop.gd" id="1_yxdfm"]
+[ext_resource type="PackedScene" uid="uid://b17q0kk7bokm7" path="res://scenes/UI/SubScenes/ShopWindow.tscn" id="2_yxdfm"]
 [ext_resource type="AudioStream" uid="uid://dgsbp6yweqwo7" path="res://assets/audio/uiAccept.wav" id="4_33358"]
 [ext_resource type="Theme" uid="uid://cv0jb6rth2amu" path="res://assets/ui_theme.tres" id="5_chx4x"]
-[ext_resource type="Script" uid="uid://c47qe44g21r4x" path="res://scripts/UI/ShopItem.gd" id="6_item"]
+[ext_resource type="Script" path="res://scripts/UI/ShopItem.gd" id="6_item"]
 [ext_resource type="Script" uid="uid://c6it528qnfi8j" path="res://scripts/UI/Buttons/BackButton.gd" id="7_back"]
+[ext_resource type="PackedScene" uid="uid://ct3hhfyehfxr6" path="res://scenes/UI/coin-counter.tscn" id="8_fhmag"]
 [ext_resource type="AudioStream" uid="uid://ckghpnlodtgxp" path="res://assets/audio/uiSelect.wav" id="8_sfx"]
-[ext_resource type="Texture2D" uid="uid://cf1ghul2v8ktl" path="res://assets/textures/crown.png" id="9_crown"]
+[ext_resource type="Texture2D" uid="uid://7i1ty8d4eqhd" path="res://assets/textures/crown.png" id="9_crown"]
 [ext_resource type="Texture2D" uid="uid://8icbubvy0yx6" path="res://assets/textures/png/lock.png" id="10_lock"]
-[ext_resource type="Texture2D" path="res://assets/textures/butterfly.png" id="11_butterfly"]
+[ext_resource type="Texture2D" uid="uid://cvb8yh6sywj8k" path="res://assets/textures/butterfly.png" id="11_butterfly"]
 
 [sub_resource type="Resource" id="Resource_crown"]
 script = ExtResource("6_item")
@@ -17,7 +18,6 @@ item_id = "crown"
 name = "Crown"
 price = 10
 thumbnail = ExtResource("9_crown")
-is_coming_soon = false
 
 [sub_resource type="Resource" id="Resource_butterfly"]
 script = ExtResource("6_item")
@@ -25,13 +25,11 @@ item_id = "butterfly"
 name = "Butterfly"
 price = 15
 thumbnail = ExtResource("11_butterfly")
-is_coming_soon = false
 
 [sub_resource type="Resource" id="Resource_locked"]
 script = ExtResource("6_item")
 item_id = "locked_1"
 name = "Coming Soon"
-price = 0
 thumbnail = ExtResource("10_lock")
 is_coming_soon = true
 
@@ -40,7 +38,7 @@ layer = 2
 script = ExtResource("1_yxdfm")
 shop_window_scene = ExtResource("2_yxdfm")
 select_sfx = ExtResource("4_33358")
-shop_items = [SubResource("Resource_crown"), SubResource("Resource_butterfly"), SubResource("Resource_locked")]
+shop_items = Array[ExtResource("6_item")]([SubResource("Resource_crown"), SubResource("Resource_butterfly"), SubResource("Resource_locked")])
 
 [node name="ScrollContainer" type="ScrollContainer" parent="." unique_id=1977932441]
 anchors_preset = 15
@@ -86,3 +84,4 @@ text = "Back"
 script = ExtResource("7_back")
 back_sfx = ExtResource("8_sfx")
 
+[node name="coin-counter" parent="." unique_id=2109908710 instance=ExtResource("8_fhmag")]

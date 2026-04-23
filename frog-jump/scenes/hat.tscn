@@ -1,8 +1,7 @@
 [gd_scene format=3 uid="uid://c8vfvjw4kj4h3"]
 
-[ext_resource type="Script" path="res://scripts/hat.gd" id="1_jkl23"]
-[ext_resource type="Texture2D" uid="uid://cf1ghul2v8ktl" path="res://assets/textures/crown.png" id="2_crown"]
-[ext_resource type="Texture2D" path="res://assets/textures/butterfly.png" id="3_butterfly"]
+[ext_resource type="Script" uid="uid://c65putn4tkef1" path="res://scripts/hat.gd" id="1_jkl23"]
+[ext_resource type="Texture2D" uid="uid://7i1ty8d4eqhd" path="res://assets/textures/crown.png" id="2_crown"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_hat"]
 
@@ -10,12 +9,9 @@
 script = ExtResource("1_jkl23")
 float_offset = Vector2(0, -40)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=334941168]
 shape = SubResource("CircleShape2D_hat")
-radius = 16.0
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_crown")
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=859544040]
 scale = Vector2(1.5, 1.5)
-centered = true
-
+texture = ExtResource("2_crown")

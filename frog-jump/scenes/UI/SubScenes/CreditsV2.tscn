@@ -1,0 +1,127 @@
+[gd_scene format=3 uid="uid://1c362jckx33m"]
+
+[ext_resource type="Theme" uid="uid://cv0jb6rth2amu" path="res://assets/ui_theme.tres" id="1_xvg4f"]
+[ext_resource type="FontFile" uid="uid://cb843gtqul67v" path="res://assets/fonts/alagard.ttf" id="2_nrdp5"]
+[ext_resource type="Script" uid="uid://c6it528qnfi8j" path="res://scripts/UI/Buttons/BackButton.gd" id="3_vup47"]
+[ext_resource type="AudioStream" uid="uid://ckghpnlodtgxp" path="res://assets/audio/uiSelect.wav" id="4_232cj"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8ft31"]
+bg_color = Color(0.0941176, 0.0941176, 0.141176, 0.941176)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="Theme" id="Theme_t6175"]
+default_font = ExtResource("2_nrdp5")
+default_font_size = 25
+
+[node name="Credits" type="CanvasLayer" unique_id=1341459121]
+layer = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=1043452288]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="CenterContainer" unique_id=771442811]
+custom_minimum_size = Vector2(720, 420)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_8ft31")
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/PanelContainer" unique_id=1691559746]
+layout_mode = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/PanelContainer/MarginContainer" unique_id=1067230721]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 14
+
+[node name="Title" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=603617077]
+layout_mode = 2
+theme = ExtResource("1_xvg4f")
+theme_override_font_sizes/font_size = 54
+text = "Credits"
+horizontal_alignment = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1026084455]
+custom_minimum_size = Vector2(0, 230)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="CreditsText" type="RichTextLabel" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer" unique_id=315772653]
+custom_minimum_size = Vector2(0, 360)
+layout_mode = 2
+size_flags_horizontal = 3
+theme = SubResource("Theme_t6175")
+bbcode_enabled = true
+text = "[center][b]Frog Jump Team[/b]
+
+[u]Programming[/u]
+Names
+
+[u]Art and Assets[/u]
+Names
+
+[u]Audio[/u]
+Names
+
+Special Thanks
+Everyone who played and gave feedback[/center]"
+horizontal_alignment = 1
+
+[node name="BackButton" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=797855348]
+custom_minimum_size = Vector2(210, 58)
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("1_xvg4f")
+text = "Back"
+script = ExtResource("3_vup47")
+back_sfx = ExtResource("4_232cj")
+
+[node name="Background" type="Node2D" parent="." unique_id=889503341]
+z_index = -1
+
+[node name="Parallax2D" type="Parallax2D" parent="Background" unique_id=1839664624]
+repeat_size = Vector2(1152, 0)
+autoscroll = Vector2(-1, 0)
+repeat_times = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="Background/Parallax2D" unique_id=1668012102]
+scale = Vector2(2, 2)
+centered = false
+
+[node name="Parallax2D2" type="Parallax2D" parent="Background" unique_id=1655287101]
+repeat_size = Vector2(1152, 0)
+autoscroll = Vector2(-5, 0)
+repeat_times = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="Background/Parallax2D2" unique_id=1434570942]
+scale = Vector2(2, 2)
+centered = false
+
+[node name="Parallax2D3" type="Parallax2D" parent="Background" unique_id=782779864]
+repeat_size = Vector2(1152, 0)
+autoscroll = Vector2(-20, 0)
+repeat_times = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="Background/Parallax2D3" unique_id=1530870384]
+z_index = -1
+scale = Vector2(2, 2)
+centered = false
+
+[node name="Parallax2D4" type="Parallax2D" parent="Background" unique_id=1320134445]
+repeat_size = Vector2(1152, 0)
+autoscroll = Vector2(-30, 0)
+repeat_times = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="Background/Parallax2D4" unique_id=796049777]
+scale = Vector2(2, 2)
+centered = false

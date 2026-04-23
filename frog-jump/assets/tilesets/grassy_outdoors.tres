@@ -1,9 +1,9 @@
 [gd_resource type="TileSet" format=3 uid="uid://bk18rpnk23m1s"]
 
-[ext_resource type="Texture2D" uid="uid://dl3igxyeqnkru" path="res://assets/textures/tile/grassy_outdoors.png" id="1_gi5m5"]
+[ext_resource type="Texture2D" uid="uid://chdu1cogasfj3" path="res://assets/textures/tile/grassy_outdoors.png" id="1_gi5m5"]
 [ext_resource type="Texture2D" uid="uid://c8lwgnt3knatb" path="res://assets/textures/tile/log_platform.png" id="2_uapx3"]
 [ext_resource type="Texture2D" uid="uid://bd4o6mo4t3ntt" path="res://assets/textures/tile/props_outdoors.png" id="3_erikw"]
-[ext_resource type="Texture2D" uid="uid://ctjffp4bmd48g" path="res://assets/textures/tile/props.png" id="4_gdxo2"]
+[ext_resource type="Texture2D" uid="uid://34d0rdwuskma" path="res://assets/textures/tile/props.png" id="4_gdxo2"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gcu4a"]
 resource_name = "Autotile Wall"

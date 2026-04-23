@@ -103,7 +103,7 @@ ambience = ExtResource("6_av0jf")
 play_scene_path = "uid://d4emc5jjdit30"
 credits_scene_path = "uid://bxu8r0pl7gkry"
 settings_scene_path = "uid://cgdhng50wnohq"
-shop_scene_path = "uid://mpc0re6o75i4"
+shop_scene_path = "uid://bac2l1f6hlkyx"
 
 [node name="Background" type="Node2D" parent="MainMenu" unique_id=1117678402]
 

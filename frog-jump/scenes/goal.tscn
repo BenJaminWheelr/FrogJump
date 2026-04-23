@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dgmf0jnydxgex"]
 
 [ext_resource type="Script" uid="uid://b1fphu3423ceu" path="res://scripts/goal.gd" id="1_jbojv"]
-[ext_resource type="Texture2D" uid="uid://daclxuptxocp3" path="res://assets/textures/door.png" id="2_sx1j4"]
+[ext_resource type="Texture2D" uid="uid://ijnis6iaphu6" path="res://assets/textures/door.png" id="2_sx1j4"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sx1j4"]
 radius = 22.75
