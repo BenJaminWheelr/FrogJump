@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://jvq6xf17vj78" path="res://scripts/UI/LevelHud.gd" id="1_icfke"]
 [ext_resource type="PackedScene" uid="uid://cqc6tpc58ywdq" path="res://scenes/UI/SubScenes/PauseButton.tscn" id="1_qqpq1"]
-[ext_resource type="Texture2D" uid="uid://biyh4m3gim3xp" path="res://assets/textures/png/bar_round_gloss_small.svg" id="4_1ddhp"]
+[ext_resource type="Texture2D" uid="uid://dqebt4wff3f8i" path="res://assets/textures/png/bar_round_gloss_small.svg" id="4_1ddhp"]
 [ext_resource type="PackedScene" uid="uid://ct3hhfyehfxr6" path="res://scenes/UI/coin-counter.tscn" id="4_dpxdk"]
 [ext_resource type="Texture2D" uid="uid://halpo4bxtj7s" path="res://assets/textures/png/bar_shadow_round_outline_small.svg" id="4_uot5j"]
 
@@ -23,6 +23,6 @@ offset_top = -72.0
 offset_right = 436.0
 grow_vertical = 0
 rotation = -1.5707964
-value = 74.0
+step = 0.1
 texture_under = ExtResource("4_uot5j")
 texture_progress = ExtResource("4_1ddhp")
