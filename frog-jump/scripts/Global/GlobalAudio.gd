@@ -25,8 +25,13 @@ func _ready():
 	add_child(music_player)
 	add_child(ambience_player)
 	
+	SaveManager.data_modified.connect(_on_data_reset)
+	
 	music_player.bus = "Music"
 	ambience_player.bus = "Ambience"
+
+func _on_data_reset() -> void:
+	audio_enabled = SaveManager.data.settings.audioEnabled
 
 func play_sfx(effect: AudioStream):
 	if effect and audio_enabled:

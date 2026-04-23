@@ -1,8 +1,10 @@
 extends Node
 
+signal data_modified
+
 const SAVE_PATH = "user://savegame.json"
 
-var data = {
+const DEFAULT_DATA = {
 	"player": {
 		"highest_level_unlocked": 1,
 		"coins": 0,
@@ -16,58 +18,54 @@ var data = {
 	}
 }
 
+var data = {}
+
 func _ready():
 	load_game()
 	_ensure_defaults()
 
-
 func save_game():
 	var file = FileAccess.open(SAVE_PATH, FileAccess.WRITE)
 	if file:
-		var json_string = JSON.stringify(data)
-		file.store_string(json_string)
+		file.store_string(JSON.stringify(data))
 		file.close()
-
-
+	data_modified.emit()
+	
+		
 func update_data(section: String, key: String, value):
 	if data.has(section) and data[section].has(key):
 		data[section][key] = value
 		save_game()
-
-
-func _ensure_defaults() -> void:
-	if not data.has("player"):
-		data["player"] = {"highest_level_unlocked": 1, "coins": 0}
-	if not data["player"].has("highest_level_unlocked"):
-		data["player"]["highest_level_unlocked"] = 1
-	if not data["player"].has("coins"):
-		data["player"]["coins"] = 0
-
-	if not data.has("settings"):
-		data["settings"] = {"audioEnabled": true}
-	if not data["settings"].has("audioEnabled"):
-		data["settings"]["audioEnabled"] = true
-
-	if not data.has("shop"):
-		data["shop"] = {}
-	if not data["shop"].has("owned_items"):
-		data["shop"]["owned_items"] = []
-	if not data["shop"].has("equipped_item"):
-		data["shop"]["equipped_item"] = ""
-
-
+	else:
+		push_error("SaveManager: Attempted to update non-existent key: " + section + "/" + key)
+		
 func load_game():
 	if not FileAccess.file_exists(SAVE_PATH):
+		data = DEFAULT_DATA.duplicate(true)
 		return
 
 	var file = FileAccess.open(SAVE_PATH, FileAccess.READ)
 	if file:
-		var json_string = file.get_as_text()
-		file.close()
-
 		var json = JSON.new()
-		var error = json.parse(json_string)
-		if error == OK:
+		if json.parse(file.get_as_text()) == OK:
 			data = json.data
-			print("Successfully loaded player data")
-			print(data)
+		file.close()
+	print(data)
+
+func reset_save_data():
+	if FileAccess.file_exists(SAVE_PATH):
+		DirAccess.remove_absolute(SAVE_PATH)
+	
+	data = DEFAULT_DATA.duplicate(true)
+	save_game()
+
+
+func _ensure_defaults() -> void:
+	var defaults = DEFAULT_DATA.duplicate(true)
+	for section in defaults.keys():
+		if not data.has(section):
+			data[section] = defaults[section]
+		else:
+			for key in defaults[section].keys():
+				if not data[section].has(key):
+					data[section][key] = defaults[section][key]
