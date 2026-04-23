@@ -1,8 +1,6 @@
 [gd_scene format=4 uid="uid://bnji7gkn7115t"]
 
 [ext_resource type="Script" uid="uid://crqbnpurvae3k" path="res://scripts/level.gd" id="1_y0jjw"]
-[ext_resource type="Texture2D" uid="uid://dm4ixd8enmg5p" path="res://assets/backgrounds/SmallClouds.png" id="2_kk1as"]
-[ext_resource type="Texture2D" uid="uid://b8ynu4j8ei0wf" path="res://assets/backgrounds/BigClouds.png" id="3_imskh"]
 [ext_resource type="Texture2D" uid="uid://gg2txptj4ta8" path="res://assets/textures/tile/tower1_bg.png" id="4_c1f8f"]
 [ext_resource type="Texture2D" uid="uid://daclxuptxocp3" path="res://assets/textures/door.png" id="5_oiluq"]
 [ext_resource type="TileSet" uid="uid://c5604807rlvrf" path="res://assets/tilesets/tower1.tres" id="6_4ojet"]
@@ -38,8 +36,6 @@ pattern_0 = SubResource("TileMapPattern_ham7r")
 
 [node name="1" type="Node2D" unique_id=277534477]
 script = ExtResource("1_y0jjw")
-bg_img2 = ExtResource("2_kk1as")
-bg_img3 = ExtResource("3_imskh")
 player_start_dir = 1
 
 [node name="bg" type="TileMapLayer" parent="." unique_id=1140475832]

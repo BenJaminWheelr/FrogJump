@@ -69,7 +69,6 @@ position = Vector2(577, -2288)
 
 [node name="Coin" parent="." unique_id=2130832083 instance=ExtResource("10_0qi37")]
 position = Vector2(232, -520)
-scale = Vector2(4, 4)
 
 [connection signal="goal_animation_finished" from="goal" to="." method="level_completed"]
 [connection signal="goal_reached" from="goal" to="." method="level_complete_anim_start"]
