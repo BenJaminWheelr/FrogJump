@@ -133,6 +133,7 @@ func _remove_enemy(enemy: Object) -> void:
 
 func _reset_level_after_enemy_hit() -> void:
 	var node = get_parent()
+	GlobalAudio.play_sfx(death_sfx)
 	while node != null:
 		if node.has_method("resetLevel"):
 			node.call_deferred("resetLevel")
@@ -151,7 +152,6 @@ func drop_key() -> void:
 
 
 func _on_instakill_detection_area_body_entered(_body: Node2D) -> void:
-	GlobalAudio.play_sfx(death_sfx)
 	_reset_level_after_enemy_hit()
 
 
