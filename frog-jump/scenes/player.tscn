@@ -1,7 +1,8 @@
 [gd_scene format=3 uid="uid://cv20o2o3c2gkd"]
 
 [ext_resource type="Script" uid="uid://bsx6fgmbla4k5" path="res://scripts/player.gd" id="1_g2els"]
-[ext_resource type="AudioStream" uid="uid://bgcq5nor8xips" path="res://assets/audio/jump.wav" id="2_qhqgy"]
+[ext_resource type="AudioStream" uid="uid://bgcq5nor8xips" path="res://assets/audio/playerJump.wav" id="2_qhqgy"]
+[ext_resource type="AudioStream" uid="uid://ddgprsll0l7a8" path="res://assets/audio/playerDeath.wav" id="3_dqkch"]
 [ext_resource type="Texture2D" uid="uid://bgkcgqe823321" path="res://assets/textures/frog.png" id="3_qhqgy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_onrkg"]
@@ -352,6 +353,7 @@ _data = {
 [node name="frog" type="CharacterBody2D" unique_id=225646593 groups=["player"]]
 script = ExtResource("1_g2els")
 jump_sfx = ExtResource("2_qhqgy")
+death_sfx = ExtResource("3_dqkch")
 
 [node name="FrogSprite" type="Sprite2D" parent="." unique_id=1616311599]
 position = Vector2(0, 12)

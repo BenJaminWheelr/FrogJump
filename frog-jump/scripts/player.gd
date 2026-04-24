@@ -24,6 +24,7 @@ var has_key: bool = false
 
 @export_group("Audio")
 @export var jump_sfx: AudioStream
+@export var death_sfx: AudioStream
 
 @export_group("Hat")
 @export var hat_scene: PackedScene = preload("res://scenes/hat.tscn")
@@ -137,7 +138,6 @@ func _reset_level_after_enemy_hit() -> void:
 			node.call_deferred("resetLevel")
 			return
 		node = node.get_parent()
-
 	get_tree().call_deferred("reload_current_scene")
 
 
@@ -151,6 +151,7 @@ func drop_key() -> void:
 
 
 func _on_instakill_detection_area_body_entered(_body: Node2D) -> void:
+	GlobalAudio.play_sfx(death_sfx)
 	_reset_level_after_enemy_hit()
 
 

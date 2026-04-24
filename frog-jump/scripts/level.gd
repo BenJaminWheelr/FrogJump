@@ -8,8 +8,8 @@ signal level_complete
 @export var bg_img2 : Texture2D = null;
 @export var bg_img3 : Texture2D = null;
 
-@export var music : AudioStream = null;
-@export var ambience : AudioStream = null;
+@export var music : AudioStream = preload("res://assets/audio/background_music.mp3");
+@export var ambience : AudioStream = preload("res://assets/audio/nature_ambiance.wav");
 @export var gameWonSfx : AudioStream = preload("res://assets/audio/gameWon.mp3")
 
 enum PlayerStartDir
