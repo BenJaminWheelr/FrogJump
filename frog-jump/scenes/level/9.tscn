@@ -4,13 +4,13 @@
 [ext_resource type="Texture2D" uid="uid://yv3ay3rmkdwg" path="res://assets/backgrounds/orange.png" id="2_g0bje"]
 [ext_resource type="Texture2D" uid="uid://gg2txptj4ta8" path="res://assets/textures/tile/tower1_bg.png" id="3_kt7o0"]
 [ext_resource type="TileSet" uid="uid://c5604807rlvrf" path="res://assets/tilesets/tower1.tres" id="4_etxm0"]
-[ext_resource type="Texture2D" uid="uid://ijnis6iaphu6" path="res://assets/textures/door.png" id="5_6pqud"]
-[ext_resource type="Texture2D" uid="uid://dxn2rkyd8e00f" path="res://assets/textures/princess.png" id="6_vxxyt"]
+[ext_resource type="Texture2D" uid="uid://daclxuptxocp3" path="res://assets/textures/door.png" id="5_6pqud"]
+[ext_resource type="Texture2D" uid="uid://bhfh7eq22wyv0" path="res://assets/textures/princess.png" id="6_vxxyt"]
 [ext_resource type="Texture2D" uid="uid://r2wufh26j52j" path="res://assets/textures/princessHat.png" id="7_dswit"]
-[ext_resource type="Texture2D" uid="uid://bgkcgqe823321" path="res://assets/textures/frog.png" id="8_h7gh7"]
-[ext_resource type="Texture2D" uid="uid://cnxfch0bhrej2" path="res://assets/textures/speechBubble.png" id="9_n8qty"]
+[ext_resource type="Texture2D" uid="uid://dg836rh8wgmy1" path="res://assets/textures/frog.png" id="8_h7gh7"]
+[ext_resource type="Texture2D" uid="uid://c71leniui4vpf" path="res://assets/textures/speechBubble.png" id="9_n8qty"]
 [ext_resource type="Texture2D" uid="uid://ckyrwgeyneght" path="res://assets/textures/smokeBomb.png" id="10_clpwt"]
-[ext_resource type="AudioStream" uid="uid://bgcq5nor8xips" path="res://assets/audio/jump.wav" id="11_ynyb5"]
+[ext_resource type="AudioStream" uid="uid://bxr15v2l2kg1e" path="res://assets/audio/jump.wav" id="11_ynyb5"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_ham7r"]
 tile_data = PackedInt32Array(0, 196608, 0, 65536, 196608, 1, 1, 262144, 0, 65537, 262144, 1)

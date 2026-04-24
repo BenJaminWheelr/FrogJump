@@ -1,14 +1,14 @@
 [gd_scene format=4 uid="uid://cgxis1s0pjkch"]
 
 [ext_resource type="Script" uid="uid://crqbnpurvae3k" path="res://scripts/level.gd" id="1_ebcxp"]
-[ext_resource type="Texture2D" uid="uid://c08p6wu034xs" path="res://assets/backgrounds/SmallClouds.png" id="2_lwe6l"]
+[ext_resource type="Texture2D" uid="uid://dm4ixd8enmg5p" path="res://assets/backgrounds/SmallClouds.png" id="2_lwe6l"]
 [ext_resource type="Texture2D" uid="uid://yv3ay3rmkdwg" path="res://assets/backgrounds/orange.png" id="3_01g6w"]
 [ext_resource type="Texture2D" uid="uid://gg2txptj4ta8" path="res://assets/textures/tile/tower1_bg.png" id="4_fixlg"]
-[ext_resource type="Texture2D" uid="uid://ijnis6iaphu6" path="res://assets/textures/door.png" id="5_yjp8l"]
+[ext_resource type="Texture2D" uid="uid://daclxuptxocp3" path="res://assets/textures/door.png" id="5_yjp8l"]
 [ext_resource type="TileSet" uid="uid://c5604807rlvrf" path="res://assets/tilesets/tower1.tres" id="6_tucim"]
 [ext_resource type="PackedScene" uid="uid://dgmf0jnydxgex" path="res://scenes/goal.tscn" id="7_8vryq"]
 [ext_resource type="PackedScene" uid="uid://cg7ak7nx6rf5r" path="res://scenes/enemy.tscn" id="8_lwe6l"]
-[ext_resource type="Texture2D" uid="uid://biwgc6cgisxc0" path="res://assets/textures/spikeguy.png" id="9_01g6w"]
+[ext_resource type="Texture2D" uid="uid://dccdfth60iyjs" path="res://assets/textures/spikeguy.png" id="9_01g6w"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_ham7r"]
 tile_data = PackedInt32Array(0, 196608, 0, 65536, 196608, 1, 1, 262144, 0, 65537, 262144, 1)

@@ -1,12 +1,12 @@
 [gd_scene format=4 uid="uid://csavy5pmiodjk"]
 
 [ext_resource type="Script" uid="uid://crqbnpurvae3k" path="res://scripts/level.gd" id="1_cjyud"]
-[ext_resource type="Texture2D" uid="uid://c08p6wu034xs" path="res://assets/backgrounds/SmallClouds.png" id="2_okfh8"]
+[ext_resource type="Texture2D" uid="uid://dm4ixd8enmg5p" path="res://assets/backgrounds/SmallClouds.png" id="2_okfh8"]
 [ext_resource type="Texture2D" uid="uid://b8ynu4j8ei0wf" path="res://assets/backgrounds/BigClouds.png" id="3_nkpxx"]
 [ext_resource type="PackedScene" uid="uid://dgmf0jnydxgex" path="res://scenes/goal.tscn" id="3_okfh8"]
 [ext_resource type="Texture2D" uid="uid://gg2txptj4ta8" path="res://assets/textures/tile/tower1_bg.png" id="4_v2mfq"]
 [ext_resource type="TileSet" uid="uid://c5604807rlvrf" path="res://assets/tilesets/tower1.tres" id="5_tixup"]
-[ext_resource type="Texture2D" uid="uid://ijnis6iaphu6" path="res://assets/textures/door.png" id="5_v2mfq"]
+[ext_resource type="Texture2D" uid="uid://daclxuptxocp3" path="res://assets/textures/door.png" id="5_v2mfq"]
 [ext_resource type="PackedScene" uid="uid://cgio6dd0xyed3" path="res://scenes/coin.tscn" id="8_tixup"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_ham7r"]
