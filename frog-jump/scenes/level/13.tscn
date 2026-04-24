@@ -1,9 +1,9 @@
-[gd_scene format=4 uid="uid://r4jpkr7ybgo0"]
+[gd_scene format=4 uid="uid://g7id8ph2asne"]
 
 [ext_resource type="Script" uid="uid://crqbnpurvae3k" path="res://scripts/level.gd" id="1_8y4lp"]
 [ext_resource type="Texture2D" uid="uid://c5aruobcjutro" path="res://assets/backgrounds/night.png" id="2_faeqa"]
 [ext_resource type="Texture2D" uid="uid://gg2txptj4ta8" path="res://assets/textures/tile/tower1_bg.png" id="4_uaa6a"]
-[ext_resource type="Texture2D" uid="uid://daclxuptxocp3" path="res://assets/textures/door.png" id="5_ajml7"]
+[ext_resource type="Texture2D" uid="uid://ijnis6iaphu6" path="res://assets/textures/door.png" id="5_ajml7"]
 [ext_resource type="TileSet" uid="uid://c5604807rlvrf" path="res://assets/tilesets/tower1.tres" id="6_58v2x"]
 [ext_resource type="PackedScene" uid="uid://cgio6dd0xyed3" path="res://scenes/coin.tscn" id="8_wc5ba"]
 [ext_resource type="PackedScene" uid="uid://2gli251q0e4o" path="res://scenes/platform_range.tscn" id="9_faeqa"]
@@ -77,12 +77,12 @@ set_vel = Vector2(64, 32)
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1923058753]
 position = Vector2(600, -896)
 
-[node name="goal" parent="." unique_id=1943025278 instance=ExtResource("10_faeqa")]
+[node name="locked goal" parent="." unique_id=1943025278 instance=ExtResource("10_faeqa")]
 position = Vector2(242, -2288)
 
 [node name="key" parent="." unique_id=125537896 instance=ExtResource("11_uaa6a")]
 position = Vector2(683, -1825)
 scale = Vector2(4, 4)
 
-[connection signal="goal_animation_finished" from="goal" to="." method="level_completed"]
-[connection signal="goal_reached" from="goal" to="." method="level_complete_anim_start"]
+[connection signal="goal_animation_finished" from="locked goal" to="." method="level_completed"]
+[connection signal="goal_reached" from="locked goal" to="." method="level_complete_anim_start"]

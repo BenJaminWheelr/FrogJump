@@ -53,7 +53,6 @@ func load_game():
 		if json.parse(file.get_as_text()) == OK:
 			data = json.data
 		file.close()
-	print(data)
 
 func reset_save_data():
 	if FileAccess.file_exists(SAVE_PATH):

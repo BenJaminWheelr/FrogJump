@@ -9,6 +9,7 @@ const PLAYER_OFFSCREEN_POS : Vector2 = Vector2i(512, 4800);
 var currLevel : Level = null;
 
 @export var levelHUD : CanvasLayer
+@export var localDebug : bool = false
 
 var speedrunTimer : TimeKeeper = TimeKeeper.new()
 
@@ -18,6 +19,7 @@ func _ready():
 	
 func onLevelComplete() -> void:
 	speedrunTimer.stop()
+	levelHUD.shouldUpdate = false
 	var elapsedTime = speedrunTimer.get_elapsed()
 	SaveManager.update_speedrun_record(str(currLevelIndex), elapsedTime)
 	
@@ -28,14 +30,52 @@ static func getLevelPath(index : int) -> String:
 		return newLevelPath
 	return "";
 	
-func initiateHUD(currentLevel : Level):
+func initiateHUD(currentLevel: Level):
+	if not levelHUD or not currentLevel:
+		push_error("[HUD INIT] Missing levelHUD or currentLevel reference.")
+		return
+
+	if localDebug: print("[HUD INIT] Initializing HUD for level: ", currentLevel.name)
+
 	var goal_node = currentLevel.get_node_or_null("goal")
-	currLevel.level_clear_anim_started.connect(onLevelComplete)
-	if goal_node and levelHUD:
-		levelHUD.finish_line = goal_node
-		levelHUD.setup()
+	var locked_goal_node = currentLevel.get_node_or_null("locked goal")
+	var highest_point_node = currentLevel.get_node_or_null("highest_point")
+	var key_node = currentLevel.get_node_or_null("key")
+
+	if goal_node:
+		if localDebug: print("[HUD INIT] Found goal node: goal")
+		levelHUD.isDoorLocked = false
+	elif locked_goal_node:
+		if localDebug: print("[HUD INIT] Found locked goal node: locked goal (fallback)")
+		goal_node = locked_goal_node
+		levelHUD.isDoorLocked = true
 	else:
-		print("Warning: Either missing goal-node/levelHUD reference")
+		push_warning("[HUD INIT] No goal or locked goal node found in level!")
+
+	levelHUD.highest_point = highest_point_node
+	levelHUD.finish_line = goal_node
+	levelHUD.key = key_node
+
+	if localDebug:
+		if highest_point_node: print("[HUD INIT] Found highest_point_node node: highest_point")
+		else: push_warning("[HUD INIT] No highest_point_node node found in level!")
+		
+		if key_node: print("[HUD INIT] Found key node")
+		else: print("[HUD INIT] No key node found (this is optional)")
+
+	if currentLevel.has_signal("level_clear_anim_started"):
+		if not currentLevel.level_clear_anim_started.is_connected(onLevelComplete):
+			currentLevel.level_clear_anim_started.connect(onLevelComplete)
+			if localDebug: print("[HUD INIT] Connected level_clear_anim_started signal")
+	else:
+		push_warning("[HUD INIT] Level has no signal: level_clear_anim_started")
+
+	if not levelHUD.progress_bar:
+		push_error("[HUD INIT] HUD missing progress_bar reference")
+		return
+
+	levelHUD.setup()
+
 	
 
 func loadLevel(index : int):

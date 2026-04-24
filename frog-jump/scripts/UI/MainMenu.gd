@@ -58,7 +58,6 @@ func _on_shop_pressed():
 
 func _on_exit_pressed():
 	#SaveManager.update_data("player", "coins", 1000)
-	_handle_click("", select_sfx)
 	get_tree().quit()
 	
 func _on_settings_pressed():
