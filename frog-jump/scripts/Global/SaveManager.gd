@@ -15,6 +15,9 @@ const DEFAULT_DATA = {
 	"shop": {
 		"owned_items": [],
 		"equipped_item": "",
+	},
+	"speedrunRecords": {
+		# level_id: [float, float, float]
 	}
 }
 
@@ -58,7 +61,32 @@ func reset_save_data():
 	
 	data = DEFAULT_DATA.duplicate(true)
 	save_game()
+	
 
+func update_speedrun_record(level_id: String, raw_time: float) -> void:
+	# Initialize level entry if missing
+	if not data["speedrunRecords"].has(level_id):
+		data["speedrunRecords"][level_id] = []
+
+	var new_entry = {
+		"raw": raw_time,
+		"formatted": TimeKeeper.format_time(raw_time)
+	}
+
+	var scores = data["speedrunRecords"][level_id]
+	scores.append(new_entry)
+	
+	scores.sort_custom(TimeKeeper.sort_records)
+	
+	# Keep only top 3
+	if scores.size() > 3:
+		scores.resize(3)
+	
+	data["speedrunRecords"][level_id] = scores
+	save_game()
+
+func get_speedrun_records(level_id: String) -> Array:
+	return data["speedrunRecords"].get(level_id, [])
 
 func _ensure_defaults() -> void:
 	var defaults = DEFAULT_DATA.duplicate(true)

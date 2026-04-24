@@ -17,6 +17,8 @@ enum ControlMode {
 
 @export var move_direction := 1.0
 
+signal auto_runner_started
+
 signal lost_key
 var has_key: bool = false
 
@@ -49,6 +51,7 @@ func _physics_process(delta: float) -> void:
 	elif control_mode == ControlMode.WAIT_FOR_INPUT_BEFORE_AUTO_RUNNER:
 		velocity.x = 0
 		if Input.is_action_just_pressed("jump"):
+			auto_runner_started.emit()
 			control_mode = ControlMode.AUTO_RUNNER
 
 	move_and_slide()

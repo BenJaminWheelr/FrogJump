@@ -10,8 +10,18 @@ var currLevel : Level = null;
 
 @export var levelHUD : CanvasLayer
 
+var speedrunTimer : TimeKeeper = TimeKeeper.new()
+
 func _ready():
 	resetLevel();
+	$Player.auto_runner_started.connect(speedrunTimer.start)
+	currLevel.level_clear_anim_started.connect(onLevelComplete)
+	
+func onLevelComplete() -> void:
+	speedrunTimer.stop()
+	var elapsedTime = speedrunTimer.get_elapsed()
+	SaveManager.update_speedrun_record(str(currLevelIndex), elapsedTime)
+	
 
 static func getLevelPath(index : int) -> String:
 	var newLevelPath = LEVEL_DIR + str(index) + ".tscn"
