@@ -15,7 +15,6 @@ var speedrunTimer : TimeKeeper = TimeKeeper.new()
 func _ready():
 	resetLevel();
 	$Player.auto_runner_started.connect(speedrunTimer.start)
-	currLevel.level_clear_anim_started.connect(onLevelComplete)
 	
 func onLevelComplete() -> void:
 	speedrunTimer.stop()
@@ -31,7 +30,7 @@ static func getLevelPath(index : int) -> String:
 	
 func initiateHUD(currentLevel : Level):
 	var goal_node = currentLevel.get_node_or_null("goal")
-	
+	currLevel.level_clear_anim_started.connect(onLevelComplete)
 	if goal_node and levelHUD:
 		levelHUD.finish_line = goal_node
 		levelHUD.setup()
