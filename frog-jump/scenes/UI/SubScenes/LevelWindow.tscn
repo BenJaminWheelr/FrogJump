@@ -96,7 +96,7 @@ offset_bottom = 200.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Leaderboard" type="TextureRect" parent="SpeedrunLeaderboard" unique_id=289509193]
+[node name="Leaderboard" type="TextureButton" parent="SpeedrunLeaderboard" unique_id=612271467]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -109,7 +109,7 @@ offset_right = 224.0
 offset_bottom = 224.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("4_alqd5")
+texture_normal = ExtResource("4_alqd5")
 
 [node name="LeaderboardLabel" type="Label" parent="SpeedrunLeaderboard/Leaderboard" unique_id=1179389822]
 layout_mode = 1
@@ -143,4 +143,5 @@ grow_horizontal = 2
 theme = ExtResource("2_kpn36")
 text = "RECORDS"
 
+[connection signal="pressed" from="SpeedrunLeaderboard/Leaderboard" to="." method="_on_toggle_leaderboard"]
 [connection signal="pressed" from="ToggleWindow" to="." method="_on_toggle_leaderboard"]
