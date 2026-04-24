@@ -43,10 +43,13 @@ func _ready():
 		var inst = level_window_scene.instantiate()
 		hbox.add_child(inst)
 		
+		inst.levelIndex = i
+		
 		var level_number = i + 1
-		var label = inst.get_node("Control/Label")
-		var icon_rect = inst.get_node("Control/LockedIcon")
-		var btn = inst.get_node("Control/TextureButton")
+		var label = inst.get_node("LevelThumbnail/LevelIndexLabel")
+		
+		var icon_rect = inst.get_node("LevelThumbnail/LockedIcon")
+		var btn = inst.get_node("LevelThumbnail/TextureButton")
 		
 		btn.texture_normal = data.thumbnail
 		

@@ -1,9 +1,12 @@
 [gd_scene format=3 uid="uid://bx6eq07yihv0c"]
 
+[ext_resource type="Script" uid="uid://bvnuxb6lnjvjb" path="res://scripts/UI/levelWindow.gd" id="1_alqd5"]
 [ext_resource type="Texture2D" uid="uid://campbs1wnvpe" path="res://assets/backgrounds/Summer8.png" id="1_we2va"]
+[ext_resource type="AudioStream" uid="uid://ckghpnlodtgxp" path="res://assets/audio/uiSelect.wav" id="2_h0n2r"]
 [ext_resource type="Theme" uid="uid://cv0jb6rth2amu" path="res://assets/ui_theme.tres" id="2_kpn36"]
+[ext_resource type="Texture2D" uid="uid://psisw8shn15l" path="res://assets/textures/png/button_square.svg" id="4_alqd5"]
 
-[node name="LevelWindow" type="Control" unique_id=1070652223]
+[node name="LevelWindow" type="Control" unique_id=1070652223 node_paths=PackedStringArray("leaderboardLabel", "toggleButton")]
 custom_minimum_size = Vector2(1000, 1000)
 layout_mode = 3
 anchors_preset = 15
@@ -11,8 +14,12 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_alqd5")
+leaderboardLabel = NodePath("SpeedrunLeaderboard/Leaderboard/LeaderboardLabel")
+toggleButton = NodePath("ToggleWindow")
+selectSfx = ExtResource("2_h0n2r")
 
-[node name="Control" type="Control" parent="." unique_id=748256507]
+[node name="LevelThumbnail" type="Control" parent="." unique_id=748256507]
 custom_minimum_size = Vector2(600, 400)
 layout_mode = 1
 anchors_preset = 8
@@ -27,7 +34,7 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="TextureButton" type="TextureButton" parent="Control" unique_id=337897293]
+[node name="TextureButton" type="TextureButton" parent="LevelThumbnail" unique_id=337897293]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -38,7 +45,73 @@ texture_normal = ExtResource("1_we2va")
 ignore_texture_size = true
 stretch_mode = 0
 
-[node name="Label" type="Label" parent="Control" unique_id=880113185]
+[node name="LevelIndexLabel" type="Label" parent="LevelThumbnail" unique_id=880113185]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -28.0
+offset_top = -120.0
+offset_right = 52.0
+offset_bottom = 120.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_kpn36")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 256
+text = "1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LockedIcon" type="TextureRect" parent="LevelThumbnail" unique_id=2114919061]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="SpeedrunLeaderboard" type="Control" parent="." unique_id=2095643344]
+visible = false
+custom_minimum_size = Vector2(600, 400)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -300.0
+offset_top = -200.0
+offset_right = 300.0
+offset_bottom = 200.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Leaderboard" type="TextureRect" parent="SpeedrunLeaderboard" unique_id=289509193]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -224.0
+offset_top = -224.0
+offset_right = 224.0
+offset_bottom = 224.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_alqd5")
+
+[node name="LeaderboardLabel" type="Label" parent="SpeedrunLeaderboard/Leaderboard" unique_id=1179389822]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -53,22 +126,21 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("2_kpn36")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 256
-text = "1"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="LockedIcon" type="TextureRect" parent="Control" unique_id=2114919061]
+[node name="ToggleWindow" type="Button" parent="." unique_id=954401928]
+custom_minimum_size = Vector2(175, 60)
 layout_mode = 1
-anchors_preset = 8
+anchors_preset = 5
 anchor_left = 0.5
-anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
+offset_left = -94.0
+offset_top = 308.0
+offset_right = 94.0
+offset_bottom = 368.0
 grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
+theme = ExtResource("2_kpn36")
+text = "RECORDS"
+
+[connection signal="pressed" from="ToggleWindow" to="." method="_on_toggle_leaderboard"]
