@@ -19,7 +19,6 @@ default_font_size = 25
 
 [node name="Credits" type="CanvasLayer" unique_id=1341459121]
 layer = 2
-script = ExtResource("4_n2nwu")
 
 [node name="CenterContainer" type="CenterContainer" parent="." unique_id=1043452288]
 anchors_preset = 15
